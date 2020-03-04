@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Метод прямого включения</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<b>Идея метода:</b><br>
+Начиная с i=2 берем каждый i-ый элемент и включаем его на 
+нужное место среди первых i элементов и сдвигаем все 
+большие элементы вправо.
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<B>Алгоритм:</B>
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+ DO(i:=2,..,n)
+   t:=a[i];j:=i-1;
+   DO (j&gt;0)and(t&lt;a[j])
+ 		a[j+1]:=a[j];
+                j:=j-1;
+   OD
+a[j+1]:=t;
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script><b>Трудоемкость метода:</b></p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+     Cimin=1         Cimax=i-1
+     Mimin=2         Mimax=i+1
+=>   Cmin=n-1        Cmax=(n*n-n)/2
+     Mmin=2*(n-1)    Mmax=3+4+5+...+(n-1)+n+(n+1)=
+                      =(n*n-n)/2-3+n+(n+1)=O(n*n)
+T=O(n<sup>2</sup>)
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<b>Особенности метода:</b><br>
+Сортировка устойчива, зависит от исходой 
+упорядоченности
+</p>
+</BODY>
+</HTML>

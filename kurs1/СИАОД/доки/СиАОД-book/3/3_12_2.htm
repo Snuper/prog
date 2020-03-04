@@ -1,0 +1,273 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+<SCRIPT>
+delay = 2000
+go = 1;
+imageNum = 1 // стартовый номер картинки
+theImages = new Array()
+for(i = 1; i<=16; i++) {
+   theImages[i] = new Image()
+   theImages[i].src = "cr_avl_" + i + ".bmp"
+   }
+
+function animate() {
+   document.animation.src = theImages[imageNum].src
+if (go==1) {imageNum++;}
+   if(imageNum > 16) {
+   imageNum = 1
+   }
+}
+function slower() {
+   delay+=10
+   if(delay > 4000) delay = 4000
+}
+function faster() {
+   delay-=10
+   if(delay < 0) delay = 0
+}
+
+function Start() {
+go=1;
+}
+
+function Stop() {
+go=0;
+}
+
+</SCRIPT>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Построение АВЛ - дерева</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Рассмотрим ситуации, возникающие при добавлении новой вершины в уже существующее дерево:
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Было hL&lt;hR => После добавления hL=hR
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Было hL=hR => После добавления hL>hR на 1
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Было hL>hR => После добавления баланс нарушен, необходимо перестроение дерева.
+</OL>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Добавим новую вершину в АВЛ - дерево так же, как и в ИСДП, т.е. пройдем по пути поиска, выделим память на нужном месте и обнулим левое и правое поддеревья. Затем, двигаясь назад по пути поиска, будем искать вершину, где нарушился баланс. Если такая вершина найдена, то перестроим структуру дерева для восстановления баланса.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Проблемы:<BR>
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Осуществление движения назад по пути поиска.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Определение в программе нарушения баланса.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Восстановление баланса.
+</OL>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Решения:<BR>
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Рекурсия.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Введем в каждую вершину дополнительное поле - баланс
+</OL>
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Balance = -1, если hL>hR;
+Balance =  0, если hL=hR;
+Balance =  1, если hL&lt;hR;
+</Pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+</Pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+При включении новой вершины Balance устанавливается в ноль. При движении назад по пути поиска для каждой вершины баланс пересчитывается. При этом не нужно рассматривать все поддеревья, т.е. баланс может нарушится только в одной вершине и только по пути поиска.<BR>
+3. Восстановление баланса производится с помощью одного из четырех поворотов:<BR>
+<OL>
+    <LI> 
+    <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+        LL - поворот
+        q:=p^.left;
+        p^.bal:=0;
+        q^.bal:=0;
+        p^.left:=q^.right;
+        q^.right:=p;
+        p:=q;
+    </PRE> 
+    <LI>
+    <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+        RR - поворот
+        q:=p^.right;
+        p^.bal:=0;
+        q^.bal:=0;
+        p^.right:=q^.left;
+        q^.left:=p;
+        p:=q;
+    </PRE>
+    <LI>
+    <Script>
+<!-- hide
+changepre();
+ hide -->
+</script> 
+        LR - поворот
+        q:=p^.left;
+        r:=q^.right;
+        IF (r^.bal<0) p^.bal:=1{?}
+                 ELSE p^.bal:=0; FI
+        IF (r^.bal>0) p^.bal:=1{?}
+                 ELSE p^.bal:=0; FI
+        r^.bal:=0;
+        q^.right:=r^.left;
+        p^.left:=r^.right;
+        r^.left:=q;
+        r^.right:=p;
+        p:=r;
+    </PRE>
+    <LI>
+    <Script>
+<!-- hide
+changepre();
+ hide -->
+</script> 
+        RL - поворот
+        q:=p^.right;
+        r:=q^.left;
+        IF (r^.bal<0) p^.bal:=1{?}
+                 ELSE p^.bal:=0; FI
+        IF (r^.bal>0) p^.bal:=1{?}
+                 ELSE p^.bal:=0; FI
+        r^.bal:=0;
+        q^.left:=r^.right;
+        p^.right:=r^.left;
+        r^.right:=q;
+        r^.left:=p;
+        p:=r;
+    </PRE>
+</OL>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм добавления<BR>
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+AddNode(D - данные;VAR p:pVertex);
+IF (p=NIL)
+     new(p);
+     p^.Data:=D;
+     p^.left:=NIL;
+     p^.right:=NIL;
+     p^.bal:=0;
+     Рост:=да;
+ELSE
+  IF(D<p^.Data) AddNode(D,p^.left);
+  IF Рост=да выросло левое поддерево
+  IF (p^.bal>0) p^.bal:=0; Рост:=нет;
+      ELSE IF (p^.bal=0) p^.bal:=-1
+                ELSE IF (p^.left^.bal<0)
+                          <LL - поворот>
+                           ELSE <LR - поворот>
+                          FI
+                 Рост:=нет;
+                 FI
+  FI
+  FI
+ELSE IF (D>p^.Data) AddNode(D,p^.right);{????}
+  IF Рост=да выросло правое поддерево
+  IF (p^.bal>0) p^.bal:=0; Рост:=нет;
+      ELSE IF (p^.bal=0) p^.bal:=-1
+                ELSE IF (p^.left^.bal<0)
+                          <LL - поворот>
+                           ELSE <LR - поворот>
+                          FI
+                 Рост:=нет;
+                 FI
+  FI
+  FI
+ELSE есть в дереве - не добавляем.
+</Pre>
+<CENTER>
+<IMG NAME="animation" SRC="cr_avl_1.bmp" ALT="Построение АВЛ-дерева" 
+onLoad="setTimeout('animate()', delay)">  
+<FORM>  
+<INPUT TYPE="button" Value="Slower" onClick="slower()">
+<INPUT TYPE="button" Value="Faster" onClick="faster()">
+<INPUT TYPE="button" Value="Start" onClick="Start()">
+<INPUT TYPE="button" Value="Stop" onClick="Stop()">
+</FORM>
+</CENTER>
+</BODY>
+</HTML>

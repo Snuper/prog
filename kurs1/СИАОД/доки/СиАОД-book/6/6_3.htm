@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Алгоритм Рабина - Карпа</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+В 1981 году R.Karp и M.Rabin разработали  алгоритм 
+эффективно работающий в практических задачах, 
+легко обобщающийся на аналогичные задчи, например, 
+поиск в двумерном массиве.<BR> 
+Трудоемкость в худшем случае <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>O((n-m+1)*m),</PRE>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+но в среднем алгоритм работает хорошо <PRE>O(n+m).</PRE>
+Предположим, что <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>A={0,1,...,9},</PRE>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+тогда массив из символов этого алфавита можно 
+считать десятичной записью некоторого числа.
+Очевидно, что если S - допустимый сдвиг, то ts=p, где 
+p - число, десятичная запись которого соответствует 
+образцу, а ts - число, десятичная запись которого 
+соответствует строке <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>T[s+1,...,s+m].</PRE><Script>
+<!-- hide
+changep();
+ hide -->
+</script><BR>
+Вычислив все ts и p за время порядка O(n+m), можно легко
+найти допустимый сдвиг S, последовательно сравнив число 
+p со всеми ts.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Число p можно вычислить за время O(m).
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>P=p[m]+10^1*p[m-1]+10^2*p[m-2]+...+10^m-1*p[1]</PRE>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>P=p[m]+10*(p[m-1]+10*(p[m-2]+
+     10*(...)+10(p[2]+10p[1])...))</PRE>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Таким образом, можно вычислить t0 по схеме Горнера, а 
+следующие ts по формуле:
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>ts+1=10*(ts-10^m-1*T[s+1])+T[s+m+1];</PRE>
+Действительно, для того чтобы получить строку 
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>T[s+2,...,s+m+1]</PRE> из <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>T[s+1,...,s+m],</PRE><Script>
+<!-- hide
+changep();
+ hide -->
+</script> необходимо убрать 
+первый символ, т.е. <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>ts-10^m-1*T[s+1]</PRE><Script>
+<!-- hide
+changep();
+ hide -->
+</script> и добавить последний 
+элемент, полученную разность умножив на 10 и 
+добавив <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>T[s+m+1].</PRE> 
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Все рассмотренные вычисления могут 
+приводить к большим числам, поэтому авторы рекомендуют 
+производить вычисления по модулю н екоторого числа q. 
+Необходимо, чтобы q было большим числом, но число 10*q 
+входило в машинное слово. Недостатки вычисления 
+по модулю q:
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Из равенства ts=p mod q не следует, что ts=p. 
+Таким Образом возможны "холостые срабатывания".
+Если q - простое и достаточно велико, то 
+дополнительный анализ срабатываний, очевидно, 
+будет небольшим.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм поиска подстрок(T,P,d,q)
+T - текст
+P - образец
+d - размер алфавита
+q - простое число
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+n:=length(T);
+m:=length(P);
+h:=(d^m-1) mod q;
+p:=0;
+t0:=0;
+DO(i:=1,...,m)
+     p:=(d*p+p[i]) mod q;
+     t0:=(d*t0+T[i]) mod q;
+OD
+DO(s:=0,...,n-m)
+     IF (p=ts)
+         IF (p[1,...,m]=T[s+1,...,s+m]) 
+             write('допустимый сдвиг ',S); FI
+         FI
+IF (s&lt;n-m) ts+1:=(d(ts-h*T[s+1])+T[s+m+1]) mod q;
+FI
+OD
+</Pre>
+</P>
+</BODY>
+</HTML>

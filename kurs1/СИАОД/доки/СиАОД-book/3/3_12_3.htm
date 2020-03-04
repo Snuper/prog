@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+<SCRIPT>
+delay = 2000
+go = 1;
+imageNum = 1 // стартовый номер картинки
+theImages = new Array()
+for(i = 1; i<=12; i++) {
+   theImages[i] = new Image()
+   theImages[i].src = "dl_avl_" + i + ".bmp"
+   }
+
+function animate() {
+   document.animation.src = theImages[imageNum].src
+if (go==1) {imageNum++;}
+   if(imageNum > 12) {
+   imageNum = 1
+   }
+}
+function slower() {
+   delay+=10
+   if(delay > 4000) delay = 4000
+}
+function faster() {
+   delay-=10
+   if(delay < 0) delay = 0
+}
+
+function Start() {
+go=1;
+}
+
+function Stop() {
+go=0;
+}
+
+</SCRIPT>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<H3center>Удаление вершины с ключом X из АВЛ - дерева</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+При удалении производится балансировка с помощью тех же поворотов, но два из них модифицированы:<BR>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>LL,LR,RL,RR=>LL1,RR1,LR,RL</Pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Идея удаления:<BR>
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Удалим вершину из АВЛ - дерева так же, как и в СДП.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Двигаясь назад по пути поиска, будем проверять баланс в каждой вершине и при необходимости восстанавливать его. Нарушение баланса возможно в нескольких вершинах в отличии от добавления.
+</OL>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Если 2 поддерева, то на место удаленной вершины ставится самая правая вершина ее левого поддерева.<BR>
+Введем в алгоритм 2 процедуры сортировки:<BR>
+BL - используется, если уменьшилась высота левого поддерева.<BR>
+BR - используется, если уменьшилась высота правого поддерева.<BR>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм BL(p :pVertex;умен:boolean);
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+IF (p^.bal=-1)
+      p^.bal:=0 
+ELSE IF (p^.bal=0) p^.bal:=1; умен:=нет;
+          ELSE IF (p^.bal=1) 
+                        IF (p^.right^.bal>=0)
+                             <RR1 - поворот>
+                        ELSE
+                              <RL - поворот>
+                        FI
+FI
+</Pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм BR(p :pVertex;умен:boolean);
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+IF (p^.bal=1)
+      p^.bal:=0 
+ELSE IF (p^.bal=0) p^.bal:=-1; умен:=нет;
+          ELSE IF (p^.bal=-1) 
+                        IF (p^.left^.bal>=0)
+                             <LL1 - поворот>
+                        ELSE
+                              <LR - поворот>
+                        FI
+   FI
+</Pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм LL1
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+q:=p^.left;
+IF (q^.bal=-1) p^.bal:=0; q^.bal:=0;
+    ELSE IF (q^.bal=0) 
+                  q^.bal:=-1; 
+             FI
+p^.left:=q^.right;
+q^.right:=p;
+p:=q;
+</Pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Аналогично преобразовывается и RR в RR1.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм удаления вершины из АВЛ - дерева.
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Delete(x : Data; var p : pVertex; умен : boolean)
+IF (p=NIL) нет в дереве
+    ELSE IF (x<p^.Data) 
+                  Delete(x,p^.left,умен);
+                  IF умен=да BL(p,умен); FI
+    ELSE IF (x>p^.Data)
+                  Delete(x,p^.right,умен);
+                  IF умен=да BR(p,умен); FI
+    ELSE
+         q:=p;
+         IF (q^.left=NIL) p:=q^.left
+             ELSE умен:=да;
+                       Del(q^.left,умен);
+                       IF умен BL(p,умен) FI
+          FI
+Dispose(q);
+FI
+</Pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>   
+Процедура Del - удаляет вершину, имеющую два поддерева
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Del(r : pVertex; var умен : boolean)
+IF (r^.right<>NIL) Del(r^.right,умен);
+                           IF умен BR(r,умен) FI
+ELSE   q^.Data:=r^.Data;
+           q:=r;
+           r:=r^.left;
+           умен:=да; 
+q - глобальная для Del.
+</Pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Трудоемкость в худшем случае может потребоваться <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>O(logn)</Pre><Script>
+<!-- hide
+changep();
+ hide -->
+</script> операций.
+</P>
+<CENTER>
+<IMG NAME="animation" SRC="dl_avl_1.bmp" ALT="Удаление АВЛ-дерева" 
+onLoad="setTimeout('animate()', delay)">  
+<FORM>  
+<INPUT TYPE="button" Value="Slower" onClick="slower()">
+<INPUT TYPE="button" Value="Faster" onClick="faster()">
+<INPUT TYPE="button" Value="Start" onClick="Start()">
+<INPUT TYPE="button" Value="Stop" onClick="Stop()">
+</FORM>
+</CENTER>
+</BODY>
+</HTML>

@@ -1,0 +1,33 @@
+# Project: Project1
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++rus.exe
+CC   = gccrus.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = prog.o funk.o $(RES)
+LINKOBJ  = prog.o funk.o $(RES)
+LIBS =  -L"C:/Lang/Dev-Cpp/lib" -lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32  
+INCS =  -I"C:/Lang/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Lang/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Lang/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Lang/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Lang/Dev-Cpp/include/c++/3.4.2"  -I"C:/Lang/Dev-Cpp/include" 
+BIN  = Project1.exe
+CXXFLAGS = $(CXXINCS)   -fshort-double
+CFLAGS = $(INCS)   -fshort-double
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Project1.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "Project1.exe" $(LIBS)
+
+prog.o: prog.c
+	$(CPP) -c prog.c -o prog.o $(CXXFLAGS)
+
+funk.o: funk.c
+	$(CPP) -c funk.c -o funk.o $(CXXFLAGS)

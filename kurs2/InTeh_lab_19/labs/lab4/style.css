@@ -1,0 +1,7 @@
+.klas {
+color: blue;
+}
+
+.klas:focus {
+color: red;
+}

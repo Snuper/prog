@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+<SCRIPT>
+delay = 2000
+go = 1;
+imageNum = 1 // стартовый номер картинки
+theImages = new Array()
+for(i = 1; i<=11; i++) {
+   theImages[i] = new Image()
+   theImages[i].src = "m_otkr_adr_" + i + ".bmp"
+   }
+
+function animate() {
+   document.animation.src = theImages[imageNum].src
+if (go==1) {imageNum++;}
+   if(imageNum > 11) {
+   imageNum = 1
+   }
+}
+function slower() {
+   delay+=10
+   if(delay > 4000) delay = 4000
+}
+function faster() {
+   delay-=10
+   if(delay < 0) delay = 0
+}
+
+function Start() {
+go=1;
+}
+
+function Stop() {
+go=0;
+}
+
+</SCRIPT>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Метод открытой адресации</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Идея:<BR> 
+Коллизии устраняются путем просмотра один за другим 
+различных ячеек таблицы, пока не будет найден ключ 
+или пустая позиция(нет элемента).
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+В зависимости от правил по которым осуществляются
+пробы, рассмотрим 3 подметода:
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Линейные пробы
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Квадратичные пробы
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Двойное хеширование
+</OL>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+В общем случае <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>Hi=(h(k)+g(i)) mod m</PRE>
+</P>
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Если <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>g(i)=i, i=1,..,m-1</PRE><Script>
+<!-- hide
+changep();
+ hide -->
+</script> - линейные пробы.<BR>
+Недотаток:     плохо рассеивает ключи.<BR>
+Достоинство:  простота.<BR>
+<LI><Script>
+<!-- hide
+changepre();
+ hide -->
+</script>g(i)=i^2, i=1,...,m-1</PRE><Script>
+<!-- hide
+changep();
+ hide -->
+</script> - квадратичные пробы<BR>
+Недотаток:     использует не всю таблицу,
+тенденция к правой половине.<BR>
+Достоинство:  хорошо рассеивает ключи.<BR>
+<LI><Script>
+<!-- hide
+changepre();
+ hide -->
+</script>h=(h1(k)+i*h2(k)) mod m,</PRE><Script>
+<!-- hide
+changep();
+ hide -->
+</script>т.е. <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>g(i)=i*h2(k)</PRE>
+<OL><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Применяется два способа:
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>m - степень 2<BR>
+h2 - только нечетная функция
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>m - простое число<BR>
+h2<=m
+</OL>
+</OL>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм добавления (T,K)
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+i:=0;
+DO
+     j:=H(k,i);
+     IF (T[j]=0) T[j]:=k; возврат j FI
+           ELSE i:=i+1;
+OD(i=m);
+<ошибка - переполнение>
+</PRE>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм поиска(T,K)
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+i:=0;
+DO
+     j:=H(K,i);
+     IF (T[j]=K) возврат j FI
+     i:=i+1;
+OD( (T[j]=0) or (i=m) )
+</pre>
+<CENTER>
+<IMG NAME="animation" SRC="m_otkr_adr_1.bmp" ALT="Метод открытой адресации" 
+onLoad="setTimeout('animate()', delay)">  
+<FORM>  
+<INPUT TYPE="button" Value="Slower" onClick="slower()">
+<INPUT TYPE="button" Value="Faster" onClick="faster()">
+<INPUT TYPE="button" Value="Start" onClick="Start()">
+<INPUT TYPE="button" Value="Stop" onClick="Stop()">
+</FORM>
+</CENTER>
+</BODY>
+</HTML>

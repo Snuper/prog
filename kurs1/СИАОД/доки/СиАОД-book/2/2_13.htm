@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Метод Хоара</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Был разработан Koare в 1962 году.<br>
+<b>Общая идея:</b><br>
+Возьмем произвольный элемент и обозначим его за X.
+Просматривая массив слева, будем искать элемент 
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>A[i]&gt;=X,</pre><Script>
+<!-- hide
+changep();
+ hide -->
+</script>просматривая массив справа, будем 
+искать элемент <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>A[j]<=X.</pre><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Поменяем местами 
+A[i] и A[j]. Продолжаем просматривать массив 
+слева и справа, пока i не станет больше j, 
+разделим массив на две части и применим тот же метод
+ к каждой части, будем повторять до тех пор пока в 
+каждой из них не останется по 1 элементу. 
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+В качестве элемента X будем брать 1-ый эдемент 
+массива A[L].
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+<b>QuickSort(L,R)</b>
+X:=A[L];
+i:=L;
+j:=R;
+DO(i&lt;=j)
+     DO(A[i]&lt;X) i:=i+1; OD
+     DO(A[j]&gt;X) j:=j-1;  OD
+     IF (i&lt;=j)     A[i]&lt;-&gt;A[j];
+                      i:=i+1;
+                      j:=j-1;
+     FI
+OD
+IF (L&lt;j) QuickSort(L,j);
+IF (i&lt;R) QuickSort(i,R);
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+В головной программе вызываем QuickSort с параметрами 1,n.
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<b>Проблемма глубины рекурсии.</b><br>
+В этом алгоритме возможно переполнение стека, чтобы этого 
+избежать можно применить следующий <b>алгоритм:</b>
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+DO(L&lt;R)
+<разделение массива>
+     IF (j-L&lt;R-i) QuickSort(L,j);  L:=i; 
+        ELSE QuickSort(i,R); R:=j; 
+     FI
+OD
+</pre>
+</BODY>
+</HTML>

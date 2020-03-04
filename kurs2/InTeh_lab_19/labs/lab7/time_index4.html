@@ -1,0 +1,130 @@
+<html>
+	<head>
+		<title> Animation</title>
+	</head>
+		<body>
+		
+		<img id='hours_1' src='dg0.gif' style="position:absolute; left:20px;" />
+		<img id='hours_2' src='dg0.gif' style="position:absolute; left:36px;" />
+		
+		<img id='tochka' src='dgc.gif' style="position:absolute; left:50px;" />
+		
+		<img id='min_1' src='dg0.gif' style="position:absolute; left:59px;" />
+		<img id='min_2' src='dg0.gif' style="position:absolute; left:75px;" />
+		
+		
+		<img id='day_1' src='dg0.gif' style="position:absolute; left:100px;" />
+		<img id='day_2' src='dg0.gif' style="position:absolute; left:115px;" />
+		
+		<img src='dgp.gif' style="position:absolute; left:131px;" />
+		
+		<img id='month_1' src='dg0.gif' style="position:absolute; left:140px;" />
+		<img id='month_2' src='dg0.gif' style="position:absolute; left:155px;" />
+		
+		<img src='dgp.gif' style="position:absolute; left:170px;" />
+		
+		<img id='year_1' src='dg0.gif' style="position:absolute; left:179px;" />
+		<img id='year_2' src='dg0.gif' style="position:absolute; left:195px;" />
+		<img id='year_3' src='dg0.gif' style="position:absolute; left:210px;" />
+		
+		<br><br>
+		<button onclick="time_clear_func()">Clear</button>
+		<button onclick="start_time_timer()">Start</button>
+		<button onclick="plus()">+</button>
+		<script>
+			var img = ["dgc.gif", "dgcb.gif"]; 
+			var pos = 0;
+			var b=0;
+	
+			function slide_show() {
+				if(pos  >= img.length)
+					pos = 0;
+					
+				document.getElementById("tochka").src = img[pos];
+				pos++;
+			}
+		
+			var slide_interval = setInterval("slide_show()", 1000);
+			var vrem_interval = setInterval("vrem()", 1000);
+		
+			function start_time_timer() {
+				slide_interval = setInterval("slide_show()", 1000);
+				vrem_interval = setInterval("vrem()", 1000);
+			}
+		
+			function time_clear_func() {
+				clearInterval(slide_interval);
+				clearInterval(vrem_interval);
+
+
+				document.getElementById("hours_1").src="dg0.gif";
+				document.getElementById("hours_2").src="dg0.gif";
+
+				document.getElementById("min_1").src="dg0.gif";
+				document.getElementById("min_2").src="dg0.gif";
+			}
+			
+			function plus()
+			{				
+				b++;
+				vrem(b);
+			}
+			
+			
+			function vrem(a) {
+				ndata = new Date();
+				hours = ndata.getHours();
+				mins = ndata.getMinutes();
+				day = ndata.getDate();
+				year = ndata.getYear();
+				month = a;
+
+				var hours_arr = hours.toString();
+				var min_arr = mins.toString();
+				
+				var day_arr = day.toString();
+				var month_arr = month.toString();
+				var year_arr = year.toString();
+				
+				if(hours < 10) {
+					document.getElementById("hours_1").src="dg0.gif";
+					document.getElementById("hours_2").src="dg"+hours_arr[0]+".gif";
+				}
+				else {
+					document.getElementById("hours_1").src="dg"+hours_arr[0]+".gif";
+					document.getElementById("hours_2").src="dg"+hours_arr[1]+".gif";
+				}
+				if(mins < 10) {
+					document.getElementById("min_1").src="dg0.gif";
+					document.getElementById("min_2").src="dg"+min_arr[0]+".gif";
+				}
+				else {
+					document.getElementById("min_1").src="dg"+min_arr[0]+".gif";
+					document.getElementById("min_2").src="dg"+min_arr[1]+".gif";
+				}
+				
+				if(day < 10) {
+					document.getElementById("day_1").src="dg0.gif";
+					document.getElementById("day_2").src="dg"+day_arr[0]+".gif";
+				}
+				else {
+					document.getElementById("day_1").src="dg"+day_arr[0]+".gif";
+					document.getElementById("day_2").src="dg"+day_arr[1]+".gif";
+				}
+
+				if(month < 10) {
+					document.getElementById("month_1").src="dg0.gif";
+					document.getElementById("month_2").src="dg"+month_arr[0]+".gif";
+				}
+				else {
+					document.getElementById("month_1").src="dg"+month_arr[0]+".gif";
+					document.getElementById("month_2").src="dg"+month_arr[1]+".gif";
+				}
+				
+				document.getElementById("year_1").src="dg"+year_arr[0]+".gif";
+				document.getElementById("year_2").src="dg"+year_arr[1]+".gif";
+				document.getElementById("year_3").src="dg"+year_arr[2]+".gif";
+			}
+		</script>
+	</body>
+</html>

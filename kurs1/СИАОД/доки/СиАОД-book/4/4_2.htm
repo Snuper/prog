@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Выбор хеш-функции</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Функции, которые хорошо рассеивают ключи, достаточно редки.
+Существует следующие основные виды хеш-функций:<BR>
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>функции, основаные на делении.
+    <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>h(K)=K mod m,</PRE><Script>
+<!-- hide
+changep();
+ hide -->
+</script> где m - простое число;
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>функции, основаные на умножении.
+    <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>h(K)=[m*(A*K mod m)],</PRE><Script>
+<!-- hide
+changep();
+ hide -->
+</script> где m - простое число, <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>0&lt;A&lt;1</PRE>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+работает при любых A, мало зависит от A.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>универсальное хеширование
+При запуске выбирается случайная функция из заданного множества.
+</OL>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Часто необходимо в качестве K брать строку.
+Алгоритм вычисления хеш-адреса строки
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+L:=длина строки S;
+h:=0;
+DO(i:=1,..,L)
+	h:=(h*256+S[i]) mod m;
+OD
+</pre>
+</BODY>
+</HTML>

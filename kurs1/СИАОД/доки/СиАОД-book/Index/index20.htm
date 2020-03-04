@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script>
+<!--hide
+Image1= new Image();
+Image1.src = "..\\pictures\\bullet1.bmp";
+Image2= new Image();
+Image2.src = "..\\pictures\\bullet2.bmp";
+hide -->
+</script>
+
+<script>
+<!--hide
+function change(NAME)
+{
+ NAME.src=Image1.src;
+}
+hide -->
+</script>
+
+<script>
+<!--hide
+function changeback(NAME)
+{
+ NAME.src=Image2.src;
+}
+hide -->
+</script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<TABLE>
+<TD><IMG SRC="..\pictures\bullet2.bmp" Height="17" Width="25" Border="0" Name="pic1">
+<TD><A HREF = "javascript:parent.index.location.href='index.htm';"
+onMouseOver=change(document.pic1) onMouseOut=changeback(document.pic1)>назад</A><BR>
+<TR>
+<TD><IMG SRC="..\pictures\bullet2.bmp" Height="17" Width="25" Border="0" Name="pic2">
+<TD><A HREF = "..\6\6_1.htm" TARGET = "TEXT"
+onMouseOver=change(document.pic2) onMouseOut=changeback(document.pic2)>6.1 Постановка задачи</A><BR>
+<TR>
+<TD><IMG SRC="..\pictures\bullet2.bmp" Height="17" Width="25" Border="0" Name="pic3">
+<TD><A HREF = "..\6\6_2.htm" TARGET = "TEXT"
+onMouseOver=change(document.pic3) onMouseOut=changeback(document.pic3)>6.2 Простейший алгоритм поиска подстрок</A><BR>
+<TR>
+<TD><IMG SRC="..\pictures\bullet2.bmp" Height="17" Width="25" Border="0" Name="pic4">
+<TD><A HREF = "..\6\6_3.htm" TARGET = "TEXT"
+onMouseOver=change(document.pic4) onMouseOut=changeback(document.pic4)>6.3 Алгоритм Рабина - Карпа</A><BR>
+<TR>
+</TABLE>
+</BODY>
+</HTML>
+

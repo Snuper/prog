@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+<SCRIPT>
+delay = 2000
+go = 1;
+imageNum = 1 // стартовый номер картинки
+theImages = new Array()
+for(i = 1; i<=11; i++) {
+   theImages[i] = new Image()
+   theImages[i].src = "cr_bd_" + i + ".bmp"
+   }
+
+function animate() {
+   document.animation.src = theImages[imageNum].src
+if (go==1) {imageNum++;}
+   if(imageNum > 11) {
+   imageNum = 1
+   }
+}
+function slower() {
+   delay+=10
+   if(delay > 4000) delay = 4000
+}
+function faster() {
+   delay-=10
+   if(delay < 0) delay = 0
+}
+
+function Start() {
+go=1;
+}
+
+function Stop() {
+go=0;
+}
+
+</SCRIPT>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Б - дерево порядка m</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Б - деревья были введены P.Bayer-ом в 1970 году.<BR>
+Каждая страница дерева должна содержать от m до 2m вершин.
+Память используется как минимум на 50%. Время поиска в худшем случае logm n.<BR>
+Свойства Б - деревьев порядка m:<BR>
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>На каждой странице хранится k элементов данных
+d1<d2<...<dk и k+1 указатель p0,p1,...,pk.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Для каждой вершины, кроме корня m<=k<=2m,
+для корневой вершины 1<=k<=2m.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Все листья дерева на одном уровне. Если спроекцировать Б - дерево на один уровень, то будет получен массив, отсортированый по возрастанию.
+=>Идея поиска: считываем страницу в оперативную память, если она большая, то применяем двоичный поиск, если нет, то перебираем все значения.
+</OL>
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Pas: TYPE pPage = ^Page;
+          Item  = record
+                  Data : integer;
+                  p    : pPage;
+                  end;
+           Page = record
+                  k    : {тип, поддерживающий 
+                          числа от 1 до 2m};
+                  p0   : pPage; 
+                  e    : array[1..2*m] of Item;
+                  end;
+</PRE>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Поиск вершины с ключом D:
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Search(D - ключ; a - адрес страницы);
+IF (a=NIL) {нет в дереве}
+       ELSE {поиск}
+       L:=1;
+       R:=R+1;
+       DO(L<R)
+             i:=(L+R)  div 2;
+             IF (a^.e[i].Data<=D) i:=i-1
+                                  ELSE R:=i; 
+             FI
+       OD
+       R:=R-1;
+       IF ((R>0) and (a^.e[R].Data=D)) {ключ найден}
+             ELSE IF (R=0) Search(D,a^.p0)
+                           ELSE Search(D,a^.e[R].p);
+                       FI
+       FI
+FI
+</PRE>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Построение Б - дерева<BR>
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Выполняем поиск элемента D.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Если элемента D нет в дереве, то мы имеем страницу по адресу A и прзицию R, в которой ожидалось найти этот элемент.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Вставим этот элемент в позицию R+1, при этом количество элементов станет k+1.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Если количество элементов на странице меньше 2m, то процесс включения завершен, т.к. место для этого элемента на странице было.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Если количество элементов на странице больше либо равно 2m, то произошло переполнение страницы. Создаем новую страницу, переносим на нее m правых элементов со страницы по адресу A, а средний элемент переносим на 1 уровень вверх на родительскую страницу.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Включение элементов в родительскую страницу происходит по такому же принципу.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Если родительской страницы нет, то она создается и в нее включается 1 элемент.
+Эта схема сохраняет все свойства Б - деревьев, поскольку полученные новые две страницы содержат ровно по m элементов. Включение в родительскую страницу может привести к переполнению. Таким образом процесс разделения страниц может увеличить высоту дерева из-за создания новой корневой страницы. Б - дерево растет от листьев к корню.
+</OL>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм построения Б - дерева.
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+BTree(D;a;var Rost;var V : Item)
+IF (a=NIL) Rost:=true;
+                 V.Data:=D;
+                 V.p:=NIL;
+       ELSE <поиск>
+                IF(R>0 and a^.e[R].Data=D) {уже есть}
+                   ELSE IF(R=0) BTree(D,a^.p0,Rost,U)
+                       ELSE BTree(D,a^.e[R].p,Rost,U)
+                FI
+                IF(Rost=true)
+                  IF(k<2m) {на странице есть место}
+                      Rost:=false;
+                      a^.k:=k+1;
+                      DO(i:=k,...,k+2) e[i]:=e[i-1];
+                  FI
+                ELSE {k>=2m - переполнение страницы}
+                    New(b);
+                IF (R<=m)
+                     IF(R=m) V:=U[1];
+                        ELSE 
+                             V:=e[m];
+                             DO(i=m,m-1,...,R+2)
+                                  e[i]:=e[i-1]; 
+                             OD
+                             e[R+1]:=U;
+                     FI
+                DO(i:=1,...,m) b^.e[i]:=a^.e[i+m]; OD
+                ELSE {R>m}
+                     V:=e[m+1];
+                     R:=R-m;
+                     DO(i:=1,...,R-1) 
+                       b^.e[i]:=a^.e[i+m+1] 
+                     OD
+                     b^.e[R]:=U;
+                     DO(i:=R+1,R+2,...,m) 
+                       b^.e[i]:=a^.e[i+m] 
+                     OD
+              FI
+             a^.k:=m;
+             b^.k:=m;
+             b^.p0:=V.p;
+             V.p:=b;
+FI              
+</PRE>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>                                 
+Необходимо предусмотреть создание корневой страницы и включение в нее 1 элемента
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Root:=NIL;
+DO <ввод D>
+      BTree(D,Root,Rost,U);
+      IF(Rost=true) q:=Root;
+                           New(Root);
+                           Root^.k:=1;
+                           Root.p0:=q;
+                           Root^.e[1]:=U;
+      FI
+OD
+</Pre>
+<CENTER>
+<IMG NAME="animation" SRC="cr_bd_1.bmp" ALT="Построение Б-дерева" 
+onLoad="setTimeout('animate()', delay)">  
+<FORM>  
+<INPUT TYPE="button" Value="Slower" onClick="slower()">
+<INPUT TYPE="button" Value="Faster" onClick="faster()">
+<INPUT TYPE="button" Value="Start" onClick="Start()">
+<INPUT TYPE="button" Value="Stop" onClick="Stop()">
+</FORM>
+</CENTER>
+</BODY>
+</HTML>

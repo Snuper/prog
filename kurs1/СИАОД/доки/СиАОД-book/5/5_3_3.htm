@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Код Шеннона</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Теорема Шеннона<BR>
+Для любого разделимого побуквенного кода <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>Lср>=H</PRE><Script>
+<!-- hide
+changep();
+ hide -->
+</script> и можно построить разделимый код, для которого <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>Lср&lt;H+1</PRE>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Док-во:<BR>
+Построим код Шеннона<BR>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>Li:=log2 Pi</PRE>
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Упорядочим символы по убыванию вероятностей
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>P1>=P2>=....>=Pn</PRE>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Составим нарастающую сумму Qi
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>Q0=0; Q1=P1; Q2=P1+P2; Qn=1;</PRE>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Представим Qi в двоичном виде и возьмем в качестве 
+кода первые K знаков, где <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>K=[-log2 Pi]</PRE>
+</OL>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм на псевдокоде:
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Q0:=0;
+P0:=0;
+DO(i:=1,...,n)
+     Qi:=Qi-1 +Pi;
+     Li:=(-log2 Pi) div 2;
+OD
+DO(i:=1,...,n)
+    DO(j:=1,...,Li)
+         Qi-1 := Qi-1*2;
+         mas[i].code[j]:=целая часть Qi-1;
+         IF (Qi-1&gt;1) Qi-1:=Qi-1 -1; FI
+    OD  
+OD
+</Pre>
+</P>
+</BODY>
+</HTML>

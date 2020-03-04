@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Простейший алгоритм поиска подстрок</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Двигаем образец вдоль текста и проверяем все его положения, 
+т.е. последовательно проверяем равенство
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>P[1,..,m]=T[S+1,...,S+m],</PRE><Script>
+<!-- hide
+changep();
+ hide -->
+</script>где <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>S=0,..,n-m</PRE>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм поиска подстрок(T,P)
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+ n:=length(T);
+ m:=length(P);
+DO(S:=0,...,n-m)
+ IF (P[1,..,m]=T[S+1,...,s+m]) 
+        write('допустимый сдвиг ',S); FI
+OD
+</PRE>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Трудоемкость алгоритма<BR>
+T=A^n(aaa,....,a)<BR>
+P=A^m(a,...,a)<BR>
+O((n-m+1)*m)<BR>
+Алгоритм не лучший, существует алгоритм трудоемкости O(n+m)
+Недостаток:<BR>
+При анализе очередного сдвига S не учитывается информация 
+о тексте , полученная  при анализе предыдущих сдвигов, 
+начиная с 0, такая информация может помочь для уменьшения 
+трудоемкости поиска.
+</P>
+</BODY>
+</HTML>

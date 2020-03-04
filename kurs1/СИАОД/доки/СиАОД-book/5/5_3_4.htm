@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Оптимальный код Хафмана</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Код называется оптимальным, если средняя длина кода 
+минимальна для данного распределения вероятностей источника.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Лемма 1:<BR>
+Для оптимального кода <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>L1,...,Ln</PRE>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>L1<=L2<=....<=Ln при P1>=P2>=...>=Pn</PRE>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Код Хафмана обычно строится и хранится в памяти в виде 2-го
+дерева. В ветках дерева 0 и 1, а в конечных листах 
+кодовые слова. 
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Теорема:<br>Код Хафмана является оптимальным в классе всех 
+побуквенных кодов для данного распределения вероятностей.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Huffman(n,p)<BR>
+n - количество символов исходного алфавита<BR>
+p - исходное распределение вероятностей<BR>
+c - массив кодовых слов<BR>
+L - массив длин кодовых слов<BR>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+IF (n=2)
+    c[1,1]:=0; L[1]:=1;
+    c[2,1]:=1; L[2]:=1;
+ELSE
+    q:=p[n-1]+p[n];
+    j:=Up(n,q);
+    Huffman(n-1,q);
+    Down(n,j);
+FI
+</PRE>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Up(n,q)<BR>
+функция, находящая место в массиве P для включения q
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+DO(i:=n-1,...,2)
+   IF (P[i-1]&lt;=q) p[i]:=p[i-1]
+   ELSE j:=i; OD
+   FI
+OD
+p[j]:=q;
+</PRE>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Down(n,j)<BR>
+процедура, на обратном ходу достраивающая кодовые слова.
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+S:=c[j,*];
+L1:=L[j];
+DO(i:=j,...,n-2)
+     c[i,*]:=c[i+1,*];
+     L[i]:=L[i+1];
+OD
+c[n-1,*]:=S;      c[n,*]:=S;
+c[n-1,L1+1]:=0;   c[n,L1+1]:=1; 
+L[n-1]:=L1+1;     L[n]:=l1+1;
+</Pre>
+</P>
+</BODY>
+</HTML>

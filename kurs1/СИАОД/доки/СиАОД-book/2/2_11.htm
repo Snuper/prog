@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Пирамидальная сортировка</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Последовательность A<sub>i</sub>,A<sub>i+1</sub>,...,A<sub>k</sub> называется <b>пирамидой</b>, 
+если выполняется неравенство <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>A<sub>i</sub><=min(A<sub>2i</sub>,A<sub>2i+1</sub>) (*)</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+для всех i, для которых существует хотя бы один из 
+элементов A<sub>2i</sub>,A<sub>2i+1</sub>
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<b>Свойства пирамид:</b><br>
+1. Двусторонее усечение<br>
+Если последовательность A<sub>i</sub>,A<sub>i+1</sub>,...,A<sub>k-1</sub>,A<sub>k</sub> пирамида, 
+тогда A<sub>i+1</sub>,...,A<sub>k-1</sub> тоже пирамида.<br> 
+2. Если A<sub>1</sub>,A<sub>2</sub>,...,A<sub>n</sub> - пирамида, то в ней 
+A<sub>1</sub>=min(a<sub>1</sub>,...,a<sub>n</sub>)<br>
+3. Если A<sub>1</sub>,...,A<sub>n</sub> - произвольная последовательность, 
+то в ней пирамидой является правая половина, 
+т.е. <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>a<sub>|n/2|+1</sub>,...,a<sub>n</sub></pre><Script>
+<!-- hide
+changep();
+ hide -->
+</script> - пирамида<br>
+<b>Алгоритм построения пирамиды</b><br> 
+Пусть A<sub>i+1</sub>,...,A<sub>k</sub> - пирамида.
+Необходимо добавить крайний - левый элемент и должна
+получится пирамида <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>A<sub>i</sub>,A<sub>i+1</sub>,...,A<sub>k</sub></pre><br>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Поставим X на место A<sub>i</sub> и проверим неравенство (*). 
+Если оно верно, то пирамида построена, в противном 
+случае существует A<sub>2i</sub>,A<sub>2i+1</sub> для которых условие 
+не выполняется. Возьмем первый элемент, обозначим 
+его a[j]. Обменяем a[j] на a[i]. В результате 
+элемент X попал на какое-то j место и для него надо 
+снова проверить неравенство (*) до тех пор пока 
+не дойдем до конца массива.
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<b>Алгоритм на псевдокоде</b>
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+x:=AL;i:=L;
+DO
+     j:=2*i;
+     IF (j&gt;R) OD
+     IF (j&lt;R) and (a[j+1]&lt;=a[j]) j:=j+1 FI
+     IF (X&lt;=a[j]) OD
+     a[i]:=a[j]; i:=j;
+OD
+a[i]:=x;
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<b>Описание метода:</b><br>
+1. Построение пирамиды из элементов массива. 
+По свойству 3 A<sub>|n/2|+1</sub>,...,A<sub>n</sub> - пирамида. Будем 
+добавлять по одному элементу слева, расширяя пирамиду 
+пока в нее не войдут все элементы массива.<br>
+2. Сортировка на базе пирамиды:<br>
+По свойству 1 A<sub>1</sub>,...,A<sub>n</sub> - пирамида, по свойству 2: 
+если A<sub>1</sub>,...,A<sub>n</sub> - пирамида, то A<sub>1</sub> - минимальный элемент. 
+Проведем двусторонее усеченее пирамиды
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>A<sub>1</sub>,[A<sub>2</sub>,...,A<sub>n-1</sub>],A<sub>n</sub></pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Обменяем A<sub>1</sub> с A<sub>n</sub>. Теперь минимальный элемент на последнем 
+месте, мы его больше  трогать не будем. Снова формируем 
+пирамиду и т.д.<br> 
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<b>Алгоритм на псевдокоде(L,R)</b>
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+L:=n div 2;
+DO(L&gt;0)
+     построение пирамиды(с границами L,R);
+     L:=L-1;
+OD
+R:=n;
+DO(R&gt;1)
+     a[1]&lt;-&gt;a[n];
+     R:=R-1;
+     построение пирамиды(с границами 1,R);
+OD
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<b>Трудоемкость метода:</b>
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+O(nlogn)
+</pre>
+</BODY>
+</HTML>

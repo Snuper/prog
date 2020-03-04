@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+<TITLE>Кодирование целых чисел</TITLE>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Кодирование с использованием адаптивного словаря</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<B>Общая идея:</B><BR>Перед началом кодирования в словарь заносятся все символы исходного алфавита.<BR>
+Пусть кодируется X<SUB>1</SUB>X<SUB>2</SUB>X<SUB>3</SUB>X<SUB>4</SUB>..., т.к. один символ есть в словаре, то имеем X<SUB>1</SUB>X<SUB>2</SUB>, т.к. слово отсутствует, то оно добавляется в текущую позицию словаря и ему присваивается номер и кодовое слово, при этом в выходную последовательность передается символ X<SUB>1</SUB>. Затем ищем X<SUB>2</SUB>X<SUB>3</SUB>, если его не было, то оно добавляется в новую позицию, на выходе X<SUB>2</SUB>. Если оно уже было, мы пытаемся найти еще больше : ищем X<SUB>2</SUB>X<SUB>3</SUB>X<SUB>4</SUB> и т.д. Т.О. слова максимально длины, встреченные в словаре кодируются как номер позиции в словаре.<BR>
+Если места в словаре нет, а кодирование сообщения не завершенно, то приходится обновлять словарь.<BR>
+Способ обновления словаря: заменяем уже существующие слова на новые, начиная с конца словаря.<BR><BR>
+<B>Алгоритм</B><BR>
+CurCode  - текущий код;<BR>
+PrevCode - предыдущий код;<BR>
+M        - массив хранящий текущее слово;<BR>
+C        - словарь, массив строк;<BR>
+S        - текущая длина кодового слова;<BR>
+DicPos   - текущая позиция в словаре;<BR>
+L        - слова в M<BR>
+<BR>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+<B><I>LZCoder</B></I>
+{Инициализация словаря - заполнение его алфавитом}
+S=9;L=0;DicPos=257;
+Do (not eof)
+ CurCode=read;
+ M[L]=CurCode;
+ inc(L);
+if (M есть в словаре)
+  CurCode = номер позиции в словаре;
+  else C[DicPos]=M;
+  inc(DicPos);
+  if (log<SUB>2</SUB&lt;DicPos>S) inc(S);
+  write(PrevCode,S);
+  M[0]:=CurCode;
+  L:=1;
+FI
+PrevCode=CurCode;
+OD
+write(PrevCode,S);
+write(256,S);
+<BR>
+<B><I>LZDecoder</B></I>
+{Инициализация словаря - заполнение его алфавитом}
+S=9;L=0;DicPos=257;
+Do
+ CurCode=read;
+if (CurCode = 256) OD
+if (C[CurCode] &lt; &gt; 0- есть в словаре)
+ M[L]=C[CurCode][0];L:=L+1;
+else M[L]=M[0];L:=L+1;
+FI
+if (M нет в словаре)
+write(C[PrevCode])
+C[DicPos]=M;inc(DicPos);
+if (log<SUB>2</SUB&gt;DicPos>S) inc(S);
+M:=C[CurCode];L:=длина;
+FI
+PrevCode=CurCode;
+OD
+write(C[PrevCode]);
+</pre>
+</BODY>
+</HTML>

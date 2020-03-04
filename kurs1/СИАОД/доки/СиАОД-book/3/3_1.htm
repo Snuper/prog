@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Адреса и указатели</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Адрес - целочисленное 16-ое беззнаковое значение, с которым 
+можно оперировать как с целым числом.<BR>
+Для удобства работы с адресами была придумана специальная 
+переменная - указатель, т.е. переменная, значением которой 
+является адрес объекта конкретного типа. Значение указателя 
+может быть не присвоенно никакому адресу, в этом случае 
+указатель прнимает "никакое" значение - NULL,NIL. Указатель 
+необходимо описывать, т.е. обозначить на объект какого типа 
+этот указатель ссылается.
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Pas : k : ^char; t : ^integer;
+C   :     char *k;  int *t;
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Доступ по адресу, хранящемуся в этих указателях
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Pas : значение по адресу k^,t^
+C   : значение по адресу *k,*t
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<center>
+<TABLE BORDER=2 BORDERCOLOR=Black>
+<Caption><I>Основные операции с указателями:</I></Caption>
+     <TR BGCOLOR="#CCCCCC">
+	 <TH>Операция</TH>
+	 <TH>Pascal</TH>
+	 <TH>C</TH>
+	</TR>
+
+	<TR>
+	 <TD>Описание указателя</TD>
+	 <TD>x,y : tData<BR>p,q : ^pData</TD>
+	 <TD>tData x,y<BR>tData *p,*q</TD>
+	</TR>
+
+	<TR>
+	 <TD>Получение адреса</TD>
+	 <TD>p:=@x;<BR>q:=@y;</TD>
+	 <TD>p=&x<BR>q=&y;</TD>
+	</TR>
+
+	<TR>
+	 <TD>Операция присваивания<BR>и проверка на равенство</TD>
+	 <TD>p:=q;<BR>p=q<BR>p<>q</TD>
+	 <TD>p=q;<BR>p==q<BR>p!=q</TD>
+	</TR>
+
+	<TR>
+	 <TD>Доступ по адресу</TD>
+	 <TD>x:=y;<BR>p^:=y;<BR>p^:=q^;</TD>
+	 <TD>x=y;<BR>*p=y;<BR>*p=*q;</TD>
+	</TR>
+
+	<TR>
+	 <TD>Доступ к отдельной записи</TD>
+	 <TD>x.comp<BR>p^.comp</TD>
+	 <TD>x.comp<BR>*p.comp<BR>p->comp</TD>
+	</TR>
+
+	<TR>
+	 <TD>Отсутствие адреса</TD>
+	 <TD>NIL</TD>
+	 <TD>NULL</TD>
+	</TR>
+</TABLE>
+</p>
+</BODY>
+</HTML>
+

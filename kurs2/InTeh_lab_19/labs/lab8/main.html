@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Lab3.1</title>
+    <script>
+		var flag = true;
+		function check(){
+			if(flag)
+				flag = false;
+			else
+				flag = true;
+		}
+        function HideElement(i) {
+            sq = document.getElementById('square' + i);
+            sq.style.display = "none";
+        }
+
+        function ShowElement(i) {
+			if(flag == true)
+			{
+				sq = document.getElementById('square' + i);
+				sq.style.display = "block";
+			}
+        }
+
+        function Selected(element) {
+            element.style.background = "blue";
+        }
+
+        function unSelected(element) {
+            element.style.background = "cornflowerblue";
+        }
+    </script>
+
+    <style>
+        #square1 {
+            width: 80px;
+            height: 120px;
+            background-color: cornflowerblue;
+            position: relative;
+            top: 0px;
+            left: 0px;
+            display: none;
+            border: 1px solid black;
+        }
+
+        #square2 {
+            width: 80px;
+            height: 120px;
+            background-color: cornflowerblue;
+            position: relative;
+            top: 0px;
+            left: 120px;
+            display: none;
+            border: 1px solid black;
+        }
+
+        #square3 {
+            width: 80px;
+            height: 120px;
+            background-color: cornflowerblue;
+            position: relative;
+            top: 0px;
+            left: 200px;
+            display: none;
+            border: 1px solid black;
+        }
+
+        #square4 {
+            width: 80px;
+            height: 120px;
+            background-color: cornflowerblue;
+            position: relative;
+            top: -35px;
+            left: 110px;
+            display: none;
+            border: 1px solid black;
+        }
+
+        h4 {
+            margin-top: 2px;
+            padding-top: 0px;
+            padding-left: 5px;
+        }
+
+        h3.my_boks01,
+        h3.my_boks02,
+        h3.my_boks03 {
+            margin: 0px;
+            padding: 10px 20px;
+            display: inline;
+            background-color: cornflowerblue;
+            box-sizing: border-box;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <h3 class="my_boks01" onclick = "check()" onmouseover = "ShowElement(1); timer = setTimeout('HideElement(1)', 200);">Menu1</h3>
+    <h3 class="my_boks02" onmouseover="ShowElement(2); timer = setTimeout('HideElement(2)', 200);">Menu2</h3>
+    <h3 class="my_boks03" onmouseover="ShowElement(3); timer = setTimeout('HideElement(3)', 200);">Menu3</h3>
+    <div class=square id="square1" onmouseover="clearTimeout(timer)">
+            <!-- onmouseout="timer = setTimeout('HideElement(1)', 200)" -->
+        <h4 onmouseover="Selected(this)" onmouseout="unSelected(this)">subMenu1</h4>
+		<h4 onmouseover="Selected(this)" onmouseout="unSelected(this)">subMenu2</h4>
+        <!-- <h4 onmouseover="Selected(this); ShowElement(4); timer = setTimeout('HideElement(4)', 200);" onmouseout="unSelected(this)">subMenu2</h4> -->
+        <h4 onmouseover="Selected(this)" onmouseout="unSelected(this)">subMenu3</h4>
+    </div>
+
+    <div class=square id="square2" onmouseover="clearTimeout(timer)"
+        onmouseout="timer = setTimeout('HideElement(2)', 200)">
+        <h4 onmouseover="Selected(this)" onmouseout="unSelected(this)">subMenu1</h4>
+        <h4 onmouseover="Selected(this)" onmouseout="unSelected(this)">subMenu2</h4>
+        <h4 onmouseover="Selected(this)" onmouseout="unSelected(this)">subMenu3</h4>
+    </div>
+
+    <div class=square id="square3" onmouseover="clearTimeout(timer)"
+        onmouseout="timer = setTimeout('HideElement(3)', 200)">
+        <h4 onmouseover="Selected(this)" onmouseout="unSelected(this)">subMenu1</h4>
+        <h4 onmouseover="Selected(this)" onmouseout="unSelected(this)">subMenu2</h4>
+        <h4 onmouseover="Selected(this)" onmouseout="unSelected(this)">subMenu3</h4>
+    </div>
+
+    <div class=square id="square4" onmouseover="clearTimeout(timer)"
+        onmouseout="timer = setTimeout('HideElement(4); HideElement(1);', 200)">
+        <h4 onmouseover="Selected(this)" onmouseout="unSelected(this)">subMenu1</h4>
+        <h4 onmouseover="Selected(this)" onmouseout="unSelected(this)" >subMenu2</h4>
+        <h4 onmouseover="Selected(this)" onmouseout="unSelected(this)">subMenu3</h4>
+    </div>
+</body>
+
+</html>

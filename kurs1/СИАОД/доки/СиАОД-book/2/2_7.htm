@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Сортировка по множеству ключей(индексация)</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Пусть массив A - телефоный справочник, тогда его 
+элементы-записи состоят из двух полей: фамилии и 
+номера телефона.
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+TYPE subscriber = record
+                  name  : string[20];
+                  phone : longint;
+                  end;
+Var A : array [1..n] of subscriber;
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Пусть нам необходимо производить следующие операции:<br>
+1. По фамилии найти телефон(т.е. сортировка по фамилиям)<br>
+2. По телефону найти фамилию(т.е. сортировка по телефонам)<br>
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Для совмещения этих операций используется прием индексации.
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+A = 7 1 6 3 2 1 8 5
+    1 2 3 4 5 6 7 8
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+В массив B запишем номера элементов массива A в порядке 
+возростания самих элементов
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+B = 2 6 5 4 8 3 1 7 - индексный массив
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<b>Построение индексного массива:</b><br>
+1. В массив B записывается массив A<br>
+2. Производится любая сортировка, но при условии:<br>
+<BLOCKQUOTE><Script>
+<!-- hide
+changep();
+ hide -->
+</script>В операции сравнения - адресация через массив B<br>
+Перестановки только в B<br></p>
+</BLOCKQUOTE>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+B = (1,2,...,n)
+DO(i=1,..,n-1)
+  DO(j=n,n-1,...,i+1)  
+      IF (a[b[j]]&lt;a[b[j-1]]) 
+             b[j]&lt;-&gt;b[j-1] 
+      FI
+  OD
+OD
+DO(i=1,..,n) печать(a[b[i]])
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<b>Преимущества индексации:</b>
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Возможность учитывать несколько индексов.</p>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Исключается копирование больших количеств инфориации.</p>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Возможность фильтрации данных - частный случай индексации.</p>
+</OL>
+</p>
+</BODY>
+</HTML>

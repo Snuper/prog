@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Линейные списки</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+list  - список<BR>
+queue - очередь<BR>
+head - голова<BR>
+tail - хвост<BR>
+next - следующий<BR>
+Список - последовательность элементов, связанных между 
+собой указателями.<BR>
+Head - указатель, содержащий адресс 1-го элемента списка.<BR>
+
+Опишем структуру элемента списка.
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Pas: TYPE pLE = ^tLE
+          tLE = record
+                next  : pLE;
+                Data : integer;
+                end;
+     Var Head : pLE; 
+C:   struct tLE{
+                tLE *next;
+                int Data;
+               }
+     struct tLE *Head;
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Поле Next может располагаться в любом месте структуры, 
+но если его поставить на первое место, то его адрес 
+совпадет с адресом всего элемента списка.
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>Рассмотрим 2 вида списков:<BR>
+</p>
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Стек       - новый элемент ставится в начало списка.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Очередь - новый элемент ставится в конец списка.
+Обработка любого из этих списков производится с начала, 
+поэтому стек реализует модель обслуживания LIFO
+(Last Input First Output - последним вошел первым вышел), 
+а очередь - FIFO
+(First Input First Output -первым вошел первым вышел).
+</OL>
+</P>
+</BODY>
+</HTML>
+

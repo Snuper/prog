@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Цифровая сортировка</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Идея метода:<BR>
+На входе последовательность чисел. Просматривая список, 
+будем распределять числа по очередям в соответствии со 
+значением последней цифры каждого числа, затем полученные 
+очереди соединяются в новый список. Вновь распределяем 
+числа по очередям, но уже по второй 
+цифре и т.д. Будем рассматривать каждый байт числа как 
+отдельную цифру. Таким образом, потребуется 256 очередей 
+и цикл будет выполнятся два раза(для чисел типа integer).
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+<На входе неупорядоченный список S>
+DO(j:=L,...,1)
+      <инициализация очередей>
+      <расстановка чисел из списка S 
+       в очереди по j-ой цифре>
+      <соединение очередей в список S>
+OD
+<На выходе упорядоченный список S>
+</PRE>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Для реализации возможности произвольного обращения 
+к значению любого байта числа заведем следующую структуру
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Pas: 
+TYPE
+  pLE = ^tLE
+  tLE = record
+        next : pLE;
+        case byte of
+            1 : (Data : tData);
+            2 : (Digit : array[1..sizeof(tData)]
+                               of byte);
+             end;
+        end;
+
+C:    struct tLE {tLE *next;
+              union{
+                    tData;
+                    byte Digit[sizeof(tData)];
+                   }
+                 }
+</PRE>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Если tData имеет сложную структуру,
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+TYPE tData = record
+             name  : array[1..5] of char;
+             phone : longint; 
+             end;
+</PRE>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+то удобно ввести индексный массив, который 
+мы назовем KDI(Key Digit Index). 
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Pas: Var KDI : array[1..sizeof(tData)] of byte;
+</PRE>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Соединение очередей<BR>
+Пусть имеется возможно пустая очередь S и непустая 
+очередь q. 
+Необходимо присоединить q к S.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+S.tail^.next:=q.head;
+S.tail:=q.tail;
+</Pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Трудоемкость не зависит от количества элементов. 
+Если q пустое, то выполнять присоединение не нужно.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм цифровой сортировки
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+DigitalSort(S)
+DO(j:=L,...,1)
+     DO(i:=0,...,255) Q[i].tail:=@Q[i].head; OD;
+      p:=S;
+      x:=KDI[j];
+     DO(p=nil)
+          d:=Digit[k];
+          Q[d].tail^.next:=p;
+          Q[d].tail:=p;
+          p:=p^.next;
+     OD
+     p:=@S;
+     DO(i:=0,..,255)
+          IF (Q[i].tail<>@Q[i].head)
+               p^.next:=Q[i].head;
+               p:=Q[i].tail;
+          FI
+     OD
+     p^.next:=nil;
+OD
+</Pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Трудоемкость<BR>
+T=O(L(n+m)), где<BR> 
+L - количество цифр<BR>
+n - количество элементов<BR>
+m - количество очередей
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Особенности метода:<BR>
+Цифровая сортировка устойчива, чтобы изменить направление 
+сортировки нужно присоединять очереди в обратном порядке.
+Если длина чисел велика, то метод может проигрывать 
+другим методам сортировки. Метод применим только, если 
+задача сортировки сводится к задаче упорядочения цифр.
+</P>
+</BODY>
+</HTML>

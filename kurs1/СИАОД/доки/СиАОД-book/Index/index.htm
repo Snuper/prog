@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script>
+<!--hide
+function loadtwo(url1, url2) {
+  parent.index.location.href= url1;
+  parent.TEXT.location.href= url2;
+}
+hide -->
+</script>
+
+<script>
+<!--hide
+Image1= new Image();
+Image1.src = "..\\pictures\\bullet1.bmp";
+Image2= new Image();
+Image2.src = "..\\pictures\\bullet2.bmp";
+hide -->
+</script>
+
+<script>
+<!--hide
+function change(NAME)
+{
+ NAME.src=Image1.src;
+}
+hide -->
+</script>
+
+<script>
+<!--hide
+function changeback(NAME)
+{
+ NAME.src=Image2.src;
+}
+hide -->
+</script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Table>
+<TD><IMG SRC="..\pictures\bullet2.bmp" Height="17" Width="25" Border="0" Name="pic1">
+<TD><A HREF = "javascript:loadtwo('index1.htm','../1/1.htm')" 
+onMouseOver=change(document.pic1) onMouseOut=changeback(document.pic1)>
+I. Основные структуры данных.</A>
+<TR>
+<TD><IMG SRC="..\pictures\bullet2.bmp" Height="17" Width="25" Border="0" NAME="pic2">
+<TD><A HREF = "javascript:loadtwo('index4.htm','../2/2.htm')"
+onMouseOver=change(document.pic2) onMouseOut=changeback(document.pic2)>II. Сортировка</A>
+<TR>
+<TD><IMG SRC="..\pictures\bullet2.bmp" Height="17" Width="25" Border="0" NAME="pic3">
+<TD><A HREF = "javascript:loadtwo('index5.htm','../3/3.htm')"
+onMouseOver=change(document.pic3) onMouseOut=changeback(document.pic3)>III. Динамические структуры данных</A>
+<TR>
+<TD><IMG SRC="..\pictures\bullet2.bmp" Height="17" Width="25" Border="0" NAME="pic4">
+<TD><A HREF = "javascript:loadtwo('index14.htm','../4/4.htm')"
+onMouseOver=change(document.pic4) onMouseOut=changeback(document.pic4)>IV. Хеширование
+</A>
+<TR>
+<TD><IMG SRC="..\pictures\bullet2.bmp" Height="17" Width="25" Border="0" NAME="pic5">
+<TD><A HREF = "javascript:loadtwo('index15.htm','../5/5.htm')"
+onMouseOver=change(document.pic5) onMouseOut=changeback(document.pic5)>V. Элементы теории кодирования информации</A>
+<TR>
+<TD><IMG SRC="..\pictures\bullet2.bmp" Height="17" Width="25" Border="0" NAME="pic6">
+<TD><A HREF = "javascript:loadtwo('index20.htm','../6/6.htm')"
+onMouseOver=change(document.pic6) onMouseOut=changeback(document.pic6)>VI. Поиск подстрок</A>
+</TR>
+</TABLE>
+<BR><HR><BR>
+<TABLE>
+<TR>
+<TD><IMG SRC="..\pictures\bullet2.bmp" Height="17" Width="25" Border="0" NAME="pic7">
+<TD><A HREF = "javascript:loadtwo('index21.htm','../0/Lab.htm')"
+onMouseOver=change(document.pic7) onMouseOut=changeback(document.pic7)>Лабораторные</A>
+</TR>
+</Table>
+<BR><HR><BR>
+<TABLE>
+<TR>
+<TD><IMG SRC="..\pictures\bullet2.bmp" Height="17" Width="25" Border="0" NAME="pic8">
+<TD><A HREF = "../Archive/" TARGET="TEXT"
+onMouseOver=change(document.pic8) onMouseOut=changeback(document.pic8)>Архив программ</A>
+</TR>
+</Table>
+
+</BODY>
+</HTML>
+

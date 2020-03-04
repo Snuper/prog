@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Основные свойства источников и кодов</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Источник считается заданым полностью, если известно 
+вероятностное описание процессов появления символов на входе.
+Такой источник называется дискретным вероятностным источником.
+Дискретный источник называется Бернуллиевским или источником 
+без памяти, если для <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>X1,...,Xk P(X1,...,Xk)=P(X1)*P(X2),</PRE><Script>
+<!-- hide
+changep();
+ hide -->
+</script> 
+т.е. источник порождает символы независимо друг от друга.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Марковские источники учитывают взаимосвязь символов.
+Дискретный источник называется Марковским, если 
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>P(Xi [ Xi-1,...,X1)=P(Xi [ Xi-1).</PRE><Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+На вероятность текущего символа влияет только предыдущий 
+символ. В реальном случае выбирается какая-то модель.
+Основной характеристикой источника является его энтропия.
+Энтропия источника - среднее количество информации 
+в сообщении источника.
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+         n
+H=-сумма Pi*log2 Pi
+         i=1
+</Pre>
+</P>
+</BODY>
+</HTML>

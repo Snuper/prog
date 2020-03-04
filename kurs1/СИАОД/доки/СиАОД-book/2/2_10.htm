@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Двоичный поиск</center></H3>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+A = (a<sub>1</sub>,a<sub>2</sub>,...,a<sub>n</sub>)
+a<sub>1</sub>&lt;=a<sub>2</sub>&lt;=...&lt;=a<sub>n</sub>
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Пусть задан ключ поиска X и необходимо:<br>
+1. Найти элемент с заданым ключом X<br>
+2. Найти все элементы с заданым ключом X<br>
+Замечание: если массив не отсортирован, то необходимо 
+просмотреть все элементы.<br>
+<b>Общая идея:</b><br>
+Берем средний элемент массива и сравниваем его с ключом X<br>
+1.  средний элемент равен X => завершаем поиск<br>
+2.  средний элемент меньше X => продолжаем поиск в правой 
+части массива<br>
+3.  средний элемент больше X => продолжаем поиск в левой 
+части массива<br>
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Обозначим через L и R правую и левую границы массива, 
+введем логическую переменную find(найден)
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<B>Алгоритм:</B>
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+L:=1;
+R:=n;
+find:=false;
+DO(L&lt;=R)
+      m:=(L+R) div 2;
+      IF (a[m]=x) find:=true; OD 
+      FI
+      IF (a[m]&lt;x) L:=m+1
+             ELSE R:=m-1;
+      FI
+OD
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<b>Недостатки:</b><br>
+1. На каждой итерации цикла 2 сравнения<br>
+2. Эта версия находит один элемент из множества 
+элементов с заданым ключом=>надо просматривать и слева и справа<br>
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<B>Алгоритм:</B>
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+L:=1;
+R:=n;
+DO(L&lt;R)
+      m:=(L+R) div 2;
+      IF (a[m]&lt;X) L:=m+1
+              ELSE R:=m
+      FI
+OD
+IF (a[R]=X) find:=true
+        ELSE find:=false;
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<b>Тродоемкость:</b><br>
+O(log<sub>2</sub>n)
+</p>
+</BODY>
+</HTML>

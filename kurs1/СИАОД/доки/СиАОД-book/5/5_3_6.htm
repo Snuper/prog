@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Код Фано</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Общая идея:<BR>
+Упорядочим символы по убыванию вероятностей, затем разделим 
+массив вероятностей таким образом, чтобы суммы вероятностей 
+в этих частях как можно меньше отличались.
+Кодовым словам из первой части добавим 0, а кодовым словам 
+из второй части 1. Продолжаем до тех пор пока во всех частях 
+не станет меньше 2-х элементов.
+Полученный код является префиксным и очень близок 
+к оптимальному коду.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Fano(L,R,K)<BR>
+K - количество уже сформироаных бит кодового слова<BR>
+С - массив слов<BR>
+L - массив длин<BR>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+IF (L&lt;R)
+    k:=k+1;
+    m:=med(L,R)
+    DO(i:=L,...,R)
+         IF(i&lt;=m) c[i,k]:=0; L[i]:=L[i]+1;
+         ELSE     c[i,k]:=1; L[i]:=L[i]+1;
+         FI
+    OD
+Fano(L,m,K);
+Fano(m+1,R,k);
+FI
+</PRE>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Med(L,R)<BR>
+SL  - сумма элементов в левой части<BR>
+SR - сумма элементов в правой части<BR>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+DO(i:=L,...,R-1)
+       SL:=S+p[i]; 
+OD
+SR:=P[R];
+m:=R;
+DO(SL&gt;=SR)
+     m:=m-1;
+     SL:= SL-p[m];
+     SR:=SR+p[m];
+OD
+Med:=m;
+</Pre>
+</P>
+</BODY>
+</HTML>

@@ -1,0 +1,56 @@
+<html>
+<head>
+	<title>Tree</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/1.2.1/sigma.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/1.2.1/plugins/sigma.parsers.json.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/core.js"></script>
+	<style>
+		#graph {
+			width: 100%;
+			height: 100%;
+		}
+		.panel {
+			width: 100%;
+			height: 100%;
+		}
+		html {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+		body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+		.otstup {
+			margin-top: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="row">
+		<div class="panel col s3 indigo lighten-5">
+				<div class="input-field">
+					<input type="text" id="numberElem" class="validate">
+					<label class="active" for="numberElem">Input number</label>
+				</div>
+		</div>
+		<div class="otstup card-content col s9 card">
+			<div id="graph"></div>
+		</div>
+	</div>
+	<script>
+		sigma.parsers.json('resourse/tree.json', {
+			container: 'graph',
+			settings: {
+				edgeColor: 'default',
+				defaultEdgeColor: '#3949ab'
+			}
+		});
+	</script>
+</body>
+</html>

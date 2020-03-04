@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+<SCRIPT>
+delay = 2000
+go = 1;
+imageNum = 1 // стартовый номер картинки
+theImages = new Array()
+for(i = 1; i<=11; i++) {
+   theImages[i] = new Image()
+   theImages[i].src = "cr_sdp_" + i + ".bmp"
+   }
+
+function animate() {
+   document.animation.src = theImages[imageNum].src
+if (go==1) {imageNum++;}
+   if(imageNum > 11) {
+   imageNum = 1
+   }
+}
+function slower() {
+   delay+=10
+   if(delay > 4000) delay = 4000
+}
+function faster() {
+   delay-=10
+   if(delay < 0) delay = 0
+}
+
+function Start() {
+go=1;
+}
+
+function Stop() {
+go=0;
+}
+
+</SCRIPT>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Построение СДП</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Выполняется путем добавления вершин в уже существующее дерево.<BR>
+Если дерево пустое, то добавляем новую вершину, распределив память и занеся в нее данные. В противном случае добавляем вершину к левому или правому поддереву в зависимости от соотношения добавляемого ключа с текущей вершиной. 
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Pas: TYPE pVertex = ^tVertex;
+     Var  p : ^pVertex;
+C:   Vertex **p
+
+Добавление(D - данные;Root - корень);
+p:=@Root;
+DO(p^<>nil)
+      IF (D<p^^.Data) p:=@(p^^.left)
+      ELSE IF (D>p^^.Data) p:=@(p^^.right);
+      ELSE OD
+OD
+IF (p^.right=NIL) new(p);
+                          p^^.Data:=D;
+                          p^^.Left:=NIL;
+                          p^^.right:=NIL;
+FI
+</Pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Хотя этот алгоритм предназначен для построения дерева, его можно использовать для сортировки, но необходимо предусмотреть возможность включения в дерево элементов с одинаковым ключом.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Недостаток:<BR>
+В худшем случае может выродится в список.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Теорема:<BR>
+Если различные значения ключей равновероятны, то
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+hсрСДП/hсрИСДП = 2ln2
+СДП хуже ИСДП на 39%
+</Pre>
+<CENTER>
+<IMG NAME="animation" SRC="cr_sdp_1.bmp" ALT="Построение СДП-дерева" 
+onLoad="setTimeout('animate()', delay)">  
+<FORM>  
+<INPUT TYPE="button" Value="Slower" onClick="slower()">
+<INPUT TYPE="button" Value="Faster" onClick="faster()">
+<INPUT TYPE="button" Value="Start" onClick="Start()">
+<INPUT TYPE="button" Value="Stop" onClick="Stop()">
+</FORM>
+</CENTER>
+</BODY>
+</HTML>

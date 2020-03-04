@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script>
+<!--hide
+function loadtwo(url1, url2) {
+  parent.index.location.href= url1;
+  parent.TEXT.location.href= url2;
+}
+hide -->
+</script>
+<script>
+<!--hide
+Image1= new Image();
+Image1.src = "..\\pictures\\bullet1.bmp";
+Image2= new Image();
+Image2.src = "..\\pictures\\bullet2.bmp";
+hide -->
+</script>
+
+<script>
+<!--hide
+function change(NAME)
+{
+ NAME.src=Image1.src;
+}
+hide -->
+</script>
+
+<script>
+<!--hide
+function changeback(NAME)
+{
+ NAME.src=Image2.src;
+}
+hide -->
+</script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Table>
+<TD><IMG SRC="..\pictures\bullet2.bmp" Height="17" Width="25" Border="0" Name="pic1">
+<TD><A HREF = "javascript:parent.index.location.href='index.htm';" 
+onMouseOver=change(document.pic1) onMouseOut=changeback(document.pic1)>назад</A>
+<TR>
+<TD><IMG SRC="..\pictures\bullet2.bmp" Height="17" Width="25" Border="0" Name="pic2">
+<TD><A HREF = "..\5\5_1.htm" TARGET = "TEXT"
+onMouseOver=change(document.pic2) onMouseOut=changeback(document.pic2)>5.1 Введение</A>
+<TR>
+<TD><IMG SRC="..\pictures\bullet2.bmp" Height="17" Width="25" Border="0" Name="pic3">
+<TD><A HREF = "javascript:loadtwo('index16.htm','../5/5_2.htm')" 
+onMouseOver=change(document.pic3) onMouseOut=changeback(document.pic3)>5.2 Коды целых чисел</A>
+<TR>
+<TD><IMG SRC="..\pictures\bullet2.bmp" Height="17" Width="25" Border="0" Name="pic4">
+<TD><A HREF = "javascript:loadtwo('index17.htm','../5/5_3.htm')" 
+onMouseOver=change(document.pic4) onMouseOut=changeback(document.pic4)>5.3 Побуквенное кодирование</A>
+<TR>
+<TD><IMG SRC="..\pictures\bullet2.bmp" Height="17" Width="25" Border="0" Name="pic5">
+<TD><A HREF = "javascript:loadtwo('index18.htm','../5/5_4.htm')"
+onMouseOver=change(document.pic5) onMouseOut=changeback(document.pic5)>5.4 Адаптивное побуквенное кодирование</A>
+<TR>
+<TD><IMG SRC="..\pictures\bullet2.bmp" Height="17" Width="25" Border="0" Name="pic6">
+<TD><A HREF = "javascript:loadtwo('index19.htm','../5/5_5.htm')" 
+onMouseOver=change(document.pic6) onMouseOut=changeback(document.pic6)>5.5 Коды класса LZ(Lempel,Ziv)</A>
+<TR>
+</TABLE>
+</BODY>
+</HTML>
+

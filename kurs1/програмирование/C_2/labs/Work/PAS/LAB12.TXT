@@ -1,0 +1,72 @@
+
+                   ╔═══════════════════════════════════════╗
+                   ║ Работа с экраном в графическом режиме ║
+                   ╚═══════════════════════════════════════╝					
+
+┌──────────┐
+│  Пример  │
+└──────────┘
+Построить спирали с начальной точкой (X0,Y0), внешним ридиусом R, N витками
+и начальными направлениями, образующими углы alf и -alf с осью абсцисс.
+
+Uses graph;
+const n=50; alf=pi*0.25; deltat=pi/22.5;
+var t,r:real;
+    i,j,k,l,gd,gm,xc,yc,x,y:integer;
+
+procedure spi(xc,yc,n:integer;deltat,alt:real);
+begin
+ moveto(xc,yc);
+ t:=alf;
+ for i:=1 to n do
+   begin
+    for j:=1 to 90 do
+      begin
+       t:=t+deltat;
+       r:=0.75*t;
+       x:=round(r*cos(t)+xc);
+       y:=round(r*sin(t)+yc);
+       lineto(x,y);
+      end;
+   end;
+
+ circle(xc,yc,abs(round(r)));
+end;
+
+begin
+ gd:=detect;
+ initgraph(gd,gm,'');
+ if graphresult<>0 then
+     write('Error ',graphErrorMsg(Graphresult));
+ xc:=GetMaxX div 2;
+ yc:=GetMaxY div 2;
+ Spi(xc,yc,N,deltat,alf);
+ Spi(xc,yc,N,-deltat,-alf);
+ readln;
+ closegraph;
+end.
+
+┌───────────┐
+│  Задания  │
+└───────────┘
+
+Криволинейная трапеция, ограниченная двумя пересекающимися линиями: 
+  f1(x) и f2(x).
+Требуется найти абсциссы точек пересечения этих линий (а,в) и составить 
+программу вывода на экран в графическом режиме графика этой трапеции,
+закрасив ее заданным цветом.
+
+Варианты:
+
+1.  f1(x)= Sqrt(25-x*x)    f2(x)= 2        цвет= зеленый
+2.  f1(x)= x*x*x, x>0      f2(x)= sqrt(x)  цвет= красный
+3.  f1(x)= x*x             f2(x)= cos(x)   цвет= зеленый
+4.  f1(x)= sin(x), 0<x<pi  f2(x)= 0        цвет= голубой
+5.  f1(x)= (1+x)           f2(x)= x*x      цвет= пурпурный
+6.  f1(x)= sqr(x-2)        f2(x)= 4        цвет= белый
+7.  f1(x)= sqr(x-1)        f2(x)= 81       цвет= зеленый
+8.  f1(x)= sqr(x-3)        f2(x)= 16       цвет= красный
+9.  f1(x)= x^4             f2(x)= x^(1/3)  цвет= золотистый
+10. f1(x)= sqr(x+2)        f2(x)= 9        цвет= голубой
+11. f1(x)= sqr(x+3)        f2(x)= 25       цвет= пурпурный
+12. f1(x)= sqrt(1-x*x)     f2(x)= 0        цвет= бeлый

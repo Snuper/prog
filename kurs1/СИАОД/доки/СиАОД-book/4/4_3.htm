@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+<SCRIPT>
+delay = 2000
+go = 1;
+imageNum = 1 // стартовый номер картинки
+theImages = new Array()
+for(i = 1; i<=11; i++) {
+   theImages[i] = new Image()
+   theImages[i].src = "m_pr_sv_" + i + ".bmp"
+   }
+
+function animate() {
+   document.animation.src = theImages[imageNum].src
+if (go==1) {imageNum++;}
+   if(imageNum > 11) {
+   imageNum = 1
+   }
+}
+function slower() {
+   delay+=10
+   if(delay > 4000) delay = 4000
+}
+function faster() {
+   delay-=10
+   if(delay < 0) delay = 0
+}
+
+function Start() {
+go=1;
+}
+
+function Stop() {
+go=0;
+}
+
+</SCRIPT>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Метод прямого связывания</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Идея:<BR>
+Коллизии устраняются путем объединения в список всех 
+элементов с одинаковыми значениями хеш-адрессов, 
+используется m списков.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Идея поиска:<BR>
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>вычислить хеш-адрес <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>h=H(K)</PRE>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>последовательно просмотреть список с номером h, 
+а при создании хеш-таблицы поставить элемент в конец списка.
+</OL>
+</P>
+<CENTER>
+<IMG NAME="animation" SRC="m_pr_sv_1.bmp" ALT="Метод прямого связывания" 
+onLoad="setTimeout('animate()', delay)">  
+<FORM>  
+<INPUT TYPE="button" Value="Slower" onClick="slower()">
+<INPUT TYPE="button" Value="Faster" onClick="faster()">
+<INPUT TYPE="button" Value="Start" onClick="Start()">
+<INPUT TYPE="button" Value="Stop" onClick="Stop()">
+</FORM>
+</CENTER>
+</BODY>
+</HTML>

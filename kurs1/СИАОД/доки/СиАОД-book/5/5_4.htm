@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Адаптивное побуквенное кодирование</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Методы сжатия данных бывают двух видов:<BR>
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Статические<BR>
+Предназначены для кодирования определенных источников, 
+порождающих определенные сообщения, они базируются на 
+статистических данных.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Адаптивные<BR>
+При кодировании очередного символа используются сведения 
+о ранее закодированой части сообщения.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Окно - количество символов, предшествующих кодируемому 
+символу.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+При кодировании окно сдвигается вправо, что позволяет 
+учитывать изменяющуюся статистику.
+Обычно окно имеет фиксированую длину, таким образом 
+кодовое слово строится на основе информации находящейся 
+в окне.
+</P>
+</BODY>
+</HTML>

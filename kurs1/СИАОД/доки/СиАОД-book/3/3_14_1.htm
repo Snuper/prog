@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Точный алгоритм построения</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Число конфигураций деревьев поиска для n вершин, растет экспоненциально с увеличением n. В этих условиях задача кажется безнадежной, но ДОП обладает свойствами, которые позволяют реализовать точный алгоритм, исходя из одиночных вершин, затем деревьев из 2-х, 3-х, 
+4-х  и т.д. вершин, пока не включатся все вершины.
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Свойства ДОП:<bR>
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>В ДОП все его поддеревья тоже ДОП.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Т.к. W=const, то мы можем рассматривать<bR>
+P = h1*w1+...+hn*wn - взвешенную высоту.<bR>
+P = PL+w+PR - из этого свойства выводятся рекурентные формулы вычисления весов и взвешенных весов поддеревьев.<bR>
+</OL>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Tij - оптимальное поддерево с вершинами Vi+1,...,Vj.<bR>
+Wij - вес поддерева<bR>
+Pij - взвешенная высота поддерева.<bR>
+Tii - пустое дерево => Wii=0, Pii=0<bR>
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Wij=Wi,j-1+Wj, 0&lt;=i&lt;j&lt;=n                 (*)
+Pij=Wij+min(Pi,k-1+Pk,j), 0&lt;=i&lt;j&lt;=n
+           i&lt;k&lt;=j
+</PRE>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Введем 3 матрицы<bR> 
+AW - матрица весов;<bR>
+AP - матрица взвешенных весов;<bR>
+AR - матрица индексов корней поддерева.<bR>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм построения матриц
+AW - по формуле (*)
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+APAR
+h:=j-i;
+h:=1;
+DO(i:=0,...,n-1)
+      j:=i+1;
+      APij:=AWij;
+      ARij:=j;
+OD
+
+DO(h:=2,...,n)
+      DO(i:=0,...,n-h)
+            j:=i+h;
+            m:=ARi,j-1;
+            min:=APi,m-1 + APm,j;
+            DO(k:=m+1,...,ARi+1,j)
+                   x:=APi,k-1 + APk,j;   
+                   IF(x&lt;min) min:=x;
+                                  m:=k;
+                   FI
+            OD
+            APij:=AWij+min;
+            ARij:=m;
+      OD 
+OD
+</PRE>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+AR - определяет структуру поддерева, в ней элемент с номером 0,n - корень всего дерева. Берем из матрицы AR величину 0,k-1 (номер корня левого поддерева) и k,n (номер корня правого поддерева). Рекурсивно определяем следующие вершины.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+CreateTree(L,R - левая и правая 
+границы упорядоченного массива);
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+IF (L&lt;R)
+     k:=AR[L,R];
+     Добавить(Root,V[k]);
+     CreateTree(L,k-1);
+     CreateTree(k,R);
+FI
+</Pre>
+</BODY>
+</HTML>

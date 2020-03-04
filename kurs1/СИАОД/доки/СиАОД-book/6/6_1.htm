@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Постановка задачи</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Пусть у нас есть "текст" - <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>T[1..n]</PRE><Script>
+<!-- hide
+changep();
+ hide -->
+</script> длины n,
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>"образец" = P[1..m]</PRE><Script>
+<!-- hide
+changep();
+ hide -->
+</script> длины m<=n;<BR>
+"Образец" P входит со сдвигом S в "текст" T, если для 
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>S=0,...,n-m</PRE><Script>
+<!-- hide
+changep();
+ hide -->
+</script> выполняется <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>T[s+1,...,s+m]=P[1,..,m].</PRE><Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Если P входит в текст T с некоторой позиции S+1, то 
+такой сдвиг - допустимый, иначе S - недопустимый сдвиг.
+Задача поиска подстрок заключается в нахождении всех 
+допустимых сдвигов S для данного образца P и текста T.
+A* - множество всех допустимых строк в алфаите A, 
+включая пустую строку.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+[x]  - длина строки<BR>
+xy   - соединение (конкатенация) строк<BR>
+[xy] =[x]+[y] <BR>
+w    - префикс строки x, если x=wy<BR>
+w    - постфикс строки x, если x=yw<BR>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Будем считать проверку равенства 2-х строк элементарной 
+операцией. Трудоемкость ее выполнения зависит от 
+количества символов в этих строчках. Если проводить 
+сравнение слева-&gt;направо и остановится в момент первого 
+неовпадения, то T=O(t+1), где t - общий наибольший префикс 
+сравниваемых строк.
+</P>
+</BODY>
+</HTML>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<center>Построение ИСДП</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Задача:<BR>
+Дан массив элементов A=(a1,...,an). Построить из них ИСДП.<BR> 
+Построение основано на на следующем свойстве: если идеально сбалансировано, то и все его поддеревья также ИСД .Отсортируем массив A по возрастанию. В качестве вершины возьмем средний элемент упорядоченного массива, из меньшей половины аналогичным образом строим левое поддерево, из больщей - правое поддерево.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм построения ИСДП
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Функция ИСДП(L,R): pVertex;
+IF (L>R) возвратить NIL
+    ELSE m:=(L+R) div 2;
+              new(p);
+              p^.Data:=A[m];
+              p^.Left:=ИСДП(L,m-1);
+              p^.Right:=ИСДП(m+1,R);
+              возвратить p;
+FI
+</Pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Недостаток ИСДП в том, что его необходимо перестраивать с использованием сортировки при удалении и прибавлении вершин.
+</P>
+</BODY>
+</HTML>

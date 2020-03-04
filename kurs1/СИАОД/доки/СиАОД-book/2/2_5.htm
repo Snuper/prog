@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Examples\2\example2_5.js"></script>
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan" OnLoad="RANDOMIZE()">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Шейкерная сортировка</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<b>Идея метода:</b><br>
+Шейкерная сортировка является улучшением сортировки методом 
+пузырьков и устраняет следующие недостатки:<br>
+1. Если последний обмен был произведен в паре a<sub>3</sub>a<sub>4</sub>, то 
+значит все последующие элементы до a<sub>3</sub> уже упорядоченны и 
+нет смысла их просматривать.<br>
+ Для устранения этого недостатка будем запоминать позицию 
+последнего обмена.<br>
+2. "Легкие" элементы всплывают быстро, а "тяжелые" очень 
+медленно.<br>
+ Для устранения этого недостатка будем сортировать массив 
+то с начала, то с конца.
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<B>Алгоритм:</B>
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+DO
+ DO(j:=R,..,L+1)
+   if (a[j]&lt;a[j-1]) 
+		temp:=a[j];
+		a[j]:=a[j-1];
+		a[j-1]:=temp;
+		k:=j;
+    FI
+  OD
+
+L:=k;
+
+ DO(j:=L,..,R-1)
+   if (a[j]&lt;a[j-1]) 
+		temp:=a[j];
+		a[j]:=a[j-1];
+		a[j-1]:=temp;
+		k:=j;
+    FI
+  OD
+R:=k;
+OD(L&lt;R);
+</pre>
+<center>
+<Form Name="main">
+<Table BGCOLOR="Yellow" CELLPADDING="0" CELLSPACING="0">
+<CAPTION><B>Пример</B></CAPTION>
+<TR>
+ <TH COLSPAN="5"><Input TYPE="button" NAME="RND" value="Rand" onClick="RANDOMIZE()"></TH>
+ <TH COLSPAN="5"><Input TYPE="button" NAME="start" value="Start" onClick="zapusk()"></TH>
+</TR>
+<TR>
+ <TH><IMG SRC="..\Examples\pictures\vect0.gif" Name="vct0" Border="0"><BR>
+ <IMG SRC="..\Examples\pictures\dg0_0.gif" Name="pic0" Border="0"></TH>
+ <TH><IMG SRC="..\Examples\pictures\vect0.gif" Name="vct1" Border="0"><BR>
+ <IMG SRC="..\Examples\pictures\dg0_0.gif" Name="pic1" Border="0"></TH>
+ <TH><IMG SRC="..\Examples\pictures\vect0.gif" Name="vct2" Border="0"><BR>
+ <IMG SRC="..\Examples\pictures\dg0_0.gif" Name="pic2" Border="0"></TH>
+ <TH><IMG SRC="..\Examples\pictures\vect0.gif" Name="vct3" Border="0"><BR>
+ <IMG SRC="..\Examples\pictures\dg0_0.gif" Name="pic3" Border="0"></TH>
+ <TH><IMG SRC="..\Examples\pictures\vect0.gif" Name="vct4" Border="0"><BR>
+ <IMG SRC="..\Examples\pictures\dg0_0.gif" Name="pic4" Border="0"></TH>
+ <TH><IMG SRC="..\Examples\pictures\vect0.gif" Name="vct5" Border="0"><BR>
+ <IMG SRC="..\Examples\pictures\dg0_0.gif" Name="pic5" Border="0"></TH>
+ <TH><IMG SRC="..\Examples\pictures\vect0.gif" Name="vct6" Border="0"><BR>
+ <IMG SRC="..\Examples\pictures\dg0_0.gif" Name="pic6" Border="0"></TH>
+ <TH><IMG SRC="..\Examples\pictures\vect0.gif" Name="vct7" Border="0"><BR>
+ <IMG SRC="..\Examples\pictures\dg0_0.gif" Name="pic7" Border="0"></TH>
+ <TH><IMG SRC="..\Examples\pictures\vect0.gif" Name="vct8" Border="0"><BR>
+ <IMG SRC="..\Examples\pictures\dg0_0.gif" Name="pic8" Border="0"></TH>
+ <TH><IMG SRC="..\Examples\pictures\vect0.gif" Name="vct9" Border="0"><BR>
+ <IMG SRC="..\Examples\pictures\dg0_0.gif" Name="pic9" Border="0"></TH>
+</TR>
+<TR>
+ <TH COLSPAN="5"><Input TYPE="button" NAME="Fst" value="Fast" onClick="Fast()"></TH>
+ <TH COLSPAN="5"><Input TYPE="button" NAME="Slwer" value="Slower" onClick="Slower()"></TH>
+</TR>
+</Table>
+</Form>
+</center>
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<b>Трудоемкость метода:</b><br>
+Mср = 3(n<sup>2</sup>-n)/2<br>
+Число сравнений заметно уменьшилось, но теоретически 
+определить трудоемкость очень сложно.<br>
+C<(n<sup>2</sup>-n)/2<br>
+T=O(n<sup>2</sup>) 
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<b>Особенности метода:</b><br>
+Сортировка устойчива(т.к. сравнения происходят в соседних 
+элементах и знак сравнения строго меньше), зависит от 
+исходной упорядоченности.
+</p>
+</BODY>
+</HTML>

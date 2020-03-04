@@ -1,0 +1,13 @@
+circule(3, 3, 12)
+X: 3
+Y: 3
+Radius: 12
+Perimetr: 75.36
+Area: 452.16
+circule(1, 1, 2)
+X: 1
+Y: 1
+Radius: 2
+Perimetr: 12.56
+Area: 12.56
+Peresechenie

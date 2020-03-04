@@ -1,0 +1,21 @@
+language: scala
+
+scala:
+  - 2.12.7
+
+matrix:
+  include:
+    - name: "Functional Programming: lab 1"
+      script:
+      - cd 5semester/Functional\ Programming/
+      - sbt lab1/run
+      
+    - name: "Functional Programming: lab 2"  
+      script: 
+      - cd 5semester/Functional\ Programming/
+      - sbt lab2/run
+       
+    - name: "Functional Programming: lab 3" 
+      script: 
+      - cd 5semester/Functional\ Programming/ 
+      - sbt lab3/test

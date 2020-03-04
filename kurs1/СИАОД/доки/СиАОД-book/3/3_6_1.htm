@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Операция слияния серий</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+p - серия - упорядоченная последовательность из p элементов
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Пусть есть две упорядоченные последовательности a и b, 
+размерами q и r соответственно. Необходимо получить 
+упорядоченную последовательность C путем слияния 
+a и b с длиной q+r.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм слияния q - серии из списка A 
+с r - серией из списка B.
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+DO(q<>0 and r<>0)
+     IF a^.data<=b^.data (a)->(c);
+                          q:=q-1;
+                    ELSE (b)->(c);
+                          r:=r-1;
+     FI
+OD
+DO(q<>0)
+     (a)->(c);
+     q:=q-1;
+OD
+DO(r<>0)
+     (b)->(c);
+     r:=r-1; 
+OD  
+</Pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Трудоемкость:
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+min(q,r)<=C<=q+r-1;
+M=q+r;
+</Pre>
+</BODY>
+</HTML>
+

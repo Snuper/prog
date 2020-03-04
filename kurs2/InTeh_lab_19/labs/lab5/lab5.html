@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>lab5</title>
+<link href="style.css" rel="stylesheet">
+</head>
+
+<body bgcolor=lightblue>
+<img src="r1.gif" id="ball" style="position:absolute; top:110px; left:10px;">
+<img src="r2.gif" style="position:absolute; top:110px; left:120px;">
+<img src="r4.gif" style="position:absolute; top:280px; left:10px;">
+<img src="r3.gif" style="position:absolute; top:280px; left:120px;">
+<script type="text/javascript" language="JavaScript">
+ball.onmousedown = function(event)
+	{
+		let shiftX = event.clientX - ball.getBoundingClientRect().left;
+		let shiftY = event.clientY - ball.getBoundingClientRect().top;
+		ball.style.position = 'absolute';
+		ball.style.zIndex = 1000;
+		document.body.append(ball);
+		moveAt(event.pageX, event.pageY);
+		// переносит мяч на координаты (pageX, pageY),
+		// дополнительно учитывая изначальный сдвиг относительно указателя мыши
+		function moveAt(pageX, pageY)
+		{
+			ball.style.left = pageX - shiftX + 'px';
+			ball.style.top = pageY - shiftY + 'px';
+		}
+		function onMouseMove(event)
+		{
+			moveAt(event.pageX, event.pageY);
+		}
+		// передвигаем мяч при событии mousemove
+		document.addEventListener('mousemove', onMouseMove);
+		// отпустить мяч, удалить ненужные обработчики
+		ball.onmouseup = function()
+		{
+			document.removeEventListener('mousemove', onMouseMove);
+			ball.onmouseup = null;
+		};
+	};
+ball.ondragstart = function()
+{
+	return false;
+};
+</script>
+</body>
+</html>

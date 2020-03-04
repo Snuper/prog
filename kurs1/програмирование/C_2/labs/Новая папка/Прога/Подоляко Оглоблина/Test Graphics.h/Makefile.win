@@ -1,0 +1,30 @@
+# Project: Test Graphics
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++rus.exe
+CC   = gccrus.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = "Test\ Graphics.o" $(RES)
+LINKOBJ  = "Test Graphics.o" $(RES)
+LIBS =  -L"C:/lang/Dev-Cpp/lib" -lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32 -lbgi -lgdi32 -luser32 
+INCS =  -I"C:/lang/Dev-Cpp/include" 
+CXXINCS =  -I"C:/lang/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/lang/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/lang/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/lang/Dev-Cpp/include/c++/3.4.2"  -I"C:/lang/Dev-Cpp/include" 
+BIN  = "Test Graphics.exe"
+CXXFLAGS = $(CXXINCS)   -fshort-double
+CFLAGS = $(INCS)   -fshort-double
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before "Test Graphics.exe" all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "Test Graphics.exe" $(LIBS)
+
+"Test\ Graphics.o": Test\ Graphics.cpp
+	$(CPP) -c "Test Graphics.cpp" -o "Test Graphics.o" $(CXXFLAGS)

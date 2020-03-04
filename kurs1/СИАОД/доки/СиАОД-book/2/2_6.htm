@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Сортировка данных с произвольной структурой</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Пусть массив A - телефоный справочник, тогда его 
+элементы-записи состоят из двух полей: фамилии и 
+номера телефона.
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+TYPE subscriber = record
+                  name  : string[20];
+                  phone : longint;
+                  end;
+Var A : array [1..n] of subscriber;
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Тогда сравнение вида:
+if a[j]&lt;a[j-1] then ...
+будет ошибкой!
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Переопределим операцию сравнения:
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+function less(x,y : subscriber) : boolean;
+begin
+less:=x.name&lt;y.name;
+end;
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<b>Замечания:</b><br>
+1. Аналогичное переопределение нужно сделать и для 
+организации поиска в отсортированом массиве.<br>
+2. Операции отношения определенные в зависимости от 
+условия, могут легко менятся.<br>
+3. Можно применять сложные ключи сортировки.<br>
+4. Изменение напрвления сортировки достигается легко, 
+путем изменения знака в Less на противоположный.<br>
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Операция пересылки не требует переопределения, 
+производится побайтовым копированием.
+</p>
+</BODY>
+</HTML>

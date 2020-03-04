@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Трудоемкость методов сортировки</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Часто бывает трудно определить точное выражение для 
+определения трудоемкости сортировки, в этом случае
+пользуются ассимптотическими приближенными оценками 
+времени работы алгоритма.
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+При сортировке основными операциями, определяющими время, 
+являются сравнения и пересылки.
+Обозначим количество операций сравнения 
+C (compire - сравнение),
+пересылки - M (move - перемещение).
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+M и C - функции от количества элементов.
+M = f(n), C = f(n)
+Функция ассимптотически доминирует над функцией F(x) 
+или<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+g(x) = O(f(x)), <br>если |g(x)|<=const|f(x)|<IMG SRC="..\pictures\besk.gif">
+</pre></p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<B>Свойства :</B><br>
+1. F = O(f)<br>
+2. O(k*f) = O(f)<br>
+3. O(f1+f2) = O(f1)+O(f2)<br>
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<B>Пример:</B><br>
+T=10n+20<br>
+T=O(10n+20)=O(10n)+O(20)=O(n)+O(1)=O(n), при <IMG SRC="..\pictures\besk1.gif">
+</p>
+</BODY>
+</HTML>
+

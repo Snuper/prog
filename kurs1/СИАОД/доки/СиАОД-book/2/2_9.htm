@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Метод Шелла</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<b>Идея метода:</b><br>
+Метод Шелла является улучшением метода прямого включения.
+Т.к. метод прямого включения быстро сортирует почти 
+упорядоченный массив, то перед сортировкой можно попробывать 
+немного улучшить упорядоченность массива.
+В общем случае мы используем шаг  равный не 1, а h=k, 
+где k - целое, получаем k-сортировку.
+Для улучшения отсортированости массва используем ряд шагов 
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>H = (h<sub>1</sub>,h<sub>2</sub>,...,h<sub>q</sub>),</pre><Script>
+<!-- hide
+changep();
+ hide -->
+</script> где q - целое, </p><Script>
+<!-- hide
+changepre();
+ hide -->
+</script>h<sub>1</sub>=1, h<sub>1</sub>&lt;h<sub>2</sub>&lt;h<sub>3</sub>&lt;...&lt;h<sub>q</sub>,</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+q - количество k-сортировок
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<B>Алгоритм:</B>
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+DO(k=hq,hq-1,...,1)
+    DO(i=k+1,k+2,...,n)
+          t:=a[j],i:=i-k;
+          DO(j&gt;0 and t&lt;a[j])
+               a[j+k]:=a[j];
+               j:=j-k;
+          OD
+         a[j+k]:=t;
+   OD
+OD
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<B>Трудоемкость метода:</B><br> 
+Зависит от выбора шагов h и их количества.
+Невозможно заранее сказать какая последовательность шагов 
+будет оптимальной, но было доказано, что при использовании 
+следующей последовательности шагов:
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>h<sub>1</sub>=1; h<sub>i</sub>=2*h<sub>i-1</sub>+1, i = 2,3,...,q, 
+где q = |log2 n|-1</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+трудоемкость не превышает O(n^1.2)
+</p>
+</BODY>
+</HTML>

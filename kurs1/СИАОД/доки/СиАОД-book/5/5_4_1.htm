@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Адаптивный код Хафмана</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Основан на обычном коде Хафмана.<BR>
+Общая идея:<BR>
+Используется фиксированое окно длины W и исходный 
+алфавит <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>A{a1,...,an}</PRE>
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>При кодировании очередной буквы подсчитываются 
+частоты встреч в окне и по ним оцениваются вероятности.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>По полученному распределению вероятностей строим код Хафмана
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Кодируем очередную букву
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Окно передвигается на один символ вправо.
+</OL>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Плюсы:<BR>
+Качественно настраивается, степень сжатия зависит от 
+длины окна>=алфавита.<BR>
+Минусы:<BR>
+Низкая скорость. Время пропорционально nlogn, 
+время - количество простых операций на одну букву.
+</P>
+</BODY>
+</HTML>

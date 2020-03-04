@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Двоичные Б - деревья</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+m=1. На странице 1-2 элемента.<bR>
+При переходе к списочной структуре, страницы становятся условными.
+Характеристики страниц поддерживаются с помощью логических переменных. 
+Поддержка листьев на одном уровне тоже с помощью логических переменных. 
+В двоичном Б - дереве есть две высоты:
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>аналог среднего времени поиска;
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>высота дерева сравнив. по средней высоте.
+</OL>
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Добавление вершины в двоичное дерево<BR>
+VR - вертикальный рост(истина, если переходим на родительскую вершину)<BR> 
+HR - горизонтальный рост(истина, если добавление вершины происходит слева или справа)<BR>
+Bal = 0, если только вертикальные ссылки<BR>
+Bal = 1, если правая горизонтальная ссылка<BR>
+</p>
+
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм добавления в ДБД
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+B2INSEART(D : данные; var p : pVertex)
+IF(p=NIL)
+   New(p);
+   p^.Data:=D;
+   p^.Left:=NIL;
+   p^.Right:=NIL;
+   p^.bal:=0;
+   VR:=true;
+ELSE
+   IF (p^.Data>D) B2INSEART(D,p^.Left);
+   IF (VR=true)
+      IF(p^.bal=0)
+         q:=p^.left;
+         p^.left:=q^.right;
+         q^.bal:=1;
+         q^.right:=p;
+         p:=q;
+         VR:=false;
+         HR:=true;
+    ELSE p^.bal:=0; HR:=false; VR:=true;
+    FI
+    ELSE (HR=false)
+    ELSE
+    IF (p^.Data&lt;D) B2INSEART(D,p^.right);
+     IF(VR=true) VR:=false; HR:=true; p^.bal:=1;
+                  ELSE IF (HR=true)
+                          IF(p^.bal>0)
+                             q:=p^.right;
+                             p^.right:=q^.left;
+                             p^.bal:=0;
+                             q^.bal:=0;
+                             q^.left:=p;
+                             p:=q;
+                             VR:=true;
+                             HR:=false;
+                             ELSE HR:=false;
+                            FI
+                      FI
+                  FI
+            FI
+     FI
+FI
+</Pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+АВЛ - дерево предпочтительнее, если добавлений меньше, 
+а поиска больше. ДБД - наоборот.
+</P>
+</BODY>
+</HTML>

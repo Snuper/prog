@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Арифметический код</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Этот код был придуман Эллиасом, а затем преобразован 
+другими учеными.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Общая идея:<BR>
+Все сообщения разбиваются на блоки определенной длины.
+При увеличении длины блока L->H, но это приводит 
+к усложнению алгоритма и уменьшению скорости работы 
+алгоритма.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Сформируем суммы от Q0 до Qn.
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+    Q0=0;
+    Q1=P1;
+    Q2=P1+P2;
+    Qn=1;
+</PRE>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Разобьем интервал Q0-Qn на n чатей, таким образом, 
+чтобы каждому символу соответствовал отрезок длиной 
+его вероятности. 
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>В процессе кодирования будем выбирать интервал 
+соответсвующий символу и будем разбивать его на n частей.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Происходит сужение интервала пока не будет получен 
+последний символ сообщения. Двоичное преобразование 
+любой точки и будет кодом этого сообщения.
+</OL>
+</P>
+</BODY>
+</HTML>

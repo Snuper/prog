@@ -1,0 +1,37 @@
+# Project: Проект5
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = ../KURS_X_O/Kurs_OOP_Krestiki-noliki/BGimage.o ../KURS_X_O/Kurs_OOP_Krestiki-noliki/Krestik.o ../KURS_X_O/Kurs_OOP_Krestiki-noliki/main.o ../KURS_X_O/Kurs_OOP_Krestiki-noliki/Nolik.o
+LINKOBJ  = ../KURS_X_O/Kurs_OOP_Krestiki-noliki/BGimage.o ../KURS_X_O/Kurs_OOP_Krestiki-noliki/Krestik.o ../KURS_X_O/Kurs_OOP_Krestiki-noliki/main.o ../KURS_X_O/Kurs_OOP_Krestiki-noliki/Nolik.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/SFML/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/SFML/x-64/lib" -static-libgcc -mwindows -lsfml-graphics-d -lsfml-window-d -lsfml-audio-d -lsfml-network-d -lsfml-system-d -g3
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/SFML/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/SFML/x-64/include"
+BIN      = xvso.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+../KURS_X_O/Kurs_OOP_Krestiki-noliki/BGimage.o: ../KURS_X_O/Kurs_OOP_Krestiki-noliki/BGimage.cpp
+	$(CPP) -c ../KURS_X_O/Kurs_OOP_Krestiki-noliki/BGimage.cpp -o ../KURS_X_O/Kurs_OOP_Krestiki-noliki/BGimage.o $(CXXFLAGS)
+
+../KURS_X_O/Kurs_OOP_Krestiki-noliki/Krestik.o: ../KURS_X_O/Kurs_OOP_Krestiki-noliki/Krestik.cpp
+	$(CPP) -c ../KURS_X_O/Kurs_OOP_Krestiki-noliki/Krestik.cpp -o ../KURS_X_O/Kurs_OOP_Krestiki-noliki/Krestik.o $(CXXFLAGS)
+
+../KURS_X_O/Kurs_OOP_Krestiki-noliki/main.o: ../KURS_X_O/Kurs_OOP_Krestiki-noliki/main.cpp
+	$(CPP) -c ../KURS_X_O/Kurs_OOP_Krestiki-noliki/main.cpp -o ../KURS_X_O/Kurs_OOP_Krestiki-noliki/main.o $(CXXFLAGS)
+
+../KURS_X_O/Kurs_OOP_Krestiki-noliki/Nolik.o: ../KURS_X_O/Kurs_OOP_Krestiki-noliki/Nolik.cpp
+	$(CPP) -c ../KURS_X_O/Kurs_OOP_Krestiki-noliki/Nolik.cpp -o ../KURS_X_O/Kurs_OOP_Krestiki-noliki/Nolik.o $(CXXFLAGS)

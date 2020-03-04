@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Приближенные алгоритмы построения ДОП</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Идея алгоритмов:<bR>
+A1 : В качестве корня возьмем вершину с максимальным весом, 
+аналогично будем поступать для каждого поддерева.<bR>
+A2 : В качестве корня возьмем такую вершину, для которой разность весов левого и правого поддерева будет минимальна.<bR>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм A1
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Root:=nil;
+use:=true;
+
+DO(i:=1,...,n)
+      v[i].use:=false;
+OD
+DO(i:=1,...,n)
+      max:=0; 
+      index:=0;
+      DO(j:=1,...,n)
+            IF ((V[i].W>max)and(V[j].use=false))
+                max:=V[j].W;
+                index:=j;
+            FI
+      OD
+V[index].use:=true;
+Добавить(Root,V[index]);
+OD
+</PRE>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм A2(L,R)
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+wes:=0;
+summa:=0;
+IF(L<=R)
+    DO(i:=L,...,R)
+          wes:=wes+W[i]
+    OD
+    DO(i:=L,...,R)
+          IF ((summa<wes/2)and((summa+w[i])>=wes/2)) 
+               OD          
+          FI
+summa:=summa+W[i];
+Добавить(Root,V[i]);
+A2(L,i-1);
+A2(i+1,R);
+FI
+</PRE>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+A1 - плохое, дерево становится равносильно случайному 
+при стремлении n к бесконечности.
+Дерево A2 ассимптотически приближается к оптимальному.
+ИСДП не считается ДОП.
+</P>
+</BODY>
+</HTML>

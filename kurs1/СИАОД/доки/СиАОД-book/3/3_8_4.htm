@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Основные операции с деревьями</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Обход дерева - выполнение определенных операций с каждой вершиной дерева. Существует несколько направлений обхода:<BR>
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Сверху вниз : корень, левое поддерево, правое поддерево.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Слева направо : левое поддерево, корень, правое поддерево.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Снизу вверх : левое поддерево, правое поддерево, корень. 
+</OL>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм рекурсивого обхода дерева слева направо
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Обход(p : pVertex)
+IF (p<>nil)  
+    обход(p^.left);
+    <Действия над p^.data> 
+    обход(p^.right);
+FI
+</Pre>
+</P>
+</BODY>
+</HTML>

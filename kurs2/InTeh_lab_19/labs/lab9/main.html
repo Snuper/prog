@@ -1,0 +1,108 @@
+<HTML><HEAD><META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<TITLE>Л. работа 3.2</TITLE>
+</HEAD><BODY>
+<SCRIPT language="JavaScript">
+function set_cookie ( name, value, expires_year, expires_month, expires_day, path, domain, secure ){
+  var cookie_string = name + "=" + escape ( value );
+  if ( expires_year )
+  {
+    var expires = new Date ( expires_year, expires_month, expires_day );
+    cookie_string += "; expires=" + expires.toGMTString();
+  }
+  if ( path )
+	cookie_string += "; path=" + escape ( path );
+  if ( domain )
+	cookie_string += "; domain=" + escape ( domain );
+  if ( secure )
+	cookie_string += "; secure";
+  document.cookie = cookie_string;
+}
+
+function delete_cookie (cookie_name){
+  var cookie_date = new Date ( );
+  cookie_date.setTime ( cookie_date.getTime() - 1 );
+  document.cookie = cookie_name += "=; expires=" + cookie_date.toGMTString();
+}
+
+function get_cookie (cookie_name){
+  var results = document.cookie.match ( '(^|;) ?' + cookie_name + '=([^;]*)(;|$)' );
+  if ( results )
+    return ( unescape ( results[2] ) );
+  else
+    return null;
+}
+
+function parseCookie(){ 
+   var cookieList = document.cookie.split("; ");
+   // Массив для каждого cookie в cookieList
+   var cookieArray = new Array();
+   for (var i = 0; i < cookieList.length; i++) {
+       // Разделение пар имя-значение.
+       var name = cookieList[i].split("=");
+       // Декодирование и добавление в cookie-массив.
+       cookieArray[unescape(name[0])] = unescape(name[1]);
+    }
+   return cookieArray;
+  }
+
+function setCookie(visits) {
+    /* Счетчик числа посещений с указанием даты последнего посещения
+       и определением срока хранения в 1 год. */
+    var expireDate = new Date();
+    var today = new Date();
+	today.setHours(18);
+    // Установка даты истечения срока хранения.
+    expireDate.setDate(365 + expireDate.getDate());
+    // Сохранение числа посещений.
+    document.cookie = "visits=" + visits +
+                      "; expires=" + expireDate.toGMTString() + ";";
+    // Сохранение настоящей даты как времени последнего посещения.
+    document.cookie = "LastVisit=" + escape(today.toGMTString()) +
+                       "; expires=" + expireDate.toGMTString() + ";";
+    }
+
+if (!get_cookie("username")){
+  var username = prompt ( "Пожалуйста, ведите Ваше имя", "" );
+  set_cookie ( "visits", 0, cookie_year, cookie_month, cookie_day)
+  if ( username )
+  {
+    var current_date = new Date;
+    var cookie_year = current_date.getFullYear ( ) + 1;
+    var cookie_month = current_date.getMonth ( );
+    var cookie_day = current_date.getDate ( );
+    set_cookie ( "username", username, cookie_year, cookie_month, cookie_day );
+    document.location.reload( );
+  }
+}
+else
+{
+  var cookies = parseCookie();
+  var visits_c = cookies.visits++;
+  setCookie(isNaN(cookies.visits)?1:cookies.visits);
+  /* if(cookies.visits == 10){
+	var username = alert ( "Больше входить нельзя");
+	delete_cookie('username');
+	document.location.reload( );
+  } */
+  function delete_date(visits)
+  {
+      var expireDate = new Date();
+    var today = new Date();
+	today.setHours(18);
+    // Установка даты истечения срока хранения.
+    // Сохранение числа посещений.
+    document.cookie = 0;
+    // Сохранение настоящей даты как времени последнего посещения.
+    document.cookie = "LastVisit=" + escape(today.toGMTString()) +
+                       "; expires=" + expireDate.toGMTString() + ";";
+    }
+  document.write("<H1>COOKIE</H1><br>");
+  document.write("Привет, " + cookies.username + "!<br>" );
+  document.write("Количество посещений этой страницы: " + (cookies.visits++ - 1) + "<br>");
+  document.write("Вы были на этой стринце: " + cookies.LastVisit  + "<br>");
+  document.write ( "<br><button onclick=\"javascript:delete_cookie('username'); document.location.reload( );\">Зарегистрироваться</buttom>" );
+  document.write ( "<br><button onclick=\"javascript:set_cookie ( 'visits', 0, cookie_year, cookie_month, cookie_day); document.location.reload( );\">Обнулить посещения</button>");
+  document.write ( "<br><button onclick=\"javascript:delete_date ( 'visits', 0, cookie_year, cookie_month, cookie_day); document.location.reload( );\">Обнулить дату</button>");
+}
+</SCRIPT>
+</BODY></HTML>

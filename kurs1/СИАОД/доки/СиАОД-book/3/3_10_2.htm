@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Удаление вершины с ключом X из СДП</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Найдем вершину с ключом X.<BR>
+Возможны случаи:<BR>
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Удаляемая вершина имеет не больше одного поддерева<BR>
+
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Вершина имеет два поддерева, дерево нужно перестроить:<BR>
+На место удаляемой вершины ставится максимальная вершина из его левого поддерева, т.е. самая правая вершина его левого поддерева. 
+</OL>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм:
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Удаление(X - ключ;Root - корень);
+p:=@Root;
+<поиск>
+IF (p^<>NIL)
+     q:=p^;
+     IF (q^.Left=NIL) p^:=q^.right
+     ELSE IF (q^.right=NIL) p^:=q^.left
+               ELSE {2 поддерева}
+     ELSE{2 поддерева}
+     r:=q^.left;
+     s:=q;
+     DO(r^.right<>NIL)
+          S:=r;
+          r:=r^.right;
+     OD
+S^.right:=r^.left;
+r^.left:=q^.left;
+r^.right:=q^.right;
+p^:=r;
+FI
+Dispose(q);          
+</Pre>
+</BODY>
+</HTML>

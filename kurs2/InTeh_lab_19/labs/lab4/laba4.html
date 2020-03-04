@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="style.css" rel="stylesheet">
+<script type="text/javascript">
+var delay = 500;
+var images = new Array();
+var i = 0, pro=0, block = 1;
+ 
+images[0] = 's1.gif';
+images[1] = 's2.gif';
+images[2] = 's3.gif';
+images[3] = 's4.gif';
+images[4] = 's5.gif';
+images[5] = 's6.gif';
+images[6] = 's7.gif';
+images[7] = 's8.gif';
+images[8] = 's9.gif';
+images[9] = 's10.gif';
+images[10] = 's11.gif';
+images[11] = 's12.gif';
+ 
+function viewImages() {
+	if (pro == 1)
+	{
+	document.getElementById("viewImages").src = images[i];
+    i++;
+    if (i == images.length) 
+	{
+        i = 0;
+    }
+	}
+	else
+	;
+    setTimeout("viewImages()",delay);
+}
+function stop() {
+   if (block == 1)
+   {
+   pro=0;
+	}
+	else
+	;
+}
+function start() {
+	if (block == 1)
+	{
+	pro = 1;
+	}
+	else
+	;
+}
+function slower() {
+   if (block == 1)
+   {
+   delay+=100;
+   if(delay > 4000) delay = 4000;
+	}
+	else
+	;
+}
+function faster() {
+	if(block == 1)
+	{
+	delay-=100;
+	if(delay < 0) delay = 0;
+	}
+	else
+	;
+}
+function bock()
+{
+	block = 0;
+}
+function unlock()
+{
+	block = 1;
+}
+</script>
+<title>Лабораторная 4</title>
+</head> 
+
+<body>
+<div>
+<img name="s" src="s1.gif" id="viewImages">
+</div>
+<form>
+<div class="klas" id="ud">
+<input type="button" value="Старт" class="klas klas-warning" onclick="start()">
+<input type="button" value="Стоп" class="klas klas-warning" onclick="stop()">
+<input type="button" value="Быстрее" class="klas klas-warning" onclick="faster()">
+<input type="button" value="Медленнее" class="klas klas-warning" onclick="slower()">
+</div>
+<script> viewImages(); </script>
+</form>
+</body>
+</html>

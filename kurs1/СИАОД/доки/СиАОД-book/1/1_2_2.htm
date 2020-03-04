@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Записи</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Записи состоят из фиксированного количества компонентов 
+различного типа. Компоненты называются полями записи.
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Pas: TYPE <I>имя_типа</I> = record
+                    <I><поле1> : <тип>;
+                    <поле2> : <тип></I>;
+                     .....
+                     end;		
+         TYPE zap = record
+                    day      : byte;
+                    month  : byte;
+                    year     : word;
+                    end;
+         VAR   date : zap; 
+C:   struct zap{int day,int month,long year}date;
+</Pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Запись - структура данных со случайным или прямым доступом.
+</p>
+</BODY>
+</HTML>
+

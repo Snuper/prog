@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Examples\2\example2_4.js"></script>
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan" OnLoad="RANDOMIZE()">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<CENTER>Пузырьковая сортировка</CENTER></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<B>Идея метода:</B><br>
+Двигаясь от конца массива к его началу будем сравнивать между 
+собой его элементы, при этом, если левый элемент больше, чем 
+правый, тогда после первого прохода наименьший элемент 
+переместится в первую позицию, после второго прохода, 
+аналогично, наименьший элемент среди оставшихся переместится 
+во вторую позицию и т.д.
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<B>Алгоритм:</B>
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+DO(i:=1,..,n-1)
+ DO(j:=n,..,i+1)
+   IF (a[j]&lt;a[j-1]) 
+		temp:=a[j];
+		a[j]:=a[j-1];
+		a[j-1]:=temp;
+    FI
+ OD
+OD
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<center>
+<Form Name="main">
+<Table BGCOLOR="Yellow" CELLPADDING="0" CELLSPACING="0">
+<CAPTION><B>Пример</B></CAPTION>
+<TR>
+ <TH COLSPAN="5"><Input TYPE="button" NAME="RND" value="Rand" onClick="RANDOMIZE()"></TH>
+ <TH COLSPAN="5"><Input TYPE="button" NAME="start" value="Start" onClick="zapusk()"></TH>
+</TR>
+<TR>
+ <TH><IMG SRC="..\Examples\pictures\vect0.gif" Name="vct0" Border="0"><BR>
+ <IMG SRC="..\Examples\pictures\dg0_0.gif" Name="pic0" Border="0"></TH>
+ <TH><IMG SRC="..\Examples\pictures\vect0.gif" Name="vct1" Border="0"><BR>
+ <IMG SRC="..\Examples\pictures\dg0_0.gif" Name="pic1" Border="0"></TH>
+ <TH><IMG SRC="..\Examples\pictures\vect0.gif" Name="vct2" Border="0"><BR>
+ <IMG SRC="..\Examples\pictures\dg0_0.gif" Name="pic2" Border="0"></TH>
+ <TH><IMG SRC="..\Examples\pictures\vect0.gif" Name="vct3" Border="0"><BR>
+ <IMG SRC="..\Examples\pictures\dg0_0.gif" Name="pic3" Border="0"></TH>
+ <TH><IMG SRC="..\Examples\pictures\vect0.gif" Name="vct4" Border="0"><BR>
+ <IMG SRC="..\Examples\pictures\dg0_0.gif" Name="pic4" Border="0"></TH>
+ <TH><IMG SRC="..\Examples\pictures\vect0.gif" Name="vct5" Border="0"><BR>
+ <IMG SRC="..\Examples\pictures\dg0_0.gif" Name="pic5" Border="0"></TH>
+ <TH><IMG SRC="..\Examples\pictures\vect0.gif" Name="vct6" Border="0"><BR>
+ <IMG SRC="..\Examples\pictures\dg0_0.gif" Name="pic6" Border="0"></TH>
+ <TH><IMG SRC="..\Examples\pictures\vect0.gif" Name="vct7" Border="0"><BR>
+ <IMG SRC="..\Examples\pictures\dg0_0.gif" Name="pic7" Border="0"></TH>
+ <TH><IMG SRC="..\Examples\pictures\vect0.gif" Name="vct8" Border="0"><BR>
+ <IMG SRC="..\Examples\pictures\dg0_0.gif" Name="pic8" Border="0"></TH>
+ <TH><IMG SRC="..\Examples\pictures\vect0.gif" Name="vct9" Border="0"><BR>
+ <IMG SRC="..\Examples\pictures\dg0_0.gif" Name="pic9" Border="0"></TH>
+</TR>
+<TR>
+ <TH COLSPAN="5"><Input TYPE="button" NAME="Fst" value="Fast" onClick="Fast()"></TH>
+ <TH COLSPAN="5"><Input TYPE="button" NAME="Slwer" value="Slower" onClick="Slower()"></TH>
+</TR>
+</Table>
+</Form>
+</center></p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<B>Трудоемкость метода:</B><br>
+C = (n<sup>2</sup>-n)/2<br>
+Количество пересылок зависит от того, как часто 
+выполняется условие.
+Возможны 3 случая:<br>
+1.Если массив отсортирован по возрастанию, то M=0<br>
+2.Если массив отсортирован по убыванию, 
+то M = 3C = 3(n<sup>2</sup>-n)/2<br>
+3.Случайный массив M = 3(n<sup>2</sup>-n)/4
+</p>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<B>Особенности метода:</B><br>
+Сортировка устойчива(т.к. сравнения происходят в соседних 
+элементах и знак сравнения строго меньше), зависит от 
+исходной упорядоченности.
+</p>
+</BODY>
+</HTML>

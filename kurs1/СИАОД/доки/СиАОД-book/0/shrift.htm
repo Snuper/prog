@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script>
+<!-- hide
+function change_shrift()
+{
+parent.parent.head.tmp_form.tmp3.value=main.shrift_size.selectedIndex+1;
+p=parent.TEXT.location;
+parent.TEXT.location=p;
+}
+ hide -->
+</script>
+<script>
+<!-- hide
+function panel_close()
+{
+ parent.parent.head.tmp_form.tmp1.value = parent.index.location.href;
+ parent.parent.head.tmp_form.tmp2.value = parent.TEXT.location.href;
+ parent.location.href="../gl2.htm";
+}
+ hide -->
+</script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan" onLoad="change_shrift()">
+<CENTER>
+<Form Name="main">
+<table>
+<th>
+Размер шрифта
+<SELECT name="shrift_size" onChange="change_shrift()">
+<script>
+<!-- hide
+document.open();
+x=parseInt(parent.parent.head.tmp_form.tmp3.value);
+
+for(i=1;i<=100;i++)
+{
+ if(x!=i)
+        {
+         document.write('<OPTION>'+i);
+        }else
+            {
+             document.write('<OPTION selected>'+i);
+            }
+}
+document.close();
+ hide -->
+</script>
+</SELECT>
+</th>
+<th align="right" width="50">
+<right><a href="javascript:panel_close()"><img src="..\pictures\close.gif" border="0" alt="свернуть панель"></A></right>
+</th>
+</table>
+</Form></CENTER>
+</BODY>
+</HTML>

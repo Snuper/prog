@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+<TITLE>Кодирование целых чисел</TITLE>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Кодирование с использованием "скользящего окна"</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Пусть кодируется какое-то сообщение X = X<SUB>1</SUB>X<SUB>2</SUB>X<SUB>3</SUB>X<SUB>4</SUB>...<BR>
+Сначала осуществляется поиск в окне, если его нет то передается 0 (что его нет) и двоичное представление этого символа 'x1'. Если символ 'x1' найден, то то осуществляется поиск слова 'x1x2', если оно есть, ищем 'x1x2x3' и т.д. пока не найдем в окне слово максимальной длины. В этом случае передается 1 и пара i,j - координаты этого слова в окне. i- номер позиции с которой началось слово, j - длина слова. После кодирования слова длины j, окно передвигается на j символов вправо и продолжается процесс кодирования следующей буквы. 
+</BODY>
+</HTML>

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Поиск вершины с заданым ключом</center></H3>
+Апгоритм поиска вершины с ключом X.
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+p:=Root;
+DO(p<>nil)
+      IF (x<p^.data) p:=p^.left
+                  ELSE IF (x>p^.data) p:=p^.right
+                            ELSE OD
+OD
+IF (p<>nil) вершина найдена по адресу p
+       ELSE  вершина не найдена.
+</Pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Трудоемкость
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Cmax=2h
+Cисд = 2[log(n+1)]
+</Pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Будем считать, что все вершины ищутся одинакого часто, тогда min среднее время поиска будет в ИСД поиска, т.е. ИСДП.
+</P>
+</BODY>
+</HTML>

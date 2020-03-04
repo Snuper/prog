@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Задача сортировки последовательности</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Дана последовательность <Script>
+<!-- hide
+changepre();
+ hide -->
+</script>S = S1S2S3...Sn,</Pre><Script>
+<!-- hide
+changep();
+ hide -->
+</script> т.е. совокупность 
+данных с последовательным доступом.<BR>
+Последовательный доступ предполагает, что k+1 элемент 
+может быть получен путем просмотра предыдущих k 
+элементов слева направо, т.е. с 1 по k-ый. Это существенное 
+ограничение по сравнению с массивом, поэтому методы 
+сортировки для массивов и не годятся для сортировки данных 
+с последовательным доступом, например, для списков.
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Алгоритм перемещения элементов из стека в очередь
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+         Q.tail^.next:=List;
+         Q.tail:=List;
+         List:=List^.next;
+</Pre>
+</BODY>
+</HTML>

@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=Windows-1251">
+<script src="..\Scripts\main.js"></script>
+</HEAD> 
+<BODY BACKGROUND="..\pictures\bgpicture.gif" BGCOLOR="white" TEXT="gray" LINK="blue" VLINK="magenta" ALINK="cyan">
+<Script>
+<!-- hide
+changeh3();
+ hide -->
+</script>
+<center>Основные операции с очередями</center></H3>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+<OL>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Постановка элемента в конец очереди</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+     new(p); 
+     p^.data:=данные;
+     p^.next:=nil;
+     tail.next:=p;
+     tail:=p;
+</PRE>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Постановка элемента в пустую очередь</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+     new(p); 
+     p^.data:=данные;
+     p^.next:=nil;
+     head:=p;
+     tail:=p;
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+=> можно объединить эти варианты:
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+     new(p); 
+     p^.data:=данные;
+     p^.next:=nil;
+     IF (head=nil) head:=p
+            ELSE tail.next:=p;
+     tail:=p;
+</pre>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+=> можно оптимизировать операцию постановки в очередь, 
+если предворительно проводить инициализацию очереди 
+следующим образом:
+</p>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+tail:=@head;
+Тогда:
+     new(p); 
+     p^.data:=данные;
+     p^.next:=nil;
+     tail.next:=p;
+     tail:=p;
+</pre>
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Исключение первого элемента из очереди<BR>
+    Так же как и для стека.
+<LI><Script>
+<!-- hide
+changep();
+ hide -->
+</script>Обработка очереди, выполнение каких - либо операций 
+с каждым элементом из стека.<BR>
+    Так же как и для стека.
+</OL>
+</P>
+<Script>
+<!-- hide
+changep();
+ hide -->
+</script>
+Иногда удобно рассматривать заголовок очереди
+как единую структуру
+</P>
+<Script>
+<!-- hide
+changepre();
+ hide -->
+</script>
+Pas: TYPE Queue = record
+                  head : pLE;
+                  tail : pLE;
+                  end;
+     Var Q : Queue;
+C:   struct Queue{ 
+                  tLE *head;
+                  tLE *tail; 
+                 }Q;
+</Pre>
+</BODY>
+</HTML>
+

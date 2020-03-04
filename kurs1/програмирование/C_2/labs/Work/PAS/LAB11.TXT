@@ -1,0 +1,102 @@
+
+                    ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+                    º  ¡®â  á íªà ­®¬ ¢ â¥ªáâ®¢®¬ à¥¦¨¬¥ º
+                    ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼					
+
+ÚÄÄÄÄÄÄÄÄÄÄ¿
+³  à¨¬¥à  ³
+ÀÄÄÄÄÄÄÄÄÄÄÙ
+¥ «¨§ æ¨ï ¯à®áâ®£® ¬¥­î ¨§ âà¥å ¢ à¨ ­â®¢ ¢ë¡®à .
+Uses Crt;
+Type Str20 = string[20];
+     menu = array [1..3] of str20;
+Const mm:menu=('   à¥¦¨¬ 1  ','   à¥¦¨¬ 2  ','   à¥¦¨¬ 3  ');
+Var ch:char;
+    i,k:byte;
+{-----------------}
+function readChar:char;
+ var c:char;
+ begin
+   c:=readkey;
+   if c=#0 then c:=readkey;
+   readchar:=c;
+ end;
+{-----------------}
+function case_k(ch:char; k:byte):byte;
+ begin
+   case ch of
+     #72: if k>1 then k:=k-1 else k:=3; {  }
+     #80: if k<3 then k:=k+1 else k:=1; {  }
+   end;
+   case_k:=k;
+ end;
+{-----------------}
+procedure showstring(k1,k2:byte; s:str20; gr,cl:byte);
+ begin
+   textbackground(gr);
+   textcolor(cl);
+   gotoXY(k1,k2);
+   write(s);
+ end;
+{-----------------}
+Begin
+  clrscr;
+  window(31,11,50,16); { ˆ­¨æ¨ «¨§ æ¨ï ®ª­  }
+  for k:=3 downto 1 do showstring(1,k,mm[k],1,14);
+
+  repeat
+    showstring(15,k,' ',0,4);
+    showstring(1,k,mm[k],1,14);
+    k:=case_k(ch,k);
+    showstring(15,k,chr(17),0,4);
+    showstring(1,k,mm[k],7,1);
+    ch:=readchar;
+  until (ch=#13) or (ch=#32);
+
+  textbackground(0);   { –¢¥â ä®­  }
+  textcolor(15);       { ‡ ¤ ­¨¥ æ¢¥â  á¨¬¢®«®¢ }
+  window(1,1,80,25);
+  clrscr;
+  write('‚ë¡à ­ à¥¦¨¬ ',k);
+end.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄ¿
+³  ‡ ¤ ­¨ï  ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÙ
+
+ §à ¡®â âì ¯à®£à ¬¬ã ¢ë¢®¤  ­  íªà ­ £à ä¨ª  äã­ªæ¨¨ á ¯®¬®éìî à §«¨ç­ëå 
+â¥ªáâ®¢ëå á¨¬¢®«®¢ ¨§ § ¤ ­­®£® ­ ¡®à . ‚ë¡®à á¨¬¢®«®¢ à¥ «¨§®¢ âì ¯à¨
+¯®¬®é¨ ¬¥­î. (x ¯à¨­ ¤«¥¦¨â ¨­â¥à¢ «ã [-3.14, 3.14] ).
+‚§ïâì ¢ à¨ ­â à ¢­ë© ­®¬¥àã ¡à¨£ ¤ë
+
+1.  y = (x*x-1) * sin(2x)
+
+2.  y = (x^3 + x) * (cos x)^2
+
+3.  y = (2-x) * sin(x)+x*x
+
+4.  y = 0.5 * (sin x)^2 + exp(-x)
+
+5.  y = (sin(2x)+cos(2x)) * exp(-x)
+
+6.  y = sin(0.5x) * cos(2x)
+
+7.  y = sin(4x) * (x*x - 2x)
+
+8.  y = (2x - x*x) * cos(4x)
+
+9.  y = (x^3+x-1) * sin(2x)
+
+10. y = (x^2-x+1) * (sin x)^2
+
+11. y = (x^2+x-1) * cos(2x)
+
+12. y = x^2 * sin(2x) - (cos x)^2
+
+13. y = x * sin(x) - x^3 + 1
+
+14. y = exp(-x) * cos(2x) + |x|^0.5
+
+15. y = 12.5 + x^4 * cos(x)
+
+16. y = (sin x)^2 + x - |x|^0.5 
