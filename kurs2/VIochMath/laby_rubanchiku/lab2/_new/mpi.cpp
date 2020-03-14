@@ -38,7 +38,6 @@ int n_shagov(double C, double B)
 	i = log(i);
 	i /= log(C);
 	k = (int)ceil(i+1);
-	
 	return k;
 }
 
@@ -80,7 +79,7 @@ int main(void)
 		for(i = 0; i < size; i++) for(j = 0; j < size; j++) 
 		{
 			B[i] += A[i][j] * Rezult[j];
-			cout << B[i] << " = " << A[i][j] << " * " << Rezult[j] << endl;
+//			cout << B[i] << " = " << A[i][j] << " * " << Rezult[j] << endl;
 		}
 		for(i = 0; i < size; i++)
 		{
