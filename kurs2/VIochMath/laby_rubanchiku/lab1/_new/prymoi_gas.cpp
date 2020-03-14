@@ -35,17 +35,16 @@ int main(void)
 	printMatrix();
 	for(dioganal = 0; dioganal < size-1; dioganal++)
 	{
-//		cout << endl << " dioganal = " << dioganal << endl;
+		cout << endl << " dioganal = " << dioganal << endl;
 		for(i = 1 + dioganal; i < size; i++)
 		{
 			j = 0;
 			mnozhitel = A[i][dioganal] / A[dioganal][dioganal];
-//			cout << "  mnozhitel= " << mnozhitel << "   A[dioganal][dioganal] = " << A[dioganal][dioganal] << "   A[i][dioganal]=" << A[i][dioganal] << endl;
-			if((A[i][j] < 0 and mnozhitel < 0) or (A[i][j] > 0 and mnozhitel > 0) or (A[i][j] > 0 and mnozhitel < 0) or (A[i][j] < 0 and mnozhitel > 0)) mnozhitel *= -1;
+			cout << "  mnozhitel= " << mnozhitel << "   A[dioganal][dioganal] = " << A[dioganal][dioganal] << "   A[i][dioganal]=" << A[i][dioganal] << endl;
 			for(j = 0; j < size + 1; j++)
 			{
-				A[i][j] += mnozhitel * A[dioganal][j];
-//				cout << "  A[i][j]= " << A[i][j] << "   mnozhitel = " << mnozhitel << "   A[dioganal][j] = " << A[dioganal][j] << endl;
+				A[i][j] -= mnozhitel * A[dioganal][j];
+				if(A[i][j] == 0) if(A[dioganal][j] != 0) cout << "  A[" << i << "][" << j << "] = " << A[i][j] << endl;
 			}
 		}
 		printMatrix();

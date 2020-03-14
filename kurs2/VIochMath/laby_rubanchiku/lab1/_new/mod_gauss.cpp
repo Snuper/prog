@@ -13,7 +13,7 @@ float A[size][size + 1] =
     {-4, 2, 1, -2}
 };
 
-float B[size] = {0, 0, 0};
+float B[size];
 
 void printMatrix()
 {
@@ -73,10 +73,9 @@ int main(void)
 			mnozhitel = A[i][dioganal] / A[dioganal][dioganal];
 //			cout << "  mnozhitel= " << mnozhitel << "   A[dioganal][dioganal] = " << A[dioganal][dioganal] << "   A[i][dioganal]=" << A[i][dioganal] << endl;
 //			cout << "dioganal - 1 = " << dioganal - 1 << " i = " << i << endl;
-			if((A[i][dioganal] < 0 and mnozhitel < 0) or (A[i][dioganal] > 0 and mnozhitel > 0) or (A[i][dioganal] > 0 and mnozhitel < 0) or (A[i][dioganal] < 0 and mnozhitel > 0)) mnozhitel *= -1;
 			for(j = 0; j < size + 1; j++)
 			{
-				A[i][j] += mnozhitel * A[dioganal][j];
+				A[i][j] -= mnozhitel * A[dioganal][j];
 //				cout << "  A[i][j]= " << A[i][j] << "   mnozhitel = " << mnozhitel << "   A[dioganal][j] = " << A[dioganal][j] << endl;
 			}
 		}
