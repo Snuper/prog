@@ -41,10 +41,9 @@ int main(void)
 			j = 0;
 			mnozhitel = A[i][dioganal] / A[dioganal][dioganal];
 			cout << "  mnozhitel= " << mnozhitel << "   A[dioganal][dioganal] = " << A[dioganal][dioganal] << "   A[i][dioganal]=" << A[i][dioganal] << endl;
-			if((A[i][dioganal] < 0 and mnozhitel < 0) or (A[i][dioganal] > 0 and mnozhitel > 0) or (A[i][dioganal] > 0 and mnozhitel < 0) or (A[i][dioganal] < 0 and mnozhitel > 0)) mnozhitel *= -1;
 			for(j = 0; j < size + 1; j++)
 			{
-				A[i][j] += mnozhitel * A[dioganal][j];
+				A[i][j] -= mnozhitel * A[dioganal][j];
 				if(A[i][j] == 0) if(A[dioganal][j] != 0) cout << "  A[" << i << "][" << j << "] = " << A[i][j] << endl;
 			}
 		}

@@ -4,13 +4,19 @@
 
 using namespace std;
 
-const int size = 3, eps = 1000;
+const int size = 3, eps = 10000;
 
-double A[size][size + 1] = 
-{
+/*
 	{5, -1, 2, 3},
     {-1, 4, 1, 6},
     {2, -1, -10, -21}
+*/
+
+double A[size][size + 1] = 
+{
+	{10, 6, -1, 8},
+    {-1, -5, 2, 3},
+    {1, 4, 10, 21}
 };
 
 double B[size], Rezult[size];
