@@ -1,0 +1,64 @@
+c:\users\mmark\documents\visual studio 2013\Projects\Laba2\Laba2\bin\Debug\Laba2.exe.config
+C:\Users\mmark\Documents\Visual Studio 2013\Projects\Laba2\Laba2\bin\Debug\Laba2.exe
+C:\Users\mmark\Documents\Visual Studio 2013\Projects\Laba2\Laba2\bin\Debug\Laba2.pdb
+C:\Users\mmark\Documents\Visual Studio 2013\Projects\Laba2\Laba2\obj\Debug\Laba2.csprojResolveAssemblyReference.cache
+C:\Users\mmark\Documents\Visual Studio 2013\Projects\Laba2\Laba2\obj\Debug\Laba2.Form1.resources
+C:\Users\mmark\Documents\Visual Studio 2013\Projects\Laba2\Laba2\obj\Debug\Laba2.Properties.Resources.resources
+C:\Users\mmark\Documents\Visual Studio 2013\Projects\Laba2\Laba2\obj\Debug\Laba2.csproj.GenerateResource.Cache
+C:\Users\mmark\Documents\Visual Studio 2013\Projects\Laba2\Laba2\obj\Debug\Laba2.exe
+C:\Users\mmark\Documents\Visual Studio 2013\Projects\Laba2\Laba2\obj\Debug\Laba2.pdb
+C:\Users\mmark\Documents\Visual Studio 2013\Projects\Laba2\Laba2\obj\Debug\Laba2.Form2.resources
+E:\Laba2\Laba2\bin\Debug\Laba2.exe.config
+E:\Laba2\Laba2\obj\Debug\Laba2.exe
+E:\Laba2\Laba2\obj\Debug\Laba2.pdb
+E:\Laba2\Laba2\bin\Debug\Laba2.exe
+E:\Laba2\Laba2\bin\Debug\Laba2.pdb
+E:\Laba2\Laba2\obj\Debug\Laba2.csprojResolveAssemblyReference.cache
+E:\Laba2\Laba2\obj\Debug\Laba2.Form1.resources
+E:\Laba2\Laba2\obj\Debug\Laba2.Form2.resources
+E:\Laba2\Laba2\obj\Debug\Laba2.Properties.Resources.resources
+E:\Laba2\Laba2\obj\Debug\Laba2.csproj.GenerateResource.Cache
+D:\Laba2\Laba2\bin\Debug\Laba2.exe.config
+D:\Laba2\Laba2\obj\Debug\Laba2.exe
+D:\Laba2\Laba2\obj\Debug\Laba2.pdb
+D:\Laba2\Laba2\obj\Debug\Laba2.csprojResolveAssemblyReference.cache
+D:\Laba2\Laba2\obj\Debug\Laba2.Form1.resources
+D:\Laba2\Laba2\obj\Debug\Laba2.Form2.resources
+D:\Laba2\Laba2\obj\Debug\Laba2.Properties.Resources.resources
+D:\Laba2\Laba2\obj\Debug\Laba2.csproj.GenerateResource.Cache
+D:\Laba2\Laba2\bin\Debug\Laba2.exe
+D:\Laba2\Laba2\bin\Debug\Laba2.pdb
+C:\Users\Владислав\Desktop\Laba2\Laba2\bin\Debug\Laba2.exe.config
+C:\Users\Владислав\Desktop\Laba2\Laba2\bin\Debug\Laba2.exe
+C:\Users\Владислав\Desktop\Laba2\Laba2\bin\Debug\Laba2.pdb
+C:\Users\Владислав\Desktop\Laba2\Laba2\obj\Debug\Laba2.csprojAssemblyReference.cache
+C:\Users\Владислав\Desktop\Laba2\Laba2\obj\Debug\Laba2.Form1.resources
+C:\Users\Владислав\Desktop\Laba2\Laba2\obj\Debug\Laba2.Form2.resources
+C:\Users\Владислав\Desktop\Laba2\Laba2\obj\Debug\Laba2.Properties.Resources.resources
+C:\Users\Владислав\Desktop\Laba2\Laba2\obj\Debug\Laba2.csproj.GenerateResource.cache
+C:\Users\Владислав\Desktop\Laba2\Laba2\obj\Debug\Laba2.exe
+C:\Users\Владислав\Desktop\Laba2\Laba2\obj\Debug\Laba2.pdb
+C:\Users\User\Desktop\Laba2\Laba2\bin\Debug\Laba2.exe.config
+C:\Users\User\Desktop\Laba2\Laba2\obj\Debug\Laba2.exe
+C:\Users\User\Desktop\Laba2\Laba2\obj\Debug\Laba2.pdb
+C:\Users\User\Desktop\Laba2\Laba2\bin\Debug\Laba2.exe
+C:\Users\User\Desktop\Laba2\Laba2\bin\Debug\Laba2.pdb
+C:\Users\User\Desktop\Laba2\Laba2\obj\Debug\Laba2.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\Laba2\Laba2\obj\Debug\Laba2.Form1.resources
+C:\Users\User\Desktop\Laba2\Laba2\obj\Debug\Laba2.Form2.resources
+C:\Users\User\Desktop\Laba2\Laba2\obj\Debug\Laba2.Properties.Resources.resources
+C:\Users\User\Desktop\Laba2\Laba2\obj\Debug\Laba2.csproj.GenerateResource.Cache
+F:\voop\Laba2\Laba2\bin\Debug\Laba2.exe.config
+F:\voop\Laba2\Laba2\obj\Debug\Laba2.exe
+F:\voop\Laba2\Laba2\obj\Debug\Laba2.pdb
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab2-3\Laba2\Laba2\bin\Debug\Laba2.exe.config
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab2-3\Laba2\Laba2\bin\Debug\Laba2.exe
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab2-3\Laba2\Laba2\bin\Debug\Laba2.pdb
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab2-3\Laba2\Laba2\obj\Debug\Laba2.csprojAssemblyReference.cache
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab2-3\Laba2\Laba2\obj\Debug\Laba2.Form1.resources
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab2-3\Laba2\Laba2\obj\Debug\Laba2.Form2.resources
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab2-3\Laba2\Laba2\obj\Debug\Laba2.Properties.Resources.resources
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab2-3\Laba2\Laba2\obj\Debug\Laba2.csproj.GenerateResource.cache
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab2-3\Laba2\Laba2\obj\Debug\Laba2.csproj.CoreCompileInputs.cache
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab2-3\Laba2\Laba2\obj\Debug\Laba2.exe
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab2-3\Laba2\Laba2\obj\Debug\Laba2.pdb
