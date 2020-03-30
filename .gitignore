@@ -21,3 +21,6 @@
 *.out
 *.app
 .git
+*.layout
+*.xml
+*.xml
