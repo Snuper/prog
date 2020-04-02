@@ -47,8 +47,11 @@ int main()
 	VertexArray os_x(LineStrip, 2);
 	VertexArray os_y(LineStrip, 2);
 	VertexArray lines(LineStrip, kolvo);
+	VertexArray lines_la_4(LineStrip, kolvo);
+//	VertexArray lines_la_3(LineStrip, kolvo);
+//	VertexArray lines_la_2(LineStrip, kolvo);
+//	VertexArray lines_la_1(LineStrip, kolvo);
 	VertexArray lagranzh(LineStrip, 2);
-	
 	VertexArray x1_g(LineStrip, 2);
 	VertexArray x2_g(LineStrip, 2);
 	VertexArray x3_g(LineStrip, 2);
@@ -105,6 +108,14 @@ int main()
 		for(int i = 0, x = -360; i < kolvo; i++, x += shag)
 		{
 			lines[i].position = Vector2f(360 + x, 360 - formula(x));
+			lines_la_4[i].position = Vector2f(360 + x, 360 - formula_la(x, n));
+//			lines_la_3[i].position = Vector2f(360 + x, 360 - formula_la(x, 3));
+//			lines_la_2[i].position = Vector2f(360 + x, 360 - formula_la(x, 2));
+//			lines_la_1[i].position = Vector2f(360 + x, 360 - formula_la(x, 1));
+			lines_la_4[i].color = Color::Red;
+//			lines_la_3[i].color = Color::Blue;
+//			lines_la_2[i].color = Color::Yellow;
+//			lines_la_1[i].color = Color::Cyan;
 		}
 		
 		if (Keyboard::isKeyPressed(Keyboard::D)) view.move(0.01, 0);
@@ -119,6 +130,10 @@ int main()
 	 	window.draw(os_x);
 	 	window.draw(os_y);
 		window.draw(lines);
+		window.draw(lines_la_4);
+//		window.draw(lines_la_3);
+//		window.draw(lines_la_2);
+//		window.draw(lines_la_1);
 		window.draw(lagranzh);
 		window.draw(x1_g);
 		window.draw(x2_g);
