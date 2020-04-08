@@ -1,0 +1,9 @@
+C:\Users\Владислав\source\repos\VP_4\bin\Debug\VP_4.exe.config
+C:\Users\Владислав\source\repos\VP_4\bin\Debug\VP_4.exe
+C:\Users\Владислав\source\repos\VP_4\bin\Debug\VP_4.pdb
+C:\Users\Владислав\source\repos\VP_4\obj\Debug\VP_4.csprojAssemblyReference.cache
+C:\Users\Владислав\source\repos\VP_4\obj\Debug\VP_4.Form1.resources
+C:\Users\Владислав\source\repos\VP_4\obj\Debug\VP_4.Properties.Resources.resources
+C:\Users\Владислав\source\repos\VP_4\obj\Debug\VP_4.csproj.GenerateResource.cache
+C:\Users\Владислав\source\repos\VP_4\obj\Debug\VP_4.exe
+C:\Users\Владислав\source\repos\VP_4\obj\Debug\VP_4.pdb

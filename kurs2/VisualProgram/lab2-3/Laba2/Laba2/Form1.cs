@@ -357,6 +357,24 @@ namespace Laba2
 
         }
 
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Graphics g = Graphics.FromImage(picDrawingSurface.Image);
+            g.Clear(Color.White);
+            g.Dispose();
+            picDrawingSurface.Invalidate();
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void penToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void lblX_Click(object sender, EventArgs e)
         {
 
