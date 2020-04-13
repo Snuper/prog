@@ -7,3 +7,13 @@ C:\Users\Владислав\source\repos\VP_4\obj\Debug\VP_4.Properties.Resource
 C:\Users\Владислав\source\repos\VP_4\obj\Debug\VP_4.csproj.GenerateResource.cache
 C:\Users\Владислав\source\repos\VP_4\obj\Debug\VP_4.exe
 C:\Users\Владислав\source\repos\VP_4\obj\Debug\VP_4.pdb
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab4()no[e\Проект lab_4\bin\Debug\VP_4.exe.config
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab4()no[e\Проект lab_4\bin\Debug\VP_4.exe
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab4()no[e\Проект lab_4\bin\Debug\VP_4.pdb
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab4()no[e\Проект lab_4\obj\Debug\VP_4.csprojAssemblyReference.cache
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab4()no[e\Проект lab_4\obj\Debug\VP_4.Form1.resources
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab4()no[e\Проект lab_4\obj\Debug\VP_4.Properties.Resources.resources
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab4()no[e\Проект lab_4\obj\Debug\VP_4.csproj.GenerateResource.cache
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab4()no[e\Проект lab_4\obj\Debug\VP_4.csproj.CoreCompileInputs.cache
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab4()no[e\Проект lab_4\obj\Debug\VP_4.exe
+C:\Andrey\prog\prog\kurs2\VisualProgram\lab4()no[e\Проект lab_4\obj\Debug\VP_4.pdb

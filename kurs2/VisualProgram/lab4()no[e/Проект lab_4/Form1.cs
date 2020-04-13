@@ -102,7 +102,7 @@ namespace VP_4
 
         private void обАвтореToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Филимонов Владислав\nПриходченко Иван\nИП-814");
+            MessageBox.Show("Якунин Андрей\nПарфенцов Семен\nИП-814");
         }
 
         private void timer1_Tick(object sender, EventArgs e)
