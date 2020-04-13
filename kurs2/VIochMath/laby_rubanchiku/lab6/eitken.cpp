@@ -18,17 +18,21 @@ double formula_et(double et_x, int n)
 	
 	for(int i = 0; i < n + 1; i++) p_mas[i] = y_mas[i];
 	
-	for (int i = 1, ub = 0; i < (n * n / 2) + 1; i++)
+	for (int i = 0, ub = 0; i < (n * n / 2) + 1; i++)
 	{
 		for(int j = i; j < n + ub; j++)
 		{
 			if(j >= n - 1) continue;
-			cout << endl << p_mas[0] << endl << p_mas[1] << endl << p_mas[2] << endl << p_mas[3];
-			temp_ch = p_mas[j - 1] * (et_x - x_mas[j + 1]) - p_mas[j] * (et_x - x_mas[j - ub]);
-			temp_zn = x_mas[j] - x_mas[j + 1];
-			p_mas[j] = temp_ch / temp_zn;
-			cout << endl << p_mas[j - 1] << " * (" << et_x << " - " << x_mas[j + 1] << ")" << " - " << p_mas[j + 1] << " * (" << et_x << " - " << x_mas[j - ub] << endl;
-			cout << endl << j + 1 << " | " << j - ub << endl;
+//			cout << endl << j + 1 << " | " << j - ub << endl;
+//			cout << endl << p_mas[0] << endl << p_mas[1] << endl << p_mas[2] << endl << p_mas[3];
+//			cout << endl << p_mas[j - ub] << " * (" << et_x << " - " << x_mas[j + 1] << ")" << " - " << p_mas[j + 1 - ub] << " * (" << et_x << " - " << x_mas[j - ub] << endl;
+//			cout << x_mas[j - ub] << " - " << x_mas[j + 1] << endl;;
+			
+			temp_ch = p_mas[j - ub] * (et_x - x_mas[j + 1]) - p_mas[j + 1 - ub] * (et_x - x_mas[j - ub]);
+			temp_zn = x_mas[j - ub] - x_mas[j + 1];
+			p_mas[j - ub] = temp_ch / temp_zn;
+			
+//			cout << endl << "------------------------------------------" << endl;
 		}
 		ub++;
 	}
@@ -64,7 +68,7 @@ int main()
 	ContextSettings settings;
 	settings.antialiasingLevel = 8;
 	
-	RenderWindow window(VideoMode(720, 720), "lagranhzz", Style::Default, settings);
+	RenderWindow window(VideoMode(720, 720), "eitkin", Style::Default, settings);
 	int n = 4, i;
 	double x = 0, kolvo = 720 / shag, et_x, et_y, E_us = 1, E_okr = 1, temp = 0;
 
