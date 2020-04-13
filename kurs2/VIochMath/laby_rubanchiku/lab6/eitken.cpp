@@ -5,7 +5,7 @@ using namespace sf;
 
 double x_mas[4] = {1, 2, 3, 4};
 
-double y_mas[4] = {1, 1.4142, 1.7321, 2};
+double y_mas[4] = {1, 1.4142, 1.7321, 2}, eps = 10000;
 
 double formula(double x)
 {
@@ -18,21 +18,46 @@ double formula_et(double et_x, int n)
 	
 	for(int i = 0; i < n + 1; i++) p_mas[i] = y_mas[i];
 	
-	for (int i = 0; i < n; i++)
+	for (int i = 1, ub = 0; i < (n * n / 2) + 1; i++)
 	{
-		for(int j = i; j < n - i; j++)
+		for(int j = i; j < n + ub; j++)
 		{
-			temp_ch = p_mas[j] * (et_x - x_mas[j + 1]) - p_mas[j + 1] * (et_x - x_mas[j]);
+			if(j >= n - 1) continue;
+			cout << endl << p_mas[0] << endl << p_mas[1] << endl << p_mas[2] << endl << p_mas[3];
+			temp_ch = p_mas[j - 1] * (et_x - x_mas[j + 1]) - p_mas[j] * (et_x - x_mas[j - ub]);
 			temp_zn = x_mas[j] - x_mas[j + 1];
 			p_mas[j] = temp_ch / temp_zn;
+			cout << endl << p_mas[j - 1] << " * (" << et_x << " - " << x_mas[j + 1] << ")" << " - " << p_mas[j + 1] << " * (" << et_x << " - " << x_mas[j - ub] << endl;
+			cout << endl << j + 1 << " | " << j - ub << endl;
 		}
+		ub++;
 	}
 //	cout << endl << p_mas[0] << endl << p_mas[1] << endl << p_mas[2] << endl << p_mas[3];
-	return p_mas[0];
+	return round(p_mas[0] * eps) / eps;
+}
+
+double epsilon(double &E_okr, double &E_us, double la_x, int n)
+{
+	double temp_ch = 1, temp_zn = 1, M;
+	for(int i = 0; i < n + 1; i++)
+	{
+		temp_ch *= la_x - x_mas[i];
+		if(temp_ch < 0) temp_ch *= -1;
+		temp_zn *= i + 1;
+	}
+	M = 3.0/8.0 * pow(x_mas[n], -5.0/2.0);
+	if(M < 0) M *= -1;
+
+	E_okr = 1 / eps;
+	E_us = M * (temp_ch / temp_zn);
 }
  
 int main()
 {	
+	double shag;
+	cout << endl << "Vvedite razmer shaga: ";
+	cin >> shag;
+
 	View view;
 	view.reset(FloatRect(300, 300, 120, 120));
 	
@@ -40,8 +65,8 @@ int main()
 	settings.antialiasingLevel = 8;
 	
 	RenderWindow window(VideoMode(720, 720), "lagranhzz", Style::Default, settings);
-	int n = 3;
-	double shag = 1, x, kolvo = 720 / shag, et_x, et_y;
+	int n = 4, i;
+	double x = 0, kolvo = 720 / shag, et_x, et_y, E_us = 1, E_okr = 1, temp = 0;
 
 	VertexArray os_x(LineStrip, 2);
 	VertexArray os_y(LineStrip, 2);
@@ -90,6 +115,8 @@ int main()
 	
 	cout << endl << "x = " << et_x << " y = " << et_y << endl; 
 	
+	epsilon(E_okr, E_us, et_x, n);
+	cout << "E_okr = " << E_okr << " E_us = " << E_us << " E_real = " << E_us + E_okr << endl;
 	
 	while (window.isOpen())
 	{
@@ -100,19 +127,27 @@ int main()
 				window.close();
 		}
 		
-		for(int i = 0, x = -360; i < kolvo; i++, x += shag)
+		for(i = 0, x = -360 * shag; i < kolvo; i++, x += shag)
 		{
 			lines[i].position = Vector2f(360 + x, 360 - formula(x));
 			lines_et[i].position = Vector2f(360 + x, 360 - formula_et(x, n));
 			lines_et[i].color = Color::Red;
 		}
 		
-		if (Keyboard::isKeyPressed(Keyboard::D)) view.move(0.01, 0);
-		else if (Keyboard::isKeyPressed(Keyboard::S)) view.move(0, 0.01);
-		else if (Keyboard::isKeyPressed(Keyboard::A)) view.move(-0.01, 0);
-		else if (Keyboard::isKeyPressed(Keyboard::W)) view.move(0, -0.01);
-		else if (Keyboard::isKeyPressed(Keyboard::E)) view.zoom(1.001f);
-		else if (Keyboard::isKeyPressed(Keyboard::Q)) view.zoom(0.999f);
+		if (Keyboard::isKeyPressed(Keyboard::D)) view.move(0.001 + temp, 0);
+		else if (Keyboard::isKeyPressed(Keyboard::S)) view.move(0, 0.001 + temp);
+		else if (Keyboard::isKeyPressed(Keyboard::A)) view.move(-0.001 - temp, 0);
+		else if (Keyboard::isKeyPressed(Keyboard::W)) view.move(0, -0.001 - temp);
+		else if (Keyboard::isKeyPressed(Keyboard::E))
+		{
+			temp -= 0.0001;
+			view.zoom(1.001f + temp);
+		}
+		else if (Keyboard::isKeyPressed(Keyboard::Q))
+		{
+			temp += 0.0001;
+			view.zoom(0.999f - temp);
+		}
 		
 		window.clear();
 		window.setView(view);

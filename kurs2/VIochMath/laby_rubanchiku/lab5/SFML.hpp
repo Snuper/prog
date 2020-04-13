@@ -10,5 +10,6 @@
 #include <ctime>
 #include <stdio.h>
 #include <cmath>
+#include <math.h>
 
 #endif

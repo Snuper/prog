@@ -50,8 +50,11 @@ ProductVersion=1.0.0.0
 AutoIncBuildNr=0
 SyncProduct=1
 
-[Unit2]
-FileName=..\lab6\SFML.hpp
+[Unit3]
+FileName=..\lab6\eitken.cpp
+
+[Unit1]
+FileName=..\lab7\nuton.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -60,11 +63,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit3]
-FileName=..\lab6\eitken.cpp
-
-[Unit1]
-FileName=..\lab6\eitken.cpp
+[Unit2]
+FileName=..\lab7\SFML.hpp
 CompileCpp=1
 Folder=
 Compile=1
