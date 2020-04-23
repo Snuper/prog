@@ -1,0 +1,11 @@
+C:\Andrey\prog\prog\kurs2\VisualProgram\2DATA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
+C:\Andrey\prog\prog\kurs2\VisualProgram\2DATA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Andrey\prog\prog\kurs2\VisualProgram\2DATA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Andrey\prog\prog\kurs2\VisualProgram\2DATA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Andrey\prog\prog\kurs2\VisualProgram\2DATA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Andrey\prog\prog\kurs2\VisualProgram\2DATA\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\lab2.accdb
+C:\Andrey\prog\prog\kurs2\VisualProgram\2DATA\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Andrey\prog\prog\kurs2\VisualProgram\2DATA\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Andrey\prog\prog\kurs2\VisualProgram\2DATA\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Andrey\prog\prog\kurs2\VisualProgram\2DATA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Andrey\prog\prog\kurs2\VisualProgram\2DATA\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb

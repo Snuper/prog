@@ -173,7 +173,7 @@ namespace WindowsFormsApplication1
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Якунин Андрей и Парфенцов Семен ИП-814");
+            MessageBox.Show("Иванов Константин ИП-814");
         }
 
         private void DeleteSelectedItems(ListBox lstFrom)
