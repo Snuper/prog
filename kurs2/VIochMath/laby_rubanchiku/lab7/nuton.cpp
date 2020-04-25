@@ -15,11 +15,11 @@ double formula_nu_1(double nu_x, double h, int n, double **raznost, double *x_ma
 	
 	q = (nu_x - x_mas[0]) / h;
 	
-	p += q * raznost[1][0];
-	for(i = 1, temp_q = 1; i < n; i++)
+	p += q * raznost[0][1];
+	for(i = 2, temp_q = 1; i < n; i++)
 	{
 		for(int proiz = 1; proiz < i; proiz++) temp_q *= q - proiz;
-		temp_ch = raznost[i][0] * (q * temp_q);
+		temp_ch = raznost[0][i] * (q * temp_q);
 		temp_zn = 1;
 		for(int proiz = 1; proiz < i + 1; proiz++) temp_zn *= proiz;
 		p += temp_ch / temp_zn;
@@ -31,37 +31,20 @@ double formula_nu_1(double nu_x, double h, int n, double **raznost, double *x_ma
 double formula_nu_2(double nu_x, double h, int n, double **raznost, double *x_mas, double eps)
 {
 	int i;
-	double temp_ch, temp_zn, q, p = raznost[n][0], temp_q;
-	
-	q = (nu_x - x_mas[n]) / h;
-	
-	p += q * raznost[n - 1][0];
-	for(i = 1, temp_q = 1; i < n; i++)
+	double temp_ch, temp_zn, q, p = raznost[n - 1][0], temp_q;
+
+	q = (nu_x - x_mas[n - 1]) / h;
+	p += q * raznost[n - 2][1];
+	for(i = 2, temp_q = 1; i < n; i++)
 	{
-		for(int proiz = 1; proiz < i; proiz++) temp_q *= q + proiz;
-		temp_ch = raznost[n - i][i] * (q * temp_q);
+		for(int proiz = 1; proiz < i + 1; proiz++) temp_q *= q + proiz;
+		temp_ch = raznost[n - i - 1][i] * (q * temp_q);
 		temp_zn = 1;
 		for(int proiz = 1; proiz < i + 1; proiz++) temp_zn *= proiz;
 		p += temp_ch / temp_zn;
 	}
 	
 	return round(p * eps) / eps;
-}
-
-double epsilon(double &E_okr, double &E_us, double nu_x, int n, double *x_mas, double eps)
-{
-	double temp_ch = 1, temp_zn = 1, M;
-	for(int i = 0; i < n + 1; i++)
-	{
-		temp_ch *= nu_x - x_mas[i];
-		if(temp_ch < 0) temp_ch *= -1;
-		temp_zn *= i + 1;
-	}
-	M = 3.0/8.0 * pow(x_mas[n], -5.0/2.0);
-	if(M < 0) M *= -1;
-
-	E_okr = 1 / eps;
-	E_us = M * (temp_ch / temp_zn);
 }
 
 void tabl_raznostey(int n, double **raznost, double *y_mas, double *x_mas)
@@ -85,9 +68,21 @@ void tabl_raznostey(int n, double **raznost, double *y_mas, double *x_mas)
 	}
 }
 
+double epsilon(double &E_okr, double &E_us, double nu_x, int n, double *y_mas,double *x_mas, double **raznost, double eps, double h)
+{
+	double temp_ch = raznost[n - 1][0], temp_zn = 1, temp_q, q = (nu_x - x_mas[0]) / h;
+
+	temp_q = q;
+	for(int proiz = 1; proiz < n + 1; proiz++) temp_zn *= proiz;
+	for(int proiz = 1; proiz < n; proiz++) temp_q *= q - proiz;
+	
+	E_okr = 1 / eps;
+	E_us = (temp_ch / temp_zn) * q;
+}
+
 int main()
 {
-	int i, kr = -1, jz = -1, n, temp_i;
+	int i, kr = -1, jz = -1, ll = -1, n, temp_i;
 	
 	cout << endl << "Vvedite kolvo tochek interpolyacii: ";
 	cin >> n;
@@ -147,12 +142,12 @@ int main()
 	cout << endl << "Vvedite x: ";
 	cin >> nu_x;
 	
-	nu_y = formula_nu_1(nu_x, h, n , raznost, x_mas, eps);
+	nu_y = formula_nu_1(nu_x, h, n, raznost, x_mas, eps);
 	nuton_1[0].position = Vector2f(360 + nu_x, 360);
 	nuton_1[1].position = Vector2f(360 + nu_x, 360 - nu_y);
 	nuton_1[0].color = Color::Red;
 	nuton_1[1].color = Color::Red;
-	cout << endl << "1-Formula Nutona: " << "x = " << nu_x << " y = " << nu_y << endl; 
+	cout << endl << "1-Formula Nutona: " << "x = " << nu_x << " y = " << nu_y << endl;
 	
 	nu_y = formula_nu_2(nu_x, h, n, raznost, x_mas, eps);
 	nuton_2[0].position = Vector2f(360 + nu_x, 360);
@@ -161,7 +156,7 @@ int main()
 	nuton_2[1].color = Color::Yellow;
 	cout << endl << "2-Formula Nutona: " << "x = " << nu_x << " y = " << nu_y << endl; 
 	
-	epsilon(E_okr, E_us, nu_x, n, x_mas, eps);
+	epsilon(E_okr, E_us, nu_x, n, y_mas, x_mas, raznost, eps, h);
 	cout << "E_okr = " << E_okr << " E_us = " << E_us << " E_real = " << E_us + E_okr << endl;
 	
 	while (window.isOpen())
@@ -176,6 +171,10 @@ int main()
 		for(i = 0, x = -360 * shag; i < kolvo; i++, x += shag)
 		{
 			lines[i].position = Vector2f(360 + x, 360 - formula(x));
+			lines_nu_1[i].position = Vector2f(360 + x, 360 - formula_nu_1(x, h, n, raznost, x_mas, eps));
+			lines_nu_1[i].color = Color::Red;
+			lines_nu_2[i].position = Vector2f(360 + x, 360 - formula_nu_2(x, h, n, raznost, x_mas, eps));
+			lines_nu_2[i].color = Color::Yellow;
 		}
 		
 		if (Keyboard::isKeyPressed(Keyboard::D)) view.move(0.001 + temp, 0);
@@ -184,28 +183,32 @@ int main()
 		else if (Keyboard::isKeyPressed(Keyboard::W)) view.move(0, -0.001 - temp);
 		else if (Keyboard::isKeyPressed(Keyboard::E))
 		{
-			temp -= 0.0001;
+			temp -= 0.001;
 			view.zoom(1.001f + temp);
 		}
 		else if (Keyboard::isKeyPressed(Keyboard::Q))
 		{
-			temp += 0.0001;
+			temp += 0.001;
 			view.zoom(0.999f - temp);
 		}
 		
 		if(Keyboard::isKeyPressed(Keyboard::K)) kr *= -1;
 		if(Keyboard::isKeyPressed(Keyboard::J)) jz *= -1;
+		if(Keyboard::isKeyPressed(Keyboard::L)) ll *= -1;
 		
 		window.clear();
 		window.setView(view);
 		if(kr == 1) window.draw(nuton_1);
 		if(jz == 1) window.draw(nuton_2);
+		window.draw(x_g);
 	 	window.draw(os_x);
 	 	window.draw(os_y);
 		window.draw(lines);
-//		window.draw(lines_nu_1);
-//		window.draw(lines_nu_2);
-		window.draw(x_g);
+		if(ll == 1)
+		{
+		window.draw(lines_nu_1);
+		window.draw(lines_nu_2);
+		}
 		window.display();
 	}
 	
