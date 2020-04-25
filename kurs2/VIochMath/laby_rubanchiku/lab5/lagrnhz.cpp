@@ -3,9 +3,9 @@
 using namespace std;
 using namespace sf;
 
-double x_mas[4] = {1, 2, 3, 4}, eps = 10000;
+double x_mas[3] = {1, 2, 4}, eps = 10000;
 
-double y_mas[4] = {1, 1.4142, 1.7321, 2};
+double y_mas[3] = {1, 1.4142, 2};
 
 double formula(double x)
 {

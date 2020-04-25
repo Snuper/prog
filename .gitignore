@@ -25,3 +25,6 @@
 *.layout
 *.xml
 *.win
+*.win
+*.dev
+*.layout
