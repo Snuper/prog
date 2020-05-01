@@ -4,8 +4,8 @@
 CPP      = g++.exe -D__DEBUG__
 CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-OBJ      = ../lab7/nuton.o
-LINKOBJ  = ../lab7/nuton.o
+OBJ      = ../lab8/spline.o
+LINKOBJ  = ../lab8/spline.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/SFML/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/SFML/x-64/lib" -static-libgcc -lsfml-graphics-d -lsfml-window-d -lsfml-audio-d -lsfml-network-d -lsfml-system-d -g3
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/SFML/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/SFML/x-64/include"
@@ -24,5 +24,5 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
 
-../lab7/nuton.o: ../lab7/nuton.cpp
-	$(CPP) -c ../lab7/nuton.cpp -o ../lab7/nuton.o $(CXXFLAGS)
+../lab8/spline.o: ../lab8/spline.cpp
+	$(CPP) -c ../lab8/spline.cpp -o ../lab8/spline.o $(CXXFLAGS)

@@ -53,8 +53,8 @@ SyncProduct=1
 [Unit3]
 FileName=..\lab6\eitken.cpp
 
-[Unit2]
-FileName=..\lab8\spline.cpp
+[Unit1]
+FileName=..\lab8\SFML.hpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -63,8 +63,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit1]
-FileName=..\lab8\SFML.hpp
+[Unit2]
+FileName=..\lab8\spline.cpp
 CompileCpp=1
 Folder=
 Compile=1
