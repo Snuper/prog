@@ -93,7 +93,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(519, 20);
             this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "Иванов Константин ИП-814";
+            this.textBox1.Text = "Краснов ИльяИП-814";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Lab6

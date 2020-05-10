@@ -1,0 +1,21 @@
+Directoru avtosholy
+OOO"Avtoshkola zayceva"
+{DIRECTOR_NAME}
+Zayavlenie
+Ya, __________________________________________________________________________
+Data rozhdeniya: _______________________________________________________________
+Mesto rozhdeniya: ______________________________________________________________
+Passport seriya ________ nomer ________ vydan ________________ data vydachi __________
+Adres registracii: _______________________________________________________________
+Data registracii po mestu zhitelstva: ________________________________________________
+Adres prozhivaniya: _____________________________________________________________
+INN _________________________________________________________________________
+SNILS ______________________________________________________________________
+Kontaktnyi telefon___________________________________________________________
+e-mail ________________________________________________________________________
+
+proshu Vas zachislit' menya v avtoshkolu na obucheniye po kategoriyam: B. 
+Zhelayemoye vremya obucheniya prakticheskomu vozhdeniyu (ne obyazatel'no): ____________
+Prilozheniya: Foto (3kh4) – 4 sht. S uchreditel'nymi dokumentami, polozheniyami o priyeme, zachislenii, otchislenii, vypuske, attestatsii, s pravilami okazaniya platnykh uslug i inymi normativnymi dokumentami oznakomlen(a).
+Data – {DATA_TIME}
+Podpis -  __________________/									

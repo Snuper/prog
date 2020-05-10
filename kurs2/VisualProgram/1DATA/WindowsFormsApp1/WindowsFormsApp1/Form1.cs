@@ -62,7 +62,7 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Якунин Андрей и Парфенцов Семен ИП-814");
+            MessageBox.Show("Краснов Илья ИП-814");
         }
     }
 }

@@ -4,9 +4,9 @@ CursorRow=1
 TopLine=1
 LeftChar=1
 [Editor_1]
-CursorCol=2
-CursorRow=125
-TopLine=118
+CursorCol=4
+CursorRow=212
+TopLine=156
 LeftChar=1
 [Editors]
 Order=1,0

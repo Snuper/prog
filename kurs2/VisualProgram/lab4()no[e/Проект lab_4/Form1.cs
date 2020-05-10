@@ -102,7 +102,7 @@ namespace VP_4
 
         private void обАвтореToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Иванов Константин ИП-814");
+            MessageBox.Show("Краснов Илья ИП-814");
         }
 
         private void timer1_Tick(object sender, EventArgs e)

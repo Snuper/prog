@@ -5,7 +5,7 @@ using namespace sf;
 
 double formula(double x)
 {
-	return sin(x);
+	return sqrt(x);
 }
 
 void c_matrix(double **c_mas, double *h_mas, int n)
@@ -99,43 +99,35 @@ void gaus(double **c_mas, double *d_mas, int size, double *m_mas)
 	}
 }
 
-double s_formula(double sp_x, double *x_mas, double *h_mas, double *y_mas, double *m_mas, int i)
+double s_formula(double sp_x, double *x_mas, double *h_mas, double *y_mas, double *m_mas, int i, double &rez)
 {
 	double sk1, sk2, sk3, sk4 ,sk5 ,sk6, temp_ch, temp_zn;
-	
-	cout << endl << "RTEETST" << endl;
 	
 	temp_ch = pow((x_mas[i] - sp_x), 3);
 	temp_zn = 6 * h_mas[i];
 	sk1 = m_mas[i - 1] * temp_ch / temp_zn;
-	cout << endl << sk1 << endl;
 	
 	temp_ch = pow((sp_x - x_mas[i - 1]), 3);
 	temp_zn = 6 * h_mas[i];
 	sk2 = m_mas[i] * temp_ch / temp_zn;
-	cout << endl << sk2 << endl;
 	
 	temp_ch = y_mas[i - 1] * m_mas[i - 1] * pow(h_mas[i], 2);
 	temp_zn = 6;
 	sk3 = temp_ch / temp_zn;
-	cout << endl << sk3 << endl;
 	
 	temp_ch = x_mas[i] - sp_x;
 	temp_zn = h_mas[i];
 	sk4 = temp_ch / temp_zn;
-	cout << endl << sk4 << endl;
 	
 	temp_ch = y_mas[i] * m_mas[i] * pow(h_mas[i], 2);
 	temp_zn = 6;
 	sk5 = temp_ch / temp_zn;
-	cout << endl << sk5 << endl;
 	
 	temp_ch = sp_x - x_mas[i - 1];
 	temp_zn = h_mas[i];
 	sk6 = temp_ch / temp_zn;
-	cout << endl << sk6 << endl;
 	
-	return (sk1 + sk2 + sk3 * sk4 + sk5 * sk6);
+	rez = sk1 + sk2 + sk3 * sk4 + sk5 * sk6;
 }
 
 int main()
@@ -150,7 +142,7 @@ int main()
 	settings.antialiasingLevel = 8;
 	
 	RenderWindow window(VideoMode(720, 720), "spline", Style::Default, settings);
-	double x = 0, kolvo = 720 / shag, sp_x, sp_y, temp = 0;
+	double x = 0, kolvo = 720 / shag, sp_x, sp_y, temp = 0, rez;
 
 	VertexArray os_x(LineStrip, 2);
 	VertexArray os_y(LineStrip, 2);
@@ -203,10 +195,13 @@ int main()
 	c_matrix(c_mas, h_mas, n - 2);
 	d_vector(y_mas, h_mas, d_mas, n - 2);
 	gaus(c_mas, d_mas, n - 2, m_mas);
-	sp_y = s_formula(sp_x, x_mas, h_mas, y_mas, m_mas, 2);
+	s_formula(sp_x, x_mas, h_mas, y_mas, m_mas, 2, rez);
+	sp_y = rez;
+	cout << endl << "y = " << rez;
 	sp_g[0].position = Vector2f(360 + sp_x, 360);
 	sp_g[1].position = Vector2f(360 + sp_x, 360 - sp_y);
 	sp_g[0].color = Color::Red;
+	sp_g[1].color = Color::Red;
 //	
 	while (window.isOpen())
 	{
@@ -220,7 +215,8 @@ int main()
 		for(i = 0, x = -360 * shag; i < kolvo; i++, x += shag)
 		{
 			lines[i].position = Vector2f(360 + x, 360 - formula(x));
-			lines_sp[i].position = Vector2f(360 + x, 360 - s_formula(x, x_mas, h_mas, y_mas, m_mas, 2));
+			s_formula(x, x_mas, h_mas, y_mas, m_mas, 2, rez);
+			lines_sp[i].position = Vector2f(360 + x, 360 - rez);
 			lines_sp[i].color = Color::Red;
 		}
 		
