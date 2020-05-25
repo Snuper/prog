@@ -5,7 +5,7 @@
 
 using namespace std;
 
-const double eps = 0.00000001;
+const double eps = 0.00001;
 
 double formula(double x)
 {
@@ -117,7 +117,7 @@ main()
 	while(good == false)
 	{
 		h /= 2;
-		
+		cout << endl << "SHAG DROB : " << h;
 		delete [] x_mas;
 		delete [] y_mas;
 		

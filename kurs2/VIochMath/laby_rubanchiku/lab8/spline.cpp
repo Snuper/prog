@@ -99,10 +99,16 @@ void gaus(double **c_mas, double *d_mas, int size, double *m_mas)
 	}
 }
 
-double s_formula(double sp_x, double *x_mas, double *h_mas, double *y_mas, double *m_mas, int i, double &rez)
+double s_formula(double sp_x, double *x_mas, double *h_mas, double *y_mas, double *m_mas, int i, double &rez, int n)
 {
-	double sk1, sk2, sk3, sk4 ,sk5 ,sk6, temp_ch, temp_zn;
+	rez = 0;
+	for(int i = 0; i < n; i++)
+		if(i > 0)
+			if(x_mas[i - 1] <= sp_x <= x_mas[i])
+			rez = m_mas[i - 1] * ((pow((x_mas[i] - sp_x), 3)) / (6 * h_mas[i])) + m_mas[i] * ((pow((sp_x - x_mas[i - 1]), 3)) / (6 * h_mas[i])) + (y_mas[i - 1] - (m_mas[i - 1]*pow(h_mas[i], 2)) / 6) * ((x_mas[i] - sp_x) / h_mas[i]) + (y_mas[i] - (m_mas[i]*pow(h_mas[i], 2)) / 6) * ((sp_x - x_mas[i - 1]) / h_mas[i]);
 	
+/*	
+	double sk1, sk2, sk3, sk4 ,sk5 ,sk6, temp_ch, temp_zn;
 	temp_ch = pow((x_mas[i] - sp_x), 3);
 	temp_zn = 6 * h_mas[i];
 	sk1 = m_mas[i - 1] * temp_ch / temp_zn;
@@ -128,6 +134,7 @@ double s_formula(double sp_x, double *x_mas, double *h_mas, double *y_mas, doubl
 	sk6 = temp_ch / temp_zn;
 	
 	rez = sk1 + sk2 + sk3 * sk4 + sk5 * sk6;
+	*/
 }
 
 int main()
@@ -195,7 +202,7 @@ int main()
 	c_matrix(c_mas, h_mas, n - 2);
 	d_vector(y_mas, h_mas, d_mas, n - 2);
 	gaus(c_mas, d_mas, n - 2, m_mas);
-	s_formula(sp_x, x_mas, h_mas, y_mas, m_mas, 2, rez);
+	s_formula(sp_x, x_mas, h_mas, y_mas, m_mas, 2, rez, n);
 	sp_y = rez;
 	cout << endl << "y = " << rez;
 	sp_g[0].position = Vector2f(360 + sp_x, 360);
@@ -215,7 +222,7 @@ int main()
 		for(i = 0, x = -360 * shag; i < kolvo; i++, x += shag)
 		{
 			lines[i].position = Vector2f(360 + x, 360 - formula(x));
-			s_formula(x, x_mas, h_mas, y_mas, m_mas, 2, rez);
+			s_formula(x, x_mas, h_mas, y_mas, m_mas, 2, rez, n);
 			lines_sp[i].position = Vector2f(360 + x, 360 - rez);
 			lines_sp[i].color = Color::Red;
 		}
