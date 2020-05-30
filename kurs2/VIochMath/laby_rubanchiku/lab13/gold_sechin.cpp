@@ -3,12 +3,12 @@
 using namespace std;
 using namespace sf;
 
-const double eps = 0.0000001;
+const double eps = 0.00000001;
 const double gold = (1 + sqrt(5)) / 2;
 
 double formula(double x)
 {
-	return sin(x);
+	return x * x - 6 * x;
 }
 
 main()
@@ -37,8 +37,19 @@ main()
 	VertexArray os_x(LineStrip, 2);
 	VertexArray os_y(LineStrip, 2);
 	VertexArray os_gold(LineStrip, 2);
+	VertexArray os_a(LineStrip, 2);
+	VertexArray os_b(LineStrip, 2);
 	VertexArray lines(LineStrip, kolvo);
 	
+	os_a[0].position = Vector2f(360 + save_a, 360 - formula(a));
+	os_a[1].position = Vector2f(360 + save_a, 360);
+	os_a[0].color = Color::Red;
+	os_a[1].color = Color::Red;
+	
+	os_b[0].position = Vector2f(360 + save_b, 360 - formula(b));
+	os_b[1].position = Vector2f(360 + save_b, 360);
+	os_b[0].color = Color::Green;
+	os_b[1].color = Color::Green;
 	
 	os_x[0].position = Vector2f(720, 360);
 	os_x[1].position = Vector2f(0, 360);
@@ -46,15 +57,33 @@ main()
 	os_y[0].position = Vector2f(360, 720);
 	os_y[1].position = Vector2f(360, 0);
 	
+	double x1_fur = formula(a), x2_fur = formula(b);
+	
 	for(int step = 1; fabs(b - a) > eps; step++)
 	{
 		cout << endl << "Shag = " << step << endl;
-		x1 = b - (b - a) / gold;
-		x2 = a + (b - a) / gold;
-		cout << endl << "	x1 = " << x1 << " x2 = " << x2 << endl; 
-		if(formula(x1) >= formula(x2) and vibor == 1) a = x1;
-		else if(formula(x1) <= formula(x2) and vibor == 2) a = x1;
-		else b = x2;
+		
+		if(x1_fur >= x2_fur and vibor == 1)
+		{
+			cout << endl << "TEST1" << endl;
+			a = b - (b - a) / gold;
+			x1_fur = formula(a);
+		}
+		
+		else if(x1_fur <= x2_fur and vibor == 2)
+		{
+			cout << endl << "TEST2" << endl;
+			a = b - (b - a) / gold;
+			x1_fur = formula(a);
+		}
+		
+		else
+		{
+			cout << endl << "TESTelse" << endl;
+			b = a + (b - a) / gold;
+			x2_fur = formula(b);
+		}
+		
 		cout << endl << "	a = " << a << " b = " << b << endl;
 	}
 	
@@ -70,7 +99,6 @@ main()
 	os_gold[1].color = Color::Green;
 	
 	cout << "tochka = " << (a + b) / 2 << endl << "otvet = " << formula((a + b) / 2);
-	
 	while (window.isOpen())
 	{
 		Event event;
@@ -80,7 +108,6 @@ main()
 				window.close();
 		}
 	
-		
 		if (Keyboard::isKeyPressed(Keyboard::D)) view.move(0.001 + temp, 0);
 		else if (Keyboard::isKeyPressed(Keyboard::S)) view.move(0, 0.001 + temp);
 		else if (Keyboard::isKeyPressed(Keyboard::A)) view.move(-0.001 - temp, 0);
@@ -99,6 +126,8 @@ main()
 		window.clear();
 		window.setView(view);
 		window.draw(os_gold);
+//		window.draw(os_a);
+//		window.draw(os_b);
 		window.draw(os_x);
 	 	window.draw(os_y);
 		window.draw(lines);
