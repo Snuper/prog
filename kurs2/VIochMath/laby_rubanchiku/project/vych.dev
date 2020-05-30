@@ -54,7 +54,7 @@ SyncProduct=1
 FileName=..\lab6\eitken.cpp
 
 [Unit1]
-FileName=..\lab8\SFML.hpp
+FileName=..\lab13\gold_sechin.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -64,7 +64,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit2]
-FileName=..\lab8\spline.cpp
+FileName=..\lab13\SFML.hpp
 CompileCpp=1
 Folder=
 Compile=1
