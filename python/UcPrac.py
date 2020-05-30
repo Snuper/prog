@@ -1,4 +1,5 @@
 import requests
+import requests
 from bs4 import BeautifulSoup as BS
 from prettytable import PrettyTable
 
@@ -15,15 +16,8 @@ Market_Cap = html.find_all('td', class_= spam2 + "market-cap")
 Price = html.find_all('td', class_= spam2 + "price")
 print("| Name | Market_Cap | Price |")
 print("-----------------------------")
-while i < 100:
-    print( '| ' + Name[i].text + ' | ' + Market_Cap[i].text + ' | ' + Price[i].text + ' |')
-    i += 1
-
-while z != 0:
-    i = -1
-    y = 0
-    print("Vvedite nazvanie: ")
-    Search_n = input()
+def function_search(search):
+    global i, y, z
     while y != 1:
         i += 1
         if i == 100:
@@ -38,3 +32,15 @@ while z != 0:
             y = 1
             print("Nayti eshe cto nibud? 1 - Yes/ 0 - No")
             z = int(input())
+
+while i < 100:
+    print( '| ' + Name[i].text + ' | ' + Market_Cap[i].text + ' | ' + Price[i].text + ' |')
+    i += 1
+
+while z != 0:
+    i = -1
+    y = 0
+    print("Vvedite nazvanie: ")
+    Search_n = input()
+    function_search(Search_n)
+
