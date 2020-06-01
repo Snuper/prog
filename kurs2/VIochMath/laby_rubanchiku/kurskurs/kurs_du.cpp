@@ -21,6 +21,9 @@ double formula(double x, double *y_mas)
 void du_4(double x_first, double x_last, double h, double *y_mas, int n, double *y_mas_for_chek)
 {
 //	cout << endl << "Zahli v funciu: -----------------------------------------" << endl;
+//	cout << endl << "x_first = " << x_first << endl;
+//	cout << endl << "x_last = " << x_last << endl;
+	
 	int du_step = 1;
 	double **k_mas;
 	k_mas = new double* [4];
@@ -138,6 +141,7 @@ main()
 		double *prev_y_mas = nullptr;
 		prev_y_mas = new double [n_shag];
 		
+		for(int i = 0; i < n; i++) y_mas[i] = temp_y_mas[i];
 		du_4(x_first, x_last, h, y_mas, n, prev_y_mas);
 		
 		step++;
@@ -150,15 +154,15 @@ main()
 		next_y_mas = new double [n_shag];
 		
 		cout << endl << "h = " << h << endl;
-		for(int i = 0; i < n; i++) y_mas[i] = temp_y_mas[i];
 		
+		for(int i = 0; i < n; i++) y_mas[i] = temp_y_mas[i];
 		du_4(x_first, x_last, h, y_mas, n, next_y_mas);
 		
-		cout << endl << "ddddddddddddddddddddddddddddddddddd" << endl;
-		for(int i = 0; i < n_shag / 2; i++) cout << endl << prev_y_mas[i] << endl;
-		cout << endl << "dddddddddddddddSSSSSSSSSSSSSSSSSdddddddddddddddddddd" << endl;
-		for(int i = 0; i < n_shag; i++) cout << endl << next_y_mas[i] << endl;
-		cout << endl << "ddddddddddddddddddddddddddddddddddd" << endl;
+//		cout << endl << "ddddddddddddddddddddddddddddddddddd" << endl;
+//		for(int i = 0; i < n_shag / 2; i++) cout << endl << prev_y_mas[i] << endl;
+//		cout << endl << "dddddddddddddddSSSSSSSSSSSSSSSSSdddddddddddddddddddd" << endl;
+//		for(int i = 0; i < n_shag; i++) cout << endl << next_y_mas[i] << endl;
+//		cout << endl << "ddddddddddddddddddddddddddddddddddd" << endl;
 		
 		if(step > 0)
 		{
