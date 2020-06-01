@@ -154,30 +154,32 @@ main()
 		
 		du_4(x_first, x_last, h, y_mas, n, next_y_mas);
 		
-//		cout << endl << "ddddddddddddddddddddddddddddddddddd" << endl;
-//		for(int i = 0; i < n_shag / 2; i++) cout << endl << prev_y_mas[i] << endl;
-//		cout << endl << "dddddddddddddddSSSSSSSSSSSSSSSSSdddddddddddddddddddd" << endl;
-//		for(int i = 0; i < n_shag; i++) cout << endl << next_y_mas[i] << endl;
-//		cout << endl << "ddddddddddddddddddddddddddddddddddd" << endl;
+		cout << endl << "ddddddddddddddddddddddddddddddddddd" << endl;
+		for(int i = 0; i < n_shag / 2; i++) cout << endl << prev_y_mas[i] << endl;
+		cout << endl << "dddddddddddddddSSSSSSSSSSSSSSSSSdddddddddddddddddddd" << endl;
+		for(int i = 0; i < n_shag; i++) cout << endl << next_y_mas[i] << endl;
+		cout << endl << "ddddddddddddddddddddddddddddddddddd" << endl;
 		
-		for(int i = 1; i < n_shag / 2; i++)
+		if(step > 0)
 		{
-			cout << endl << " i = " << i << "  &&  i * 2 = " << i * 2 << "  n_shag = " << n_shag / 2 << endl;
-			cout << endl << "y(h): " << prev_y_mas[i] << endl;
-			cout << endl << "y(h/2): " << next_y_mas[i * 2] << endl;
-			cout << endl << "Korektirovka: " << fabs(prev_y_mas[i] - next_y_mas[i * 2]) << " < " << 15 * eps << endl;
-			if(fabs(prev_y_mas[i] - next_y_mas[i * 2]) < 15 * eps) test_all_mas = true; 
-			else
+			for(int i = 1; i < n_shag / 2; i++)
 			{
-				cout << endl << "FALSE" << endl;
-				test_all_mas = false;
-				break;
+				cout << endl << " i = " << i << "  &&  i * 2 = " << i * 2 << "  n_shag = " << n_shag / 2 << endl;
+				cout << endl << "y(h): " << prev_y_mas[i] << endl;
+				cout << endl << "y(h/2): " << next_y_mas[i * 2] << endl;
+				cout << endl << "Korektirovka: " << fabs(prev_y_mas[i] - next_y_mas[i * 2]) << " < " << 15 * eps << endl;
+				if(fabs(prev_y_mas[i] - next_y_mas[i * 2]) < 15 * eps) test_all_mas = true; 
+				else
+				{
+					cout << endl << "FALSE" << endl;
+					test_all_mas = false;
+					break;
+				}
 			}
 		}
-		
+
 		delete [] next_y_mas;
 		delete [] prev_y_mas;
-		
 		
 		if(test_all_mas == true)
 		{
