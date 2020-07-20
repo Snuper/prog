@@ -47,7 +47,7 @@ void du_4(double x_first, double x_last, double h, double *y_mas, int n, double 
 	for(double x = x_first; du_step - 1 < n_shag; x += h, du_step++)
 	{
 //		cout << endl << "----------------------------------------|du_Step" << du_step << "|----------------------------------------" << endl;
-//		cout << endl << "x =	" << setprecision(15) << x;
+		cout << endl << "x =	" << setprecision(15) << x + h;
 		
 //		if(x == x_first)
 //		{
@@ -109,7 +109,7 @@ void du_4(double x_first, double x_last, double h, double *y_mas, int n, double 
 	//			cout << endl << "JJJJJJJJJJJJJJKKKKKKKKKJJJJJJJJJJJJJJJJJKKKKKKKKKKJJJJJJ" << endl;
 		}
 		
-//		for(int i = 0; i < n; i++) cout << "	|	" << setprecision(15) << y_mas[i] << "	|";
+		for(int i = 0; i < n; i++) cout << "	|	" << setprecision(15) << y_mas[i] << "	|";
 		
 //		cout << endl;
 //		}
@@ -192,7 +192,7 @@ main()
 		for(int i = 0; i < n; i++)
 		{
 //			cout << endl << "		APAPAPAP" << endl;
-			for(int j = 1; j < prev_shag; j++)
+			for(int j = 0; j < prev_shag; j++)
 			{
 //				cout << endl << "		UTUTUTU" << endl;
 //				cout << endl << " j = " << j << "  &&  j * 2 = " << j * 2 << "  prev_shag = " << prev_shag << " h =  " << h << endl;
@@ -231,7 +231,7 @@ main()
 		{
 			cout << endl << "----------------------------------";
 			cout << endl << "Otvet: " << endl;
-			for(int i = 0; i < n; i++) cout << endl << "	" << setprecision(8) << y_mas[i] << endl;
+			for(int i = 0; i < n; i++) cout << endl << "	" << setprecision(15) << y_mas[i] << endl;
 			cout << endl << "Kolvo shagod: " << step << endl;
 			cout << endl << "h = : " << h;
 			good = true;
