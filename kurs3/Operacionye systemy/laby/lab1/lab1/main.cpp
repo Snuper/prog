@@ -1,10 +1,8 @@
 #include <QCoreApplication>
-#include <QProcess>
 #include <iostream>
 
 /*
 5 - Серилизация структуры
-7 - Функция вставки в середину
 */
 
 using namespace std;
