@@ -1,9 +1,6 @@
 #include <QCoreApplication>
 #include <iostream>
-
-/*
-5 - Серилизация структуры
-*/
+#include <fstream>
 
 using namespace std;
 
@@ -140,11 +137,48 @@ void menu_input(int &input, int &counter, int &all_item, bool &exit, Data *&Head
     }
 
     else if(input == 4)
-    {
-        ;
+    {//серилизация
+        ofstream out("struct.dat");
+        Head = Start;
+
+        out.write(reinterpret_cast<char*>(&all_item), sizeof (all_item));
+
+        while(Head != NULL)
+        {
+            out.write(Head->name.c_str(), Head->name.size());
+            out.write(reinterpret_cast<char*>(&Head->age), sizeof (Head->age));
+            Head = Head->Next;
+        }
+
+        out.close();
+        Head = Start;
+        counter = 1;
     }
 
     else if(input == 5)
+    {//десирилизация
+        ifstream in("struct.dat");
+        string swap;
+        Head = Start;
+        delete Head;
+        delete Start;
+
+        in.read(reinterpret_cast<char*>(&all_item), sizeof (all_item));
+        for(int i = 0; i < all_item; i++, Head->Next)
+        {
+            Head = new Data;
+            in.read(reinterpret_cast<char*>(&Head->name), Head->name.size());
+            in.read(reinterpret_cast<char*>(&Head->age), sizeof (Head->age));
+            Head->Next = NULL;
+        }
+
+        in.close();
+        Start = Head;
+        Head = Start;
+        counter = 1;
+    }
+
+    else if(input == 6)
     {//Делаем заготовку, после вывода всех элементов списка, возвращаем всё начало
         Head = Start;
         for(counter = 1; counter < all_item + 1; counter++)
@@ -158,12 +192,12 @@ void menu_input(int &input, int &counter, int &all_item, bool &exit, Data *&Head
         counter = 1;
     }
 
-    else if(input == 6)
-    {
+    else if(input == 7)
+    {//вернуть в начало
         Head = Start;
         counter = 1;
     }
-    else if(input == 7) exit = true;
+    else if(input == 8) exit = true;
 }
 
 int main(int argc, char *argv[])
@@ -176,7 +210,7 @@ int main(int argc, char *argv[])
     for(int input, counter = 1, all_item = 0; exit == false;)
     {//меню
         system("cls");
-        cout << "Menu:" << endl << "1 - Next" << endl << "2 - Paste" << endl << "3 - Delete" << endl << "4 - Serializing a list" << endl << "5 - Display the entire list" << endl << "6 - Go start" << endl << "7 - Exit";
+        cout << "Menu:" << endl << "1 - Next" << endl << "2 - Paste" << endl << "3 - Delete" << endl << "4 - Serializing a list" << endl << "5 - Deserialization a list" << endl << "6 - Display the entire list" << endl << "7 - Go start" << endl << "8 - Exit";
         if(all_item > 0)
         {
             cout << endl << "----------------------------------------------" << endl << "Counter: " << counter << "/" << all_item; //Счетчик с обозначением, элемента на котром находишся + всего элементов
