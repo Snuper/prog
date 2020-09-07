@@ -4,11 +4,16 @@
 
 using namespace std;
 
+struct Info
+{
+    char name[30];
+    int age;
+};
+
 struct Data
 {
     Data *Next;
-    string name;
-    int age;
+    Info simple_info;
 };
 
 void menu_input(int &input, int &counter, int &all_item, bool &exit, Data *&Head, Data *&Start)
@@ -36,9 +41,9 @@ void menu_input(int &input, int &counter, int &all_item, bool &exit, Data *&Head
         {//Если это первый элемент
             Head = new Data;
             cout << endl << "Input name: ";
-            cin >> Head->name;
+            cin >> Head->simple_info.name;
             cout << endl << "Input age: ";
-            cin >> Head->age;
+            cin >> Head->simple_info.age;
             Start = Head;
             Head->Next = NULL;
             all_item++;
@@ -58,9 +63,9 @@ void menu_input(int &input, int &counter, int &all_item, bool &exit, Data *&Head
                 {
                     New_element = new Data;
                     cout << endl << "Input name: ";
-                    cin >> New_element->name;
+                    cin >> New_element->simple_info.name;
                     cout << endl << "Input age: ";
-                    cin >> New_element->age;
+                    cin >> New_element->simple_info.age;
                     Head = Start;//На всякий случай, ведь по голова может стоять не в начале и мы ее потеряем
                     New_element->Next = Head;
                     Start = New_element;
@@ -73,9 +78,9 @@ void menu_input(int &input, int &counter, int &all_item, bool &exit, Data *&Head
                 {
                     New_element = new Data;
                     cout << endl << "Input name: ";
-                    cin >> New_element->name;
+                    cin >> New_element->simple_info.name;
                     cout << endl << "Input age: ";
-                    cin >> New_element->age;
+                    cin >> New_element->simple_info.age;
                     Head = Start;//в елсе не нужно, ведь ей без разницы, откуда начать искать конец
                     for(int i = 1; i < pos_in_list - 1; i++) Head = Head->Next;
                     New_element->Next = Head->Next;
@@ -92,9 +97,9 @@ void menu_input(int &input, int &counter, int &all_item, bool &exit, Data *&Head
                         while(Head->Next != NULL) Head = Head->Next;
                         Head->Next = new Data;
                         cout << endl << "Input name: ";
-                        cin >> Head->Next->name;
+                        cin >> Head->Next->simple_info.name;
                         cout << endl << "Input age: ";
-                        cin >> Head->Next->age;
+                        cin >> Head->Next->simple_info.age;
                         Head->Next->Next = NULL;
                         all_item++;
                         Head = Start;
@@ -138,15 +143,14 @@ void menu_input(int &input, int &counter, int &all_item, bool &exit, Data *&Head
 
     else if(input == 4)
     {//серилизация
-        ofstream out("struct.dat");
+        ofstream out("struct.bin", ios::binary);
         Head = Start;
 
-        out.write(reinterpret_cast<char*>(&all_item), sizeof (all_item));
+        out.write((char*)&all_item, sizeof(all_item));
 
         while(Head != NULL)
         {
-            out.write(Head->name.c_str(), Head->name.size());
-            out.write(reinterpret_cast<char*>(&Head->age), sizeof (Head->age));
+            out.write((char*)Head, sizeof(Data));
             Head = Head->Next;
         }
 
@@ -157,23 +161,38 @@ void menu_input(int &input, int &counter, int &all_item, bool &exit, Data *&Head
 
     else if(input == 5)
     {//десирилизация
-        ifstream in("struct.dat");
-        string swap;
-        Head = Start;
-        delete Head;
-        delete Start;
+        ifstream in("struct.bin", ios::binary);
 
-        in.read(reinterpret_cast<char*>(&all_item), sizeof (all_item));
-        for(int i = 0; i < all_item; i++, Head->Next)
+        Data *new_Head = NULL, *new_Start = NULL;
+
+        in.read((char*)&all_item, sizeof(all_item));
+        for(int i = 0; i < all_item; i++)
         {
-            Head = new Data;
-            in.read(reinterpret_cast<char*>(&Head->name), Head->name.size());
-            in.read(reinterpret_cast<char*>(&Head->age), sizeof (Head->age));
-            Head->Next = NULL;
+            if (!new_Head)
+            {//Если это первый элемент
+                new_Head = new Data;
+
+                in.read((char*)new_Head, sizeof(Data));
+
+                new_Start = new_Head;
+                new_Head->Next = NULL;
+            }
+
+            else
+            {
+                while(new_Head->Next != NULL) new_Head = new_Head->Next;
+                new_Head->Next = new Data;
+
+                in.read((char*)new_Head->Next, sizeof(Data));
+
+                new_Head->Next->Next = NULL;
+                new_Head = new_Start;
+                counter = 1;
+            }
         }
 
         in.close();
-        Start = Head;
+        Start = new_Start;
         Head = Start;
         counter = 1;
     }
@@ -183,7 +202,7 @@ void menu_input(int &input, int &counter, int &all_item, bool &exit, Data *&Head
         Head = Start;
         for(counter = 1; counter < all_item + 1; counter++)
         {
-            cout << endl << "Counter: " << counter << "/" << all_item << endl << "Name: " << Head->name << endl << "Age: " << Head->age << endl;
+            cout << endl << "Counter: " << counter << "/" << all_item << endl << "Name: " << Head->simple_info.name << endl << "Age: " << Head->simple_info.age << endl;
             Head = Head->Next;
         }
         cout << endl << "----------------------------------------------" << endl << "Input '0' to continue" << endl << "Input: ";
@@ -210,15 +229,15 @@ int main(int argc, char *argv[])
     for(int input, counter = 1, all_item = 0; exit == false;)
     {//меню
         system("cls");
-        cout << "Menu:" << endl << "1 - Next" << endl << "2 - Paste" << endl << "3 - Delete" << endl << "4 - Serializing a list" << endl << "5 - Deserialization a list" << endl << "6 - Display the entire list" << endl << "7 - Go start" << endl << "8 - Exit";
+        cout << "Menu:" << endl << "1 - Next" << endl << "2 - Paste" << endl << "3 - Delete" << endl << "4 - Save" << endl << "5 - Load" << endl << "6 - Display the entire list" << endl << "7 - Go start" << endl << "8 - Exit";
         if(all_item > 0)
         {
             cout << endl << "----------------------------------------------" << endl << "Counter: " << counter << "/" << all_item; //Счетчик с обозначением, элемента на котром находишся + всего элементов
-            cout << endl << "Name: " << Head->name << endl << "Age: " << Head->age;
+            cout << endl << "Name: " << Head->simple_info.name << endl << "Age: " << Head->simple_info.age;
         }
         cout << endl << "----------------------------------------------" << endl << "Input: ";
         cin >> input;
-        if(input > 0 and input < 8) menu_input(input, counter, all_item, exit, Head, Start);
+        if(input > 0 and input < 9) menu_input(input, counter, all_item, exit, Head, Start);
     }
 
     delete Head;
