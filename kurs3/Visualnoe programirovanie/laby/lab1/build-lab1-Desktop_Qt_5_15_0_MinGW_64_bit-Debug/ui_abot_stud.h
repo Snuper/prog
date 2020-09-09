@@ -38,6 +38,7 @@ public:
         textEdit = new QTextEdit(abot_stud);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
         textEdit->setGeometry(QRect(11, 219, 119, 71));
+        textEdit->setReadOnly(true);
 
         retranslateUi(abot_stud);
 

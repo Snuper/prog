@@ -1,4 +1,3 @@
-#include <QCoreApplication>
 #include <iostream>
 #include <fstream>
 
@@ -113,6 +112,7 @@ void menu_input(int &input, int &counter, int &all_item, bool &exit, Data *&Head
     else if(input == 3)
     {//Удаление
         struct Data *Swap;
+        Head = Start;
         cout << endl << "Enter the number of the item to remove: ";
         cin >> wait;
 
@@ -221,8 +221,6 @@ void menu_input(int &input, int &counter, int &all_item, bool &exit, Data *&Head
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
-
     Data *Head = NULL, *Start = NULL; //Указатели на пустые элементы структур, голова и начало
     bool exit = false;
 
