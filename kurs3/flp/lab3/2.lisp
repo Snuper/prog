@@ -1,0 +1,11 @@
+(defun subp (v w)
+  (cond ((null v))
+        ((member (car v) w) (subp (cdr v) w))
+        (nil)))
+
+(defun main()
+	(defvar x `(1))
+	(defvar y `(3 1 6 8))
+	(subp x y)
+)
+(main)

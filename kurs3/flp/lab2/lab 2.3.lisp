@@ -1,0 +1,16 @@
+(defun fClear(L1 L2 counter)
+	(if (null L2)
+		L1
+		(if (= counter (car L2))
+			(fClear (cdr L1) (cdr L2) (+ counter 1))
+			(cons (car L1) (fClear (cdr L1) L2 (+ counter 1)))
+		)
+	)
+)
+
+(defun main()
+	(defvar L1 `(a s d f g h j k l))
+	(defvar L2 `(1 4 5 8))
+	(write (fClear L1 L2 1))
+)
+(main)

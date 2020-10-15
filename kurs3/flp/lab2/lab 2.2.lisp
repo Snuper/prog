@@ -1,0 +1,15 @@
+(defun double(x)
+	(if (null x)
+		nil
+		(if (null (cdr x))
+			(list (list (car x)))
+			(cons (list (car x) (car (last x))) (double (butlast (cdr x))))
+		)
+	)
+)
+
+(defun main()
+	(defvar x `(1 2 3 4 5 6 7 8 9))
+	(write (double x))
+)
+(main)
