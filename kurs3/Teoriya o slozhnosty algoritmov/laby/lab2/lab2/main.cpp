@@ -1,86 +1,83 @@
-#include <stdlib.h>
 #include <iostream>
-#include <ctime>
+#include <cmath>
+#include <stdio.h>
 
 using namespace std;
 
-void random_input(int *massiv, int n)
-{//Рандомим массив
-    for(int i = 0; i < n; i++) massiv[i] = rand()%100;
+double eps = 10000;
+
+double formula(double x)
+{
+    return sqrt(x);
 }
 
-void show(int *massiv, int &n, int &step, int &swap_sh, int &small_sh)
-{//Вывод массива + шаг + показать свапнутые элементы
-    cout << endl << "Step[" << step << "]" << "   ";
-    for(int i = 0; i < n; i++) cout << massiv[i] << " ";
-    cout << " | " << swap_sh << " -> " << small_sh;
-    cout << endl;
-}
+double formula_et(double et_x, int n, double *x_mas, double *y_mas)
+{
+    double temp_ch, temp_zn, p_mas[n];
 
-void show(int *massiv, int &n)
-{//Вывод массива
-    cout << endl << "Massiv" << "   ";
-    for(int i = 0; i < n; i++) cout << massiv[i] << " ";
-    cout << endl;
-}
+    for(int i = 0; i < n + 1; i++) p_mas[i] = y_mas[i];
 
-void bublesort(int *massiv, int &n, int &c, int &m)
-{//Сортировка
-    bool swaped;
-    for(int i = 1, step = 0, swap_sh, small_sh, swap, temp_n = n; temp_n > 1; temp_n--)
+    for (int i = 0, ub = 0; i < (n * n / 2) + 1; i++)
     {
-        swaped = false;
-        for(int j = i; j < temp_n; j++)
+        for(int j = i; j < n + ub; j++)
         {
-            if(massiv[j - 1] < massiv[j])
-            {
-                step++;
-                swaped = true;
+            if(j >= n - 1) continue;
 
-                small_sh = massiv[j];//нужно для вывода
+            temp_ch = p_mas[j - ub] * (et_x - x_mas[j + 1]) - p_mas[j + 1 - ub] * (et_x - x_mas[j - ub]);
+            temp_zn = x_mas[j - ub] - x_mas[j + 1];
+            p_mas[j - ub] = temp_ch / temp_zn;
 
-                swap = massiv[j];
-                massiv[j] = massiv[j - 1];
-                massiv[j - 1] = swap;
-
-                swap_sh = massiv[j];//нужно для вывода
-                show(massiv, n, step, swap_sh, small_sh);
-                m++;
-            }
-            c++;
         }
-        if(swaped == false) break;
+        ub++;
     }
+    return round(p_mas[0] * eps) / eps;
+}
 
+double epsilon(double &E_okr, double &E_us, double la_x, int n, double *x_mas)
+{
+    double temp_ch = 1, temp_zn = 1, M;
+    for(int i = 0; i < n + 1; i++)
+    {
+        temp_ch *= la_x - x_mas[i];
+        if(temp_ch < 0) temp_ch *= -1;
+        temp_zn *= i + 1;
+    }
+    M = 3.0/8.0 * pow(x_mas[n - 1], -5.0/2.0);
+    if(M < 0) M *= -1;
+
+    E_okr = 1 / eps;
+    E_us = M * (temp_ch / temp_zn);
 }
 
 int main()
 {
-    srand(time(NULL));
+    int n, i;
+    double x = 0, et_x, et_y, E_us = 1, E_okr = 1, temp = 0;
 
-    int n, c = 0, m = 0, arm_input; //M - число присваиваний, C - число сравнений
-    cout << endl << "Input size array: ";
+    cout << endl << "Vvedite x: ";
+    cin >> et_x;
+
+    cout << "Input n = ";
     cin >> n;
+    cout << endl;
+    double *x_mas = new double [n];
+    double *y_mas = new double [n];
 
-    int *massiv = new int [n];
+    for(i = 0; i < n; i++)
+    {
+        cout << endl << "x[" << i << "] = ";
+        cin >> x_mas[i];
+        y_mas[i] = formula(x_mas[i]);
+        cout << "y[" << i << "] = " << y_mas[i];
+    }
+    cout << endl;
 
-    cout << endl << "Rychnoi vvod? ";
-    cin >> arm_input;
+    et_y = formula_et(et_x, n, x_mas, y_mas);
 
+    cout << endl << "x = " << et_x << " y = " << et_y << endl;
 
-    if(arm_input) //если любое число, кроме нуля
-        for(int i = 0; i < n; i++)
-        {
-            cout << endl << "Massiv[" << i << "] = ";
-            cin >> massiv[i];
-        }
+    epsilon(E_okr, E_us, et_x, n, x_mas);
+    cout << "E_okr = " << E_okr << " E_us = " << E_us << " E_real = " << E_us + E_okr << endl;
 
-    else random_input(massiv, n);
-
-    show(massiv, n);
-
-    bublesort(massiv, n, c, m);
-
-    cout << endl << "M = " << m * 3 << endl << "C = " << c;
     return 0;
 }
