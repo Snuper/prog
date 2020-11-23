@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>612</width>
+    <height>326</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLineEdit" name="lineEdit_1_prev">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>50</y>
+      <width>133</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>295</x>
+      <y>232</y>
+      <width>58</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>8 Квартира</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>295</x>
+      <y>154</y>
+      <width>58</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>5 Квартира</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_4_prev">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>128</y>
+      <width>133</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTreeWidget" name="treeWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>256</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <column>
+     <property name="text">
+      <string>Архив</string>
+     </property>
+    </column>
+    <item>
+     <property name="text">
+      <string>2020</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Ноябрь</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Октябрь</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Сентябрь</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Август</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Июль</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Июнь</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Май</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Апрель</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Март</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Февраль</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Январь</string>
+      </property>
+     </item>
+    </item>
+    <item>
+     <property name="text">
+      <string>2019</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Декабрь</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Ноябрь</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Октябрь</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Сентябрь</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Август</string>
+      </property>
+     </item>
+    </item>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_2_prev">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>76</y>
+      <width>133</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>290</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Просмотр</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_3_prev">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>102</y>
+      <width>133</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_8_prev">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>232</y>
+      <width>133</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>295</x>
+      <y>50</y>
+      <width>58</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>1 Квартира</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_5_prev">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>154</y>
+      <width>133</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>295</x>
+      <y>180</y>
+      <width>58</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>6 Квартира</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>295</x>
+      <y>76</y>
+      <width>58</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>2 Квартира</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_general_prev">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>258</y>
+      <width>133</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>295</x>
+      <y>102</y>
+      <width>58</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>3 Квартира</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_7_prev">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>206</y>
+      <width>133</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>295</x>
+      <y>128</y>
+      <width>58</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>4 Квартира</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>295</x>
+      <y>206</y>
+      <width>58</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>7 Квартира</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_prev_month">
+    <property name="geometry">
+     <rect>
+      <x>422</x>
+      <y>28</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Месяц</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>295</x>
+      <y>258</y>
+      <width>149</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Общий счетчик предыдущий</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_6_prev">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>180</y>
+      <width>133</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <action name="action">
+   <property name="text">
+    <string>Сохранить</string>
+   </property>
+  </action>
+  <action name="action_2">
+   <property name="text">
+    <string>Загрузить</string>
+   </property>
+  </action>
+  <action name="action_3">
+   <property name="text">
+    <string>Архив</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

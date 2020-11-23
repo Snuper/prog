@@ -1,0 +1,6 @@
+ФИО: 214214
+Должность: 214214
+Стаж работы: 214214
+Дата рождения: 01.01.2000
+Пол: Женский
+C:/Andrey/prog/prog/kurs3/Visualnoe programirovanie/laby/lab6/photo.png
