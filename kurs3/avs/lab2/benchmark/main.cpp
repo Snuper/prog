@@ -153,20 +153,21 @@ int main()
         return 1;
     }
 
-    avTimeTest /= number_of_tests;
-
+    avTimeTest /= number_of_tests * 100 * 100;
+    double perfomance = (number_of_tests * 100 * 100) / avTimeTest;
     bAccuracy(number_of_tests);
+
     Info *info = new Info;
     info->PModel = PROCESSOR_TYPE;
     info->Task = "Sort";
     info->OpType = type;
     info->Opt = "-";
     info->LNum = number_of_tests;
-    info->InsCount = number_of_tests;
+    info->InsCount = number_of_tests * 100 * 100;
     info->AvTime = avTimeTest;
     info->AbsError = AbsErr;
     info->RelError = RelErr;
-    info->TaskPerf = avTimeTest;
+    info->TaskPerf = perfomance;
 
     ofstream file("text.csv", ios::app);
     if(!file.is_open())
