@@ -1,0 +1,21 @@
+:-dynamic toys/2.
+toys("Herringbone", 200).
+toys("Car", 322).
+toys("Puzzles", 190).
+toys("Ball", 10).
+toys("Racket", 50).
+toys("Constructor", 490).
+toys("Yula", 320).
+toys("Locomotive", 600).
+toys("Pistol", 650).
+toys("Kick scooter", 545).
+toys("A bike", 430).
+toys("Tank", 210).
+toys("Aircraft", 150).
+toys("Helicopter", 160).
+toys("Soft toy", 70).
+toys("Table billiards", 333).
+toys("Boomerang", 45).
+toys("Table soccer", 350).
+toys("Coloring Pages", 100).
+toys("Sledge", 110).
