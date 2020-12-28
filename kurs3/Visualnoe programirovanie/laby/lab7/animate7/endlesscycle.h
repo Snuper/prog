@@ -30,8 +30,8 @@ public:
 
 private:
 
-    QString temp = "C:/Andrey/prog/prog/kurs3/Visualnoe programirovanie/laby/lab7/dom.png";
-    QString temp2 = "C:/Andrey/prog/prog/kurs3/Visualnoe programirovanie/laby/lab7/mysh.png";
+    QString temp = "C:/Andrey/prog/prog/kurs3/Visualnoe programirovanie/laby/lab7/el.jpg";
+    QString temp2 = "C:/Andrey/prog/prog/kurs3/Visualnoe programirovanie/laby/lab7/snjnka.jpg";
     QImage mouse;
     QImage home;
 

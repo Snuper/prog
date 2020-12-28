@@ -10,7 +10,7 @@ endlesscycle::endlesscycle()
     QLinearGradient gradient(QPointF(50, -20), QPointF(80, 20));
     gradient.setColorAt(0.0, Qt::white);
     gradient.setColorAt(1.0, QColor(0xa6, 0xce, 0x39));
-    background = QBrush(QColor(64, 32, 64));
+    background = QBrush(QColor(255, 255, 255));
     circlePen = QPen(Qt::black);
     circlePen.setWidth(1);
     textPen = QPen(Qt::white);
@@ -109,5 +109,5 @@ void endlesscycle::paint(QPainter *painter, QPaintEvent *event)
     painter->restore();
     painter->setPen(textPen);
     painter->setFont(textFont);
-    painter->drawText(QRect(x_mouse, y_mouse, 30, -10), Qt::AlignCenter, QStringLiteral("Мышь"));
+    painter->drawText(QRect(x_mouse, y_mouse, 30, -10), Qt::AlignCenter, QStringLiteral("Снежинка"));
 }

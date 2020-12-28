@@ -5,10 +5,9 @@
 #include <QLabel>
 #include <QTimer>
 
-//! [0]
 animate7_yakunin::animate7_yakunin()
 {
-    setWindowTitle(tr("Yaku"));
+    setWindowTitle(tr("Krasnov-IP814"));
 
     widget *native = new widget(&elc, this);
 
