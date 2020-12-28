@@ -1,0 +1,5 @@
+LIBRARY buff
+EXPORTS
+result @1
+go @2
+hMutex @3
