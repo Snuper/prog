@@ -1,4 +1,4 @@
-:-dynamic toys/2.
+:-dynamic toys/2. 	//ну динамик уже говорил /2 - значит колво атрибутов
 toys("Herringbone", 200).
 toys("Car", 322).
 toys("Puzzles", 190).

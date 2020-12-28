@@ -116,20 +116,20 @@ writekek(S):-
 	
 	
 	
-	
+//3 часть (хз как коменты оставлять в прологе, ну и лан)
 
-:-dynamic maxPrice/1.
+:-dynamic maxPrice/1. //dynamic - значит что можно динамически изменять базу данных
+					  //юзаем ее кста для запоминания цены самой дорогой игрушки, можно и без нее, но идея пришла, была реализована и всё) осталась
 
-domains:-
+domains:- //Указываем формат каждого атрибута базы данных, так пишется в оф доке или на сайте где я читал туторы по бд
 	s = string,
 	i = integer.
-
 database:-
 	toys(s,i).
 
 menu:-
-	consult("toys.ddb"),
-	repeat,
+	consult("toys.ddb"), //загружаем бд
+	repeat,	//далее идет меню спиженное из ее лекций, так что тут объяснять и не нужно, ну и впринципе ничего такого тут сложного нет
 	nl,
 	writeln("---------------------------------------"),
 	writeln("1 - Display information about all toys"),
@@ -145,32 +145,32 @@ menu:-
 	
 	process(1):- 
 		toys(E,R),
-		format("[~a ~a]~n",[E, R]),fail.
+		format("[~a ~a]~n",[E, R]),fail.	//выводим все при помощи приколов пролога
 	
-	process(2):-
+	process(2):- //запись в бд
 		repeat,
 		write("Input name toy: "),nl,read(Name),
 		write("Input price: "),nl,read(Price),
-		asserta(toys(Name, Price)),
+		asserta(toys(Name, Price)), //asserta - функция пролога, означает запись в бд, a - означает в начало, z - в конец
 		write("Input next? 1/0"),nl,read(Answer),
-		answerInput(Answer),!,
+		answerInput(Answer),!, //это реализация повторного ввода и она пздц хромая, работает, но рандомненько
 		fail.
 		
 	process(3):-
 		write("Input name toy: "),nl,read(Name),
-		retractall(toys(Name, _)),
+		retractall(toys(Name, _)), //retractall удаление из бд, all - значит, что он удалит всю записьЮ без all, он бы удалил только имя, а цену оставил
 		write("Input next? 1/0"),nl,read(Answer),
-		answerOutput(Answer),!,
+		answerOutput(Answer),!, //то же храмая собака
 		fail.
 		
 	process(4):-
-		findall(X, toys(_, X), PriceList),
-		max_list(PriceList, MaxList),
+		findall(X, toys(_, X), PriceList), //такс, мы тут хитрим и не выёживаемся и используем прикола пролога, выгружаем все ценики в список
+		max_list(PriceList, MaxList), //для этого выгружали все цены в список, чтобы пролог сам всё сделал и нашел максимальный элемент в списке
 		retractall(maxPrice(_)),
 		asserta(maxPrice(MaxList)),
 		toys(E,R),
 		maxPrice(N),
-		R > N -100,
+		R > N -100, //нуу и впринципе всё, -сотка и хоба
 		format("[~a ~a]~n",[E, R]),fail.
 	
 	answerInput(0).
